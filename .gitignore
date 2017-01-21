@@ -83,6 +83,7 @@ ipch/
 *.VC.db
 *.VC.VC.opendb
 
+
 # Visual Studio profiler
 *.psess
 *.vsp
@@ -250,3 +251,14 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+
+
+
+
+
+
+
+# STUFF THAT WE ADDED IN
+
+
