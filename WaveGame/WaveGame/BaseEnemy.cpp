@@ -6,11 +6,12 @@
 
 extern World *world;
 
-BaseEnemy::BaseEnemy(Point middle, Sprite s, float width, float height, int health, float speed) :
+BaseEnemy::BaseEnemy(Point middle, Sprite s, float width, float height, int health, float speed, unsigned int level) :
 	BaseObject(middle, s, width, height)
 {
 	this->health = health;
 	this->speed = speed;
+	this->level = level;
 	assert(world->getPath() != nullptr);
 	nextPoint = world->getPath()->cbegin();
 }
@@ -51,6 +52,11 @@ void BaseEnemy::move()
 int BaseEnemy::getHealth()
 {
 	return health;
+}
+
+unsigned int BaseEnemy::getLevel()
+{
+	return level;
 }
 
 #endif

@@ -13,11 +13,13 @@
 using namespace std;
 
 #include "World.h"
-World *world = new World();
+World* world;
 RenderControl renderController;
 
 int main() {
-
+	vector<string> sprites{ "sprite1", "sprite2", "sprite3", "sprite4", "sprite5" };
+	world = new World(sprites);
+	
 	if (!glfwInit()) {
 		cout << "Could not init GLFW" << endl;
 		return 1;
@@ -32,7 +34,7 @@ int main() {
 	renderController.initRender();
 
 
-	BaseEnemy testEnemy(Point(100, 100), renderController.get("test"), 30, 30, 5, 5);
+	BaseEnemy testEnemy(Point(100.0, 100.0), renderController.get("test"), 30.0, 30.0, 5, 5.0, 1);
 	
 	glfwSwapInterval(30);
 	while (!glfwWindowShouldClose(win)) {

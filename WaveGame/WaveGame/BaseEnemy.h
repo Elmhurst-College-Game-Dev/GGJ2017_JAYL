@@ -11,15 +11,18 @@ class BaseObject;
 class BaseEnemy : public BaseObject
 {
 public:
-	BaseEnemy(Point middle, Sprite s, float width, float height, int health, float speed);
+	BaseEnemy(Point middle, Sprite s, float width, float height, int health, float speed, unsigned int level);
 	void takeDamage(int damage);
 	virtual void think() override;
 	int getHealth();
+	unsigned int getLevel();
 
 protected:
 	int health;
 	float speed;
 	PointItr nextPoint;
+	unsigned int level;
+
 private:
 	void move();
 };
