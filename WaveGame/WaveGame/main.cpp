@@ -31,7 +31,7 @@ int main() {
 	renderController.initRender();
 
 
-	//BaseEnemy obj(Point(100, 100), renderController.get, float width, float height, int health, float speed);
+	BaseEnemy obj(Point(100, 100), renderController.get, float width, float height, int health, float speed);
 	
 	glfwSwapInterval(30);
 	while (!glfwWindowShouldClose(win)) {

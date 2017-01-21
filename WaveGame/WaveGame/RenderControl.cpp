@@ -150,9 +150,9 @@ void RenderControl::initRender()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
-Sprite & RenderControl::get(int index)
+Sprite & RenderControl::get(string name)
 {
-	return sprites[index];
+	return sprites[name];
 }
 
 

@@ -12,7 +12,7 @@ public:
 	void draw(BaseObject *obj);
 	void draw(BaseEnemy *obj);
 	void initRender();
-	Sprite &get(int index);
+	Sprite &get(string sprite);
 private:
 	GLuint program;
 	GLuint viewLoc;
@@ -22,7 +22,7 @@ private:
 	GLuint texCoordLoc;
 	GLuint samplerLoc;
 	GLuint angleLoc;
-	map<int, Sprite> sprites;
+	map<string, Sprite> sprites;
 	GLuint arrayBufferName;
 	GLuint indexArrayBufferName;
 };
