@@ -1,3 +1,6 @@
+#ifndef __BASE_OBJECT_CPP__
+#define __BASE_OBJECT_CPP__
+
 #include "BaseObject.h"
 #include "Sprite.h"
 
@@ -15,3 +18,10 @@ Point BaseObject::getMiddle()
 {
 	return middle;
 }
+
+float BaseObject::getAngle() const
+{
+	return angle;
+}
+
+#endif

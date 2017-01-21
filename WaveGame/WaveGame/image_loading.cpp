@@ -1,3 +1,6 @@
+#ifndef __IMAGE_LOADING_CPP__
+#define __IMAGE_LOADING_CPP__
+
 #include "image_loading.h"
 
 GLuint loadTexture(const char *file) {
@@ -40,3 +43,5 @@ GLuint loadTexture(const char *file) {
 void deleteTexture(GLuint tex) {
 	glDeleteTextures(1, &tex);
 }
+
+#endif

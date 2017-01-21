@@ -1,6 +1,10 @@
+#ifndef __STRAIGHT_TURRET__
+#define __STRAIGHT_TURRET__
+
+
 #include "StraightTurret.h"
 
-extern World* world;
+extern World *world;
 
 StraightTurret::StraightTurret(Point middle, Sprite* s, float width, float height, int damage, unsigned int firerate, float range)
 	: BaseTurret(middle, s, width, height, damage, firerate, range)
@@ -32,3 +36,6 @@ void StraightTurret::think()
 		}
 	}
 }
+
+
+#endif

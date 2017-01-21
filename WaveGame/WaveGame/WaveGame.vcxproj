@@ -73,7 +73,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>C:\Users\Jonathon\Documents\GitHub\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\Jonathon\Documents\GitHub\GGJ2017_JAYL\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

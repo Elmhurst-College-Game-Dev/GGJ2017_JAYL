@@ -10,7 +10,7 @@
 using namespace std;
 
 #include "World.h"
-World world;
+World *world = new World();
 
 int main() {
 

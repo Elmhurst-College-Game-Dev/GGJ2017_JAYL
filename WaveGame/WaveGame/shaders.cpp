@@ -1,3 +1,6 @@
+#ifndef __SHADERS_CPP__
+#define __SHADERS_CPP__
+
 #include "shaders.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -39,3 +42,5 @@ GLuint linkProgram(GLuint vert, GLuint frag) {
 	}
 	return program;
 }
+
+#endif 

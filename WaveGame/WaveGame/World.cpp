@@ -1,3 +1,6 @@
+#ifndef __WORLD_CPP__
+#define __WORLD_CPP__
+
 #include "World.h"
 #include <assert.h>
 
@@ -121,3 +124,5 @@ void World::damagePlayer()
 {
 	lives--;
 }
+
+#endif

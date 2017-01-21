@@ -1,3 +1,6 @@
+#ifndef __RENDER_CONTROL_CPP__
+#define __RENDER_CONTROL_CPP__
+
 #include "RenderControl.h"
 #include "shaders.h"
 
@@ -112,3 +115,7 @@ void RenderControl::initRender()
 
 
 }
+
+
+
+#endif

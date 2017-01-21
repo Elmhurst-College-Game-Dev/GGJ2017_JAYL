@@ -13,7 +13,7 @@ public:
 
 protected:
 	void Shoot(BaseEnemy * enemy);
-	inline bool CanFire();
+	bool CanFire() const;
 	bool IsEntInRange(BaseEnemy * enemy);
 
 	unsigned long long frameCanFire;

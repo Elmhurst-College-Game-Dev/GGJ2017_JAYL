@@ -1,7 +1,10 @@
+#ifndef __BASE_ENEMY_CPP__
+#define __BASE_ENEMY_CPP__
+
 #include "BaseEnemy.h"
 #include <assert.h>
 
-extern World* world;
+extern World *world;
 
 BaseEnemy::BaseEnemy(Point middle, Sprite* s, float width, float height, int health, float speed) :
 	BaseObject(middle, s, width, height)
@@ -49,3 +52,5 @@ int BaseEnemy::getHealth()
 {
 	return health;
 }
+
+#endif

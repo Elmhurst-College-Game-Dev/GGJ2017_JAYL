@@ -1,3 +1,6 @@
+#ifndef __BASE_TURRET_CPP__
+#define __BASE_TURRET_CPP__
+
 #include "BaseTurret.h"
 
 extern World* world;
@@ -18,7 +21,7 @@ void BaseTurret::Shoot(BaseEnemy * enemy)
 	//CreateFireSprite();
 }
 
-bool BaseTurret::CanFire()
+bool BaseTurret::CanFire() const
 {
 	return frameCanFire <= world->getFrameCount();
 }
@@ -27,3 +30,5 @@ bool BaseTurret::IsEntInRange(BaseEnemy * enemy)
 {
 	return middle.getDistance(enemy->getMiddle()) <= range;
 }
+
+#endif
