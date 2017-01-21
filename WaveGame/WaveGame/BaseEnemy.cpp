@@ -10,10 +10,6 @@ BaseEnemy::BaseEnemy(Point middle, Sprite* s, float width, float height, int hea
 	nextPoint = world->getPath()->cbegin();
 }
 
-BaseEnemy::~BaseEnemy()
-{
-}
-
 void BaseEnemy::takeDamage(int damage)
 {
 	health -= damage;

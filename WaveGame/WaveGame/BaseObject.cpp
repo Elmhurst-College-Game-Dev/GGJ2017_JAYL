@@ -8,11 +8,6 @@ BaseObject::BaseObject(Point middle, Sprite* s, float width, float height)
 	this->height = height;
 }
 
-
-BaseObject::~BaseObject()
-{
-}
-
 Point BaseObject::getMiddle()
 {
 	return middle;
