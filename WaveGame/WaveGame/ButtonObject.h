@@ -17,6 +17,8 @@ public:
 	bool isHovered = false;
 	virtual Sprite &getSprite() override;
 	virtual void think() {}
+	ButtonType getType() { return type; }
+
 private:
 	ButtonType type;
 	Sprite hovered;

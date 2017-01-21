@@ -39,7 +39,7 @@ public:
 	World(vector<string> enemySprites);
 	~World();
 
-	void addTower(BaseObject * ent);
+	void addTower(BaseTurret * ent);
 	void addEnemy(BaseEnemy * ent);
 	void addEnemyInfo(EnemyInfo info);
 	void addButton(ButtonType type, Point p, Sprite normal, Sprite hovered, float width, float height);
@@ -47,7 +47,7 @@ public:
 	void startWave();
 	unsigned long long getFrameCount();
 	const list<BaseEnemy* > * getEnemies();
-	const list<BaseObject* > * getTowers();
+	const list<BaseTurret * > * getTowers();
 	const list<ButtonObject *> * getButtons();
 	const list<Point> * getPath();
 	Point getEndPoint();
@@ -55,13 +55,13 @@ public:
 	void upgradeTurret(BaseTurret* turret);
 	inline bool canUpgradeTurret(BaseTurret* turret);
 
-	BaseObject * selected;
+	BaseTurret * selected;
 private:
 	std::list<Point> path;
 
 	BaseObject * wave;
 	std::list<BaseEnemy *> enemies;
-	std::list<BaseObject *> towers;
+	std::list<BaseTurret *> towers;
 	std::list<ButtonObject *> buttons;
 
 	unsigned int lives;

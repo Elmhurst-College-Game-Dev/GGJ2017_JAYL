@@ -7,6 +7,7 @@
 #include "BaseEnemy.h"
 #include "BaseTurret.h"
 #include "ButtonObject.h"
+#include <iostream>
 
 #define FRAMERATE 30
 
@@ -91,9 +92,10 @@ void World::spawnEnemy()
 	enemies.push_back(new BaseEnemy(spawn, renderController.get(info[i].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
 }
 
-void World::addTower(BaseObject * ent)
+void World::addTower(BaseTurret * ent)
 {
 	towers.push_back(ent);
+	cout << "after pushing" << ent->getMiddle().x << ent->getMiddle().y << endl;
 }
 
 void World::addEnemy(BaseEnemy* ent)
@@ -106,7 +108,7 @@ const list<BaseEnemy*> * World::getEnemies()
 	return &enemies;
 }
 
-const list<BaseObject*> * World::getTowers()
+const list<BaseTurret *> * World::getTowers()
 {
 	return &towers;
 }

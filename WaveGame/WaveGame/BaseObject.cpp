@@ -6,9 +6,9 @@
 
 extern World* world;
 
-BaseObject::BaseObject(Point middle, Sprite s, float width, float height)
+BaseObject::BaseObject(Point mid, Sprite s, float width, float height)
 {
-	this->middle = middle;
+	this->middle = mid;
 	this->s = s;
 	this->width = width;
 	this->height = height;
