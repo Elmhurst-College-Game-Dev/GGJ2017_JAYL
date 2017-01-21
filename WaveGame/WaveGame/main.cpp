@@ -6,6 +6,7 @@
 #include <IL/il.h>
 #include <iostream>
 #include "RenderControl.h"
+#include "BaseEnemy.h"
 
 #define MILLISECONDS_PER_FRAME 33
 
@@ -31,7 +32,7 @@ int main() {
 	renderController.initRender();
 
 
-	BaseEnemy obj(Point(100, 100), renderController.get, float width, float height, int health, float speed);
+	BaseEnemy testEnemy(Point(100, 100), renderController.get("test"), 30, 30, 5, 5);
 	
 	glfwSwapInterval(30);
 	while (!glfwWindowShouldClose(win)) {
@@ -46,6 +47,8 @@ int main() {
 		for (list<BaseObject*>::const_iterator itr = world->getTowers()->cbegin(); itr != world->getTowers()->cend(); itr++) {
 			renderController.draw(*itr);
 		}
+
+		renderController.draw(&testEnemy);
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

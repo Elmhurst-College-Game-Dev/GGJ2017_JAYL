@@ -3,8 +3,17 @@
 
 #include "Sprite.h"
 
+Sprite::Sprite() : indexOffset{ 0 } {
+
+}
+
 Sprite::Sprite(GLuint initialOffset) : indexOffset{initialOffset}
 {
+}
+
+Sprite::Sprite(const Sprite & rhs)
+{
+	indexOffset = rhs.indexOffset;
 }
 
 Sprite::~Sprite()

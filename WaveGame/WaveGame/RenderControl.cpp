@@ -123,7 +123,7 @@ void RenderControl::initRender()
 	}
 
 	//fill imageIndexLocations with images
-	sprites[0] = Sprite(0); //No offset ; generalize later
+	sprites["test"] = Sprite(0); //No offset ; generalize later
 
 	//That is done, finally
 	//Make the buffers now
@@ -148,6 +148,7 @@ void RenderControl::initRender()
 
 	//bg color
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
 }
 
 Sprite & RenderControl::get(string name)

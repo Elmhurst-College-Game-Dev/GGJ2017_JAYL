@@ -15,7 +15,7 @@ public:
 	float getAngle() const;
 	float getWidth() const;
 	float getHeight() const;
-	Sprite &getSprite() const;
+	Sprite &getSprite();
 protected:
 	Point middle;
 	Sprite s;

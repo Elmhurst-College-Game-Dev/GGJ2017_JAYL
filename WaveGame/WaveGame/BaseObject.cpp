@@ -34,7 +34,7 @@ float BaseObject::getHeight() const
 	return height;
 }
 
-Sprite &BaseObject::getSprite() const {
+Sprite &BaseObject::getSprite() {
 	return s;
 }
 
