@@ -110,4 +110,5 @@ void RenderControl::initRender()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferName);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * 6 * textureCount, indexArrayBuf, GL_STATIC_DRAW);
 
+
 }

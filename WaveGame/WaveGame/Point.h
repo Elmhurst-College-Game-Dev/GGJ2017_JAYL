@@ -9,6 +9,7 @@ public:
 	inline float getDistance(const Point p);
 	float x;
 	float y;
+	bool operator=(const Point &rhs);
 };
 
 #endif

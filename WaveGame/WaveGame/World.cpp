@@ -54,15 +54,15 @@ void World::think()
 	if (lives == 0)
 	{
 		// TODO: something when you lose
-		YouLose();
+		//YouLose();
 	}
 	else if (enemies.size() == 0)
 	{
 		// TODO: Decide last wave.
-		if (currentWave == LAST_WAVE)
+		if (currentWave == 100000 /*LAST_WAVE*/)
 		{
 			// TODO: Something when you win
-			YouWin();
+			//YouWin();
 		}
 		else
 		{
