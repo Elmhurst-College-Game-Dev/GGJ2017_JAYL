@@ -1,8 +1,9 @@
-#pragma once
+#ifndef _BASEOBJ_INCLUDED
+#define _BASEOBJ_INCLUDED
+
 #include "Point.h"
 #include "World.h"
-
-extern World* world;
+#include "Sprite.h"
 
 class BaseObject
 {
@@ -19,3 +20,4 @@ protected:
 	float angle;
 };
 
+#endif

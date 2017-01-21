@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _WORLD_INCLUDED
+#define _WORLD_INCLUDED
 
 #include <list>
 #include "BaseObject.h"
@@ -23,6 +24,8 @@ public:
 	unsigned long long getFrameCount();
 	const list<BaseEnemy* > * getEnemies();
 	const list<Point> * getPath();
+	Point getEndPoint();
+	void damagePlayer();
 
 private:
 	std::list<Point> path;
@@ -33,12 +36,13 @@ private:
 	unsigned int lives;
 	unsigned int currentWave = 0;
 
-	int duration = 30;
+	unsigned int duration = 30;
 	unsigned long long currentFrame;
 	unsigned long long nextSpawnFrame;
-	int remainingSpawns = STARTING_SPAWNS;
+	unsigned int remainingSpawns = STARTING_SPAWNS;
 	unsigned long long framesBetweenSpawns;
 
 	void spawnEnemy();
 };
 
+#endif
