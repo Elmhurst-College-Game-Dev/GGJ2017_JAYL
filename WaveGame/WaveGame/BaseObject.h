@@ -1,6 +1,7 @@
 #pragma once
 #include "Point.h"
 #include "World.h"
+#include "Sprite.h"
 
 extern World* world;
 

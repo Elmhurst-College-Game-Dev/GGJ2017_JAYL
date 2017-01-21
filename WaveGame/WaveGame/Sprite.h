@@ -11,5 +11,6 @@ public:
 	~Sprite();
 private:
 	GLuint indexOffset;
+	
 };
 

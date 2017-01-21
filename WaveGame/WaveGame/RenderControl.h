@@ -20,5 +20,7 @@ private:
 	GLuint texCoordLoc;
 	GLuint samplerLoc;
 	map<string, GLuint> imageIndexLocations;
+	GLuint arrayBufferName;
+	GLuint indexArrayBufferName;
 };
 
