@@ -115,6 +115,8 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="ClickObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RenderControl.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StraightTurret.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +124,8 @@
     <ClInclude Include="BaseEnemy.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="ClickObject.h" />
+    <ClInclude Include="RenderControl.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="StraightTurret.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
