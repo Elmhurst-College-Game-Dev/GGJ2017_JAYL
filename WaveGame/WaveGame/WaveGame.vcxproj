@@ -71,6 +71,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>C:\Users\Jonathon\ProgrammingProjects\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>C:\scripting\git\Waves On Waves\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -87,7 +90,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\scripting\git\Waves On Waves\GGJ2017_JAYL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;DevIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -121,6 +128,7 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="ClickObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="RenderControl.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StraightTurret.cpp" />
@@ -130,6 +138,7 @@
     <ClInclude Include="BaseEnemy.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="ClickObject.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="RenderControl.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StraightTurret.h" />
