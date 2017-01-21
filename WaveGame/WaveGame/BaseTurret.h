@@ -23,6 +23,7 @@ protected:
 
 	unsigned int level = 1;
 	unsigned long long frameCanFire;
+	unsigned long long frameLastFire;
 	unsigned int damage;
 	unsigned int firerate;
 	float range;

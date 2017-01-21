@@ -22,9 +22,15 @@ BaseTurret::BaseTurret(Point middle, float width, float height, int damage, unsi
 void BaseTurret::shoot(BaseEnemy * enemy)
 {
 	enemy->takeDamage(damage);
-	frameCanFire = world->getFrameCount() + firerate;
+	int frameCount = world->getFrameCount();
+	frameCanFire = frameCount + firerate;
 	// TODO: Create sprite for shooting animation
-	//CreateFireSprite();
+	if (frameLastFire != frameCount) // Prevents aoe from firing multiple times in a single frame.
+	{
+		//CreateFireSprite();
+	}
+	frameLastFire = frameCount;
+	
 }
 
 bool BaseTurret::canFire() const
