@@ -13,6 +13,7 @@ public:
 	virtual void think() = 0;
 	Point getMiddle();
 	float getAngle() const;
+	void rotate(float angle) { this->angle += angle;  }
 	float getWidth() const;
 	float getHeight() const;
 	Sprite &getSprite();

@@ -33,7 +33,9 @@ int main() {
 	InitIL();
 	renderController.initRender();
 	
-	glfwSwapInterval(30);
+	BaseEnemy bs(Point(200, 200), renderController.get("test"), 50, 50, 50, 50);
+
+	glfwSwapInterval(1);
 	while (!glfwWindowShouldClose(win)) {
 		//Update code here
 
@@ -46,6 +48,9 @@ int main() {
 		for (list<BaseObject*>::const_iterator itr = world->getTowers()->cbegin(); itr != world->getTowers()->cend(); itr++) {
 			renderController.draw(*itr);
 		}
+
+		bs.rotate(0.1f);
+		renderController.draw(&bs);
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

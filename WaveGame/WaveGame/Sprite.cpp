@@ -3,17 +3,23 @@
 
 #include "Sprite.h"
 
-Sprite::Sprite() : indexOffset{ 0 } {
-
+Sprite::Sprite(GLuint img) : animationTrack()
+{
+	animationTrack.push_back(img);
+	indexOffset = 0 ;
 }
 
-Sprite::Sprite(GLuint initialOffset) : indexOffset{initialOffset}
+Sprite::Sprite(vector<GLuint> track) : animationTrack( track )
 {
+	indexOffset = 0;
 }
 
 Sprite::Sprite(const Sprite & rhs)
 {
 	indexOffset = rhs.indexOffset;
+	animationTrack = rhs.animationTrack;
+	frameSpeed = rhs.frameSpeed;
+	timer = 0;
 }
 
 Sprite::~Sprite()
@@ -22,7 +28,21 @@ Sprite::~Sprite()
 
 void* Sprite::getOffset()
 {
-	return (void*)indexOffset;
+	return (void*)animationTrack[indexOffset];
+}
+
+void Sprite::updateSpriteAnimation()
+{
+	if (animationTrack.size() > 1) {
+		timer++;
+		if (timer > frameSpeed) {
+			timer = 0;
+			indexOffset++;
+			if (indexOffset >= animationTrack.size()) {
+				indexOffset = 0;
+			}
+		}
+	}
 }
 
 

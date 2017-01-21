@@ -24,8 +24,8 @@ void RenderControl::draw(BaseObject * obj)
 	float angleCos = cos(obj->getAngle());
 	float angleSin = sin(obj->getAngle());
 	GLfloat modelView[9]{
-		obj->getWidth()*angleCos, -obj->getHeight()*angleSin, obj->getMiddle().x - 640.0f,
-		obj->getWidth()*angleSin, obj->getHeight()*angleCos, -(obj->getMiddle().y - 360.0f),
+		obj->getWidth() / 2.0f*angleCos, -obj->getHeight() / 2.0f*angleSin, obj->getMiddle().x - 640.0f,
+		obj->getWidth() / 2.0f*angleSin, obj->getHeight() / 2.0f*angleCos, -(obj->getMiddle().y - 360.0f),
 		0.0f, 0.0f, 1.0f
 	};
 	glUniformMatrix3fv(modelLoc, 1, GL_TRUE, modelView);
@@ -77,9 +77,9 @@ void RenderControl::initRender()
 		"	gl_FragColor = texture(sam, fragTexCoord);\n"
 		"}\n"
 		;
-	cout << "Loading vertex Shader" << endl;
+	std::cout << "Loading vertex Shader" << std::endl;
 	GLuint vertShader = loadShader(vertSource, GL_VERTEX_SHADER);
-	cout << "Loading fragment Shader" << endl;
+	std::cout << "Loading fragment Shader" << std::endl;
 	GLuint fragShader = loadShader(fragSource, GL_FRAGMENT_SHADER);
 	this->program = linkProgram(vertShader, fragShader );
 	glUseProgram(this->program);
@@ -103,13 +103,13 @@ void RenderControl::initRender()
  
 	for (int i = 0; i < textureCount; i++) {
 		//top left to top right to bottom right to buttom left
-		arrayBuf[(i* 16) + 0] = 0.0f;
-		arrayBuf[(i* 16) + 1] = 0.0f;
+		arrayBuf[(i* 16) + 0] = -1.0f;
+		arrayBuf[(i* 16) + 1] = -1.0f;
 		arrayBuf[(i* 16) + 2] = float(textures[0])/float(textureWidth);
 		arrayBuf[(i* 16) + 3] = float(textures[1]) / float(textureHeight);
 
 		arrayBuf[(i* 16) + 4] = 1.0f;
-		arrayBuf[(i* 16) + 5] = 0.0f;
+		arrayBuf[(i* 16) + 5] = -1.0f;
 		arrayBuf[(i* 16) + 6] = float(textures[0]+ textures[2]) / float(textureWidth);
 		arrayBuf[(i* 16) + 7] = float(textures[1]) / float(textureHeight);
 
@@ -118,7 +118,7 @@ void RenderControl::initRender()
 		arrayBuf[(i* 16) + 10] = float(textures[0] + textures[2]) / float(textureWidth);
 		arrayBuf[(i* 16) + 11] = float(textures[1] + textures[3]) / float(textureHeight);
 
-		arrayBuf[(i* 16) + 12] = 0.0f;
+		arrayBuf[(i* 16) + 12] = -1.0f;
 		arrayBuf[(i* 16) + 13] = 1.0f;
 		arrayBuf[(i* 16) + 14] = float(textures[0]) / float(textureWidth);
 		arrayBuf[(i* 16) + 15] = float(textures[1] + textures[3]) / float(textureHeight);
@@ -135,7 +135,6 @@ void RenderControl::initRender()
 
 	//fill imageIndexLocations with images
 	sprites["test"] = Sprite(0); //No offset ; generalize later
-
 
 	GLuint mySuperImage = loadTexture("Untitled.png");
 	glBindTexture(GL_TEXTURE_2D, mySuperImage);
