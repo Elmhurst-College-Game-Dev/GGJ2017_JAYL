@@ -3,6 +3,9 @@
 
 #include "RenderControl.h"
 #include "shaders.h"
+#include "BaseEnemy.h"
+#include "BaseObject.h"
+#include "Sprite.h"
 
 RenderControl::RenderControl()
 {
@@ -13,8 +16,26 @@ RenderControl::~RenderControl()
 {
 }
 
-void RenderControl::draw(BaseObject & obj)
+void RenderControl::draw(BaseObject * obj)
 {
+	glUseProgram(program);
+	glUniform2f(worldPosLoc, obj->getMiddle().x, obj->getMiddle().y);
+	glUniform2f(sizeLoc, obj->getWidth(), obj->getHeight());
+	glUniform1f(angleLoc, obj->getAngle());
+	glVertexAttribPointer(vertPosLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
+	glVertexAttribPointer(texCoordLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2) );
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, obj->getSprite().getOffset());
+}
+
+void RenderControl::draw(BaseEnemy * obj)
+{
+	glUseProgram(program);
+	glUniform2f(worldPosLoc, obj->getMiddle().x, obj->getMiddle().y);
+	glUniform2f(sizeLoc, obj->getWidth(), obj->getHeight());
+	glUniform1f(angleLoc, obj->getAngle());
+	glVertexAttribPointer(vertPosLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
+	glVertexAttribPointer(texCoordLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2));
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, obj->getSprite().getOffset());
 }
 
 void RenderControl::initRender()
@@ -54,6 +75,7 @@ void RenderControl::initRender()
 	vertPosLoc = glGetAttribLocation(program, "vertPos");
 	texCoordLoc = glGetAttribLocation(program, "texCoord");
 	samplerLoc = glGetUniformLocation(program, "sampler");
+	angleLoc = glGetUniformLocation(program, "angle");
 
 	const int textureWidth = 32;
 	const int textureHeight = 32;
@@ -62,7 +84,7 @@ void RenderControl::initRender()
 	//Create the array
 	int textures[textureCount*4]{
 		//x, y, width, height format
-		0, 0, 32, 32
+		0, 0, 32, 32     ///Spot 0
 	};
 	//Now create the array buffer for the textures
 	GLfloat arrayBuf[textureCount*16];
@@ -101,7 +123,7 @@ void RenderControl::initRender()
 	}
 
 	//fill imageIndexLocations with images
-
+	sprites[0] = Sprite(0); //No offset ; generalize later
 
 	//That is done, finally
 	//Make the buffers now
@@ -113,7 +135,24 @@ void RenderControl::initRender()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferName);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * 6 * textureCount, indexArrayBuf, GL_STATIC_DRAW);
 
+	glUseProgram(program);
+	//Initialize the view matrix
+	GLfloat viewMatrix[9]{
+		1.0f/640.0f, 0.0f, -640.0f,
+		0.0f, 1.0f/360.0f, -360.0f,
+		0.0f, 0.0f, 1.0f
+	};
+	glUniformMatrix3fv(viewLoc, 1, GL_TRUE, viewMatrix);
+	glBindBuffer(GL_ARRAY_BUFFER, arrayBufferName);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferName);
 
+	//bg color
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+Sprite & RenderControl::get(int index)
+{
+	return sprites[index];
 }
 
 

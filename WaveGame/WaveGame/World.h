@@ -24,6 +24,7 @@ public:
 	void startWave();
 	unsigned long long getFrameCount();
 	const list<BaseEnemy* > * getEnemies();
+	const list<BaseObject* > * getTowers();
 	const list<Point> * getPath();
 	Point getEndPoint();
 	void damagePlayer();

@@ -7,10 +7,11 @@
 class Sprite
 {
 public:
-	Sprite();
+	explicit Sprite(GLuint initialOffset);
 	~Sprite();
+	void* getOffset();
 private:
-	GLuint indexOffset;
+	GLuint indexOffset; //current
 	
 };
 

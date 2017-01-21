@@ -3,15 +3,17 @@
 
 #include "Sprite.h"
 
-
-
-Sprite::Sprite()
+Sprite::Sprite(GLuint initialOffset) : indexOffset{initialOffset}
 {
 }
 
-
 Sprite::~Sprite()
 {
+}
+
+void* Sprite::getOffset()
+{
+	return (void*)indexOffset;
 }
 
 

@@ -7,6 +7,8 @@
 #include <iostream>
 #include "RenderControl.h"
 
+#define MILLISECONDS_PER_FRAME 33
+
 using namespace std;
 
 #include "World.h"
@@ -26,13 +28,26 @@ int main() {
 		return 5;
 	}
 	RenderControl renderController;
+	renderController.initRender();
+
+
+	BaseEnemy obj(Point(100, 100), renderController.get, float width, float height, int health, float speed);
+	
+	glfwSwapInterval(30);
 	while (!glfwWindowShouldClose(win)) {
 		//Update code here
 
 		//Render code here
+		glClear(GL_COLOR_BUFFER_BIT);
+		//Draw all objects
+		for (list<BaseEnemy*>::const_iterator itr = world->getEnemies()->cbegin(); itr != world->getEnemies()->cend(); itr++) {
+			renderController.draw(*itr);
+		}
+		for (list<BaseObject*>::const_iterator itr = world->getTowers()->cbegin(); itr != world->getTowers()->cend(); itr++) {
+			renderController.draw(*itr);
+		}
 
-
-		glfwShowWindow(win);
+		glfwSwapBuffers(win);
 		glfwPollEvents();
 	}
 

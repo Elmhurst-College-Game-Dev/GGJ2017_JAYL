@@ -6,7 +6,7 @@
 
 extern World* world;
 
-BaseObject::BaseObject(Point middle, Sprite* s, float width, float height)
+BaseObject::BaseObject(Point middle, Sprite& s, float width, float height)
 {
 	this->middle = middle;
 	this->s = s;
@@ -22,6 +22,20 @@ Point BaseObject::getMiddle()
 float BaseObject::getAngle() const
 {
 	return angle;
+}
+
+float BaseObject::getWidth() const 
+{
+	return width;
+}
+
+float BaseObject::getHeight() const
+{
+	return height;
+}
+
+Sprite *BaseObject::getSprite() const {
+	return s;
 }
 
 #endif

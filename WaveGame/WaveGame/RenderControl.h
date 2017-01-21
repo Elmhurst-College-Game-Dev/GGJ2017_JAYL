@@ -9,8 +9,10 @@ class RenderControl
 public:
 	RenderControl();
 	~RenderControl();
-	void draw(BaseObject &obj);
+	void draw(BaseObject *obj);
+	void draw(BaseEnemy *obj);
 	void initRender();
+	Sprite &get(int index);
 private:
 	GLuint program;
 	GLuint viewLoc;
@@ -19,7 +21,8 @@ private:
 	GLuint vertPosLoc;
 	GLuint texCoordLoc;
 	GLuint samplerLoc;
-	map<string, GLuint> imageIndexLocations;
+	GLuint angleLoc;
+	map<int, Sprite> sprites;
 	GLuint arrayBufferName;
 	GLuint indexArrayBufferName;
 };

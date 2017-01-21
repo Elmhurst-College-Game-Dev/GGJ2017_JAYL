@@ -96,6 +96,11 @@ const list<BaseEnemy*> * World::getEnemies()
 	return &enemies;
 }
 
+const list<BaseObject*>* World::getTowers()
+{
+	return &towers;
+}
+
 void World::startWave()
 {
 	assert(enemies.size() == 0);
