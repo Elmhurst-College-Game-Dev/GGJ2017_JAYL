@@ -22,6 +22,7 @@ public:
 	void startWave();
 	unsigned long long getFrameCount();
 	const list<BaseEnemy* > * getEnemies();
+	const list<Point> * getPath();
 
 private:
 	std::list<Point> path;

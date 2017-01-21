@@ -13,17 +13,26 @@ StraightTurret::~StraightTurret()
 
 void StraightTurret::think()
 {
-	if (frameCanFire <= world->getCurrentFrame())
+	if (CanFire())
 	{
-		const list<BaseObject *> * enemies = world->getEnemies();
-
-		for (auto ent : enemies)
+		auto enemies = world->getEnemies();
+		float min = 0;
+		BaseEnemy * minEnt = nullptr;
+		for (auto ent = enemies->cbegin(); ent != enemies->cend(); ent++)
 		{
-			if (middle.getDistance(ent->getMiddle()) <= range)
+			if (IsEntInRange(*ent))
 			{
-				ent.takeDamage(damage);
+				float dist = middle.getDistance((*ent)->getMiddle());
+				if (min > dist || minEnt == nullptr)
+				{
+					minEnt = (*ent);
+					min = dist;
+				}
 			}
 		}
-		
+		if (minEnt != nullptr)
+		{
+			Shoot(minEnt);
+		}
 	}
 }

@@ -8,7 +8,6 @@ class BaseEnemy : public BaseObject
 {
 public:
 	BaseEnemy(Point middle, Sprite* s, int health, float speed);
-	~BaseEnemy();
 	void takeDamage(int damage);
 	virtual void think() override;
 	int getHealth();
