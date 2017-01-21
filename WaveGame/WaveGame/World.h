@@ -2,13 +2,14 @@
 #define _WORLD_INCLUDED
 
 #include <list>
-#include "BaseObject.h"
-#include "BaseEnemy.h"
 #include "Point.h"
 
 using namespace std;
 
 #define STARTING_SPAWNS 10
+
+class BaseObject;
+class BaseEnemy;
 
 class World
 {

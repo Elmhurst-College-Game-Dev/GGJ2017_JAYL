@@ -2,7 +2,7 @@
 
 extern World* world;
 
-BaseTurret::BaseTurret(Point middle, Sprite* s, float width, float height, int damage, unsigned int firerate) :
+BaseTurret::BaseTurret(Point middle, Sprite* s, float width, float height, int damage, unsigned int firerate, float range) :
 	BaseObject(middle, s, width, height)
 {
 	this->damage = damage;

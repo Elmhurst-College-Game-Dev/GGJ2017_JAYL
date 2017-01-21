@@ -1,6 +1,8 @@
 #include "World.h"
 #include <assert.h>
 
+#include "BaseEnemy.h"
+
 #define FRAMERATE 30
 
 // TODO: Parameters for lives? waves?

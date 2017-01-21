@@ -6,6 +6,8 @@
 
 using PointItr = std::list<Point>::const_iterator;
 
+class BaseObject;
+
 class BaseEnemy : public BaseObject
 {
 public:
