@@ -20,4 +20,14 @@ bool Point::operator==(const Point & rhs)
 	return x==rhs.x && y==rhs.y;
 }
 
+Point Point::operator+(const Point &rhs)
+{
+	return Point(x + rhs.x, y + rhs.y);
+}
+
+
+bool Point::inBox(Point topLeft, Point bottomRight)
+{
+	return topLeft.x >= x && topLeft.y <= y && bottomRight.x <= x && bottomRight.y >= y;
+}
 #endif

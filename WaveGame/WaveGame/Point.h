@@ -10,6 +10,8 @@ public:
 	float x;
 	float y;
 	bool operator==(const Point &rhs);
+	Point operator+(const Point &rhs);
+	bool inBox(Point topLeft, Point topRight);
 };
 
 #endif

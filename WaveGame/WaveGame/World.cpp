@@ -6,6 +6,7 @@
 #include "RenderControl.h"
 #include "BaseEnemy.h"
 #include "BaseTurret.h"
+#include "ButtonObject.h"
 
 #define FRAMERATE 30
 
@@ -83,9 +84,11 @@ void World::spawnEnemy()
 {
 	unsigned int i = rand() % enemiesUnlocked;
 	// TODO: Magic math to determine start point
-	float x = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 190);
-	float y = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 720);
-	enemies.push_back(new BaseEnemy(Point(x, y), renderController.get(info[i].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
+//	float x = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 190);
+//	float y = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 720);
+
+	Point spawn = wave->getMiddle() + wavePoints[rand() * (wavePoints.size() - 1)];
+	enemies.push_back(new BaseEnemy(spawn, renderController.get(info[i].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
 }
 
 void World::addTower(BaseObject * ent)
@@ -103,9 +106,14 @@ const list<BaseEnemy*> * World::getEnemies()
 	return &enemies;
 }
 
-const list<BaseObject*>* World::getTowers()
+const list<BaseObject*> * World::getTowers()
 {
 	return &towers;
+}
+
+const list<ButtonObject *> * World::getButtons()
+{
+	return &buttons;
 }
 
 void World::startWave()
@@ -159,6 +167,11 @@ bool World::canUpgradeTurret(BaseTurret* turret)
 void World::addEnemyInfo(EnemyInfo info)
 {
 	this->info.push_back(info);
+}
+
+void World::addButton(ButtonType type, Point p, Sprite normal, Sprite hovered, float width, float height)
+{
+	buttons.push_back(new ButtonObject(type, p, normal, hovered, width, height));
 }
 
 #endif
