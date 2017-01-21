@@ -7,6 +7,9 @@
 
 using namespace std;
 
+#include "World.h"
+World world;
+
 int main() {
 
 	if (!glfwInit()) {

@@ -1,6 +1,8 @@
 #include "BaseEnemy.h"
 #include <assert.h>
 
+extern World* world;
+
 BaseEnemy::BaseEnemy(Point middle, Sprite* s, float width, float height, int health, float speed) :
 	BaseObject(middle, s, width, height)
 {
@@ -18,7 +20,7 @@ void BaseEnemy::takeDamage(int damage)
 void BaseEnemy::think()
 {
 	move();
-	if (world->GetEndPoint() == middle)
+	if (world->getEndPoint() == middle)
 	{
 		health = 0;
 		world->damagePlayer();

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _BASETURRET_INCLUDED
+#define _BASETURRET_INCLUDED
 
 #include "BaseObject.h"
 #include "BaseEnemy.h"
@@ -20,3 +21,5 @@ protected:
 	unsigned int firerate;
 	float range;
 };
+
+#endif

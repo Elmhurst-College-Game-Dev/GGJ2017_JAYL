@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _POINT_INCLUDED
+#define _POINT_INCLUDED
+
 class Point
 {
 public:
@@ -9,3 +11,4 @@ public:
 	float y;
 };
 
+#endif

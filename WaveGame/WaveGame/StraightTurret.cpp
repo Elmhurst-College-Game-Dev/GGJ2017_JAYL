@@ -1,13 +1,9 @@
 #include "StraightTurret.h"
 
+extern World* world;
 
-
-StraightTurret::StraightTurret()
-{
-}
-
-
-StraightTurret::~StraightTurret()
+StraightTurret::StraightTurret(Point middle, Sprite* s, float width, float height, int damage, unsigned int firerate, float range)
+	: BaseTurret(middle, s, width, height, damage, firerate, range)
 {
 }
 

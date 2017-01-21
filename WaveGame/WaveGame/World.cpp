@@ -108,3 +108,14 @@ const list<Point> * World::getPath()
 {
 	return &path;
 }
+
+Point World::getEndPoint()
+{
+	assert(path.size() != 0);
+	return (*(path.cend()--));
+}
+
+void World::damagePlayer()
+{
+	lives--;
+}
