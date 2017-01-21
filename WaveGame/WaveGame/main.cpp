@@ -1,5 +1,7 @@
 
+#ifndef __glew.h__
 #include <GL/glew.h>
+#endif
 #include <GLFW/glfw3.h>
 #include <IL/il.h>
 #include <iostream>
