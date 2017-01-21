@@ -6,8 +6,8 @@
 
 extern World *world;
 
-StraightTurret::StraightTurret(Point middle, Sprite s, float width, float height, int damage, unsigned int firerate, float range, unsigned int price)
-	: BaseTurret(middle, s, width, height, damage, firerate, range, price)
+StraightTurret::StraightTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int price, list<string> sprites)
+	: BaseTurret(middle, width, height, damage, firerate, range, price, sprites)
 {
 }
 

@@ -15,6 +15,7 @@ using namespace std;
 
 #include "World.h"
 World *world = new World();
+RenderControl renderController;
 
 int main() {
 
@@ -30,7 +31,6 @@ int main() {
 		return 5;
 	}
 	InitIL();
-	RenderControl renderController;
 	renderController.initRender();
 	
 	glfwSwapInterval(30);

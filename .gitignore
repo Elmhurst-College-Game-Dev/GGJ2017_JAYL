@@ -262,3 +262,4 @@ paket-files/
 # STUFF THAT WE ADDED IN
 
 
+*.vcxproj
