@@ -5,6 +5,7 @@
 #include <assert.h>
 
 #include "BaseEnemy.h"
+#include "BaseTurret.h"
 
 #define FRAMERATE 30
 
@@ -128,6 +129,18 @@ Point World::getEndPoint()
 void World::damagePlayer()
 {
 	lives--;
+}
+
+void World::upgradeTurret(BaseTurret* turret)
+{
+	assert(canUpgradeTurret(turret));
+	money -= turret->getUpgradePrice();
+	turret->upgrade();
+}
+
+bool World::canUpgradeTurret(BaseTurret* turret)
+{
+	return money >= turret->getUpgradePrice();
 }
 
 #endif

@@ -6,7 +6,7 @@
 
 extern World *world;
 
-BaseEnemy::BaseEnemy(Point middle, Sprite* s, float width, float height, int health, float speed) :
+BaseEnemy::BaseEnemy(Point middle, Sprite s, float width, float height, int health, float speed) :
 	BaseObject(middle, s, width, height)
 {
 	this->health = health;
