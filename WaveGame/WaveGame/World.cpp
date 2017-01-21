@@ -115,7 +115,7 @@ void World::startWave()
 
 	framesBetweenSpawns = (duration * FRAMERATE) / remainingSpawns;
 	
-	if (currentWave % 2 == 0 && enemiesUnlock < 4)
+	if (currentWave % 2 == 0 && enemiesUnlocked < 4)
 	{
 		enemiesUnlocked++;
 	}

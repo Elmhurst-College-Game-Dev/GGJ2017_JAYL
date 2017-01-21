@@ -6,6 +6,8 @@
 #include "BaseEnemy.h"
 #include "BaseObject.h"
 #include "Sprite.h"
+#include <iostream>
+#include "image_loading.h"
 
 RenderControl::RenderControl()
 {
@@ -19,22 +21,35 @@ RenderControl::~RenderControl()
 void RenderControl::draw(BaseObject * obj)
 {
 	glUseProgram(program);
-	glUniform2f(worldPosLoc, obj->getMiddle().x, obj->getMiddle().y);
-	glUniform2f(sizeLoc, obj->getWidth(), obj->getHeight());
-	glUniform1f(angleLoc, obj->getAngle());
+	float angleCos = cos(obj->getAngle());
+	float angleSin = sin(obj->getAngle());
+	GLfloat modelView[9]{
+		obj->getWidth()*angleCos, -obj->getHeight()*angleSin, obj->getMiddle().x - 640.0f,
+		obj->getWidth()*angleSin, obj->getHeight()*angleCos, -(obj->getMiddle().y - 360.0f),
+		0.0f, 0.0f, 1.0f
+	};
+	glUniformMatrix3fv(modelLoc, 1, GL_TRUE, modelView);
 	glVertexAttribPointer(vertPosLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
-	glVertexAttribPointer(texCoordLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2) );
+	glVertexAttribPointer(texCoordLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2));
+	glEnableVertexAttribArray(vertPosLoc);
+	glEnableVertexAttribArray(texCoordLoc);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, obj->getSprite().getOffset());
 }
 
 void RenderControl::draw(BaseEnemy * obj)
 {
 	glUseProgram(program);
-	glUniform2f(worldPosLoc, obj->getMiddle().x, obj->getMiddle().y);
-	glUniform2f(sizeLoc, obj->getWidth(), obj->getHeight());
-	glUniform1f(angleLoc, obj->getAngle());
+	float angleCos = cos(obj->getAngle());
+	float angleSin = sin(obj->getAngle());
+	GLfloat modelView[9]{
+		obj->getWidth()*angleCos, -obj->getHeight()*angleSin, obj->getMiddle().x - 640.0f,
+		obj->getWidth()*angleSin, obj->getHeight()*angleCos, -(obj->getMiddle().y - 360.0f),
+	};
+	glUniformMatrix3fv(modelLoc, 1, GL_TRUE, modelView);
 	glVertexAttribPointer(vertPosLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
 	glVertexAttribPointer(texCoordLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2));
+	glEnableVertexAttribArray(vertPosLoc);
+	glEnableVertexAttribArray(texCoordLoc);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, obj->getSprite().getOffset());
 }
 
@@ -42,40 +57,36 @@ void RenderControl::initRender()
 {
 	const char *vertSource =
 		"#version 330\n"
-		"uniform mat3 view;"
-		"uniform vec2 worldPos;"
-		"uniform vec2 size;"
-		"uniform float angle;"
-		"in vec2 vertPos;"
-		"in vec2 texCoord;"
-		"out vec2 fragTexCoord;"
-		"void main() {"
-		"	vec3 trans = vec3(size.x, size.y, 0.0);"
-		"	vec3 alright = trans;"
-		"	trans.x = alright.x*cos(angle) - alright.y*sin(angle);"
-		"	trans.y = alright.x*sin(angle) + alright.y*cos(angle);"
-		"	vec3 yeong_haw_wang = view*trans;"
-		"	fragTexCoord = texCoord;"
-		"	gl_Position = vec4(yeong_haw_wang, 1.0);"
-		"}"
+		"uniform mat3 model;\n"
+		"in vec2 vertPos;\n"
+		"in vec2 texCoord;\n"
+		"out vec2 fragTexCoord;\n"
+		"void main() {\n"
+		"	vec3 trans = vec3(vertPos.x, vertPos.y, 1.0);\n"
+		"	trans = model*trans;\n"
+		"	vec3 yeong_haw_wang = vec3(trans.x/640.0, trans.y/360.0, 1.0);\n"
+		"	fragTexCoord = texCoord;\n"
+		"	gl_Position = vec4(yeong_haw_wang, 1.0);\n"
+		"}\n"
 		;
 	const char *fragSource =
 		"#version 330\n"
-		"uniform sampler2D sampler;"
-		"in vec2 fragTexCoord;"
-		"void main() {"
-		"	gl_FragColor = texture(sampler, fragTexCoord);"
-		"}"
+		"uniform sampler2D sam;\n"
+		"in vec2 fragTexCoord;\n"
+		"void main() {\n"
+		"	gl_FragColor = texture(sam, fragTexCoord);\n"
+		"}\n"
 		;
-	this->program = linkProgram(loadShader(vertSource, GL_VERTEX_SHADER), loadShader(fragSource, GL_FRAGMENT_SHADER));
+	cout << "Loading vertex Shader" << endl;
+	GLuint vertShader = loadShader(vertSource, GL_VERTEX_SHADER);
+	cout << "Loading fragment Shader" << endl;
+	GLuint fragShader = loadShader(fragSource, GL_FRAGMENT_SHADER);
+	this->program = linkProgram(vertShader, fragShader );
 	glUseProgram(this->program);
-	viewLoc = glGetUniformLocation(program, "view");
-	worldPosLoc = glGetUniformLocation(program, "worldPos");
-	sizeLoc = glGetUniformLocation(program, "size");
 	vertPosLoc = glGetAttribLocation(program, "vertPos");
+	modelLoc = glGetUniformLocation(program, "model");
 	texCoordLoc = glGetAttribLocation(program, "texCoord");
-	samplerLoc = glGetUniformLocation(program, "sampler");
-	angleLoc = glGetUniformLocation(program, "angle");
+	samplerLoc = glGetUniformLocation(program, "sam");
 
 	const int textureWidth = 32;
 	const int textureHeight = 32;
@@ -125,6 +136,13 @@ void RenderControl::initRender()
 	//fill imageIndexLocations with images
 	sprites["test"] = Sprite(0); //No offset ; generalize later
 
+
+	GLuint mySuperImage = loadTexture("Untitled.png");
+	glBindTexture(GL_TEXTURE_2D, mySuperImage);
+
+	glActiveTexture(GL_TEXTURE0);
+	glUniform1i(samplerLoc, 0);
+
 	//That is done, finally
 	//Make the buffers now
 	glGenBuffers(1, &arrayBufferName);
@@ -137,12 +155,6 @@ void RenderControl::initRender()
 
 	glUseProgram(program);
 	//Initialize the view matrix
-	GLfloat viewMatrix[9]{
-		1.0f/640.0f, 0.0f, -640.0f,
-		0.0f, 1.0f/360.0f, -360.0f,
-		0.0f, 0.0f, 1.0f
-	};
-	glUniformMatrix3fv(viewLoc, 1, GL_TRUE, viewMatrix);
 	glBindBuffer(GL_ARRAY_BUFFER, arrayBufferName);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferName);
 

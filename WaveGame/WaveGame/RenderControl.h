@@ -15,13 +15,10 @@ public:
 	Sprite &get(string sprite);
 private:
 	GLuint program;
-	GLuint viewLoc;
-	GLuint worldPosLoc;
-	GLuint sizeLoc;
+	GLuint modelLoc;
 	GLuint vertPosLoc;
 	GLuint texCoordLoc;
 	GLuint samplerLoc;
-	GLuint angleLoc;
 	map<string, Sprite> sprites;
 	GLuint arrayBufferName;
 	GLuint indexArrayBufferName;

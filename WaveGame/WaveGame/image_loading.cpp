@@ -44,4 +44,11 @@ void deleteTexture(GLuint tex) {
 	glDeleteTextures(1, &tex);
 }
 
+void InitIL()
+{
+	ilInit();
+	//iluInit();
+	//ilutRenderer(ILUT_OPENGL);
+}
+
 #endif
