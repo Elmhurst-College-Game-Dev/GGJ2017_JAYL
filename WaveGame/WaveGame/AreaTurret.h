@@ -1,13 +1,13 @@
 #ifndef _AREATURRET_INCLUDED
 #define _AREATURRET_INCLUDED
 
-#include "BaseObject.h"
-class AreaTurret :
-	public BaseObject
+#include "BaseTurret.h"
+
+class AreaTurret : public BaseTurret
 {
 public:
-	AreaTurret();
-	~AreaTurret();
+	AreaTurret(Point middle, Sprite s, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost);
+	virtual void think() override;
 };
 
 #endif

@@ -9,13 +9,13 @@ class BaseObject
 {
 public:
 	BaseObject() = default;
-	BaseObject(Point middle, Sprite* s, float width, float height);
+	BaseObject(Point middle, Sprite s, float width, float height);
 	virtual void think() = 0;
 	Point getMiddle();
 	float getAngle() const;
 protected:
 	Point middle;
-	Sprite* s;
+	Sprite s;
 	float width;
 	float height;
 	float angle;
