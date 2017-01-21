@@ -8,6 +8,7 @@
 class BaseObject
 {
 public:
+	BaseObject() = default;
 	BaseObject(Point middle, Sprite* s, float width, float height);
 	virtual void think() = 0;
 	Point getMiddle();

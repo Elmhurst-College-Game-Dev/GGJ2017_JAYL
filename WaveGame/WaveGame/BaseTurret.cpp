@@ -15,7 +15,7 @@ void BaseTurret::Shoot(BaseEnemy * enemy)
 	enemy->takeDamage(damage);
 	frameCanFire = world->getFrameCount() + firerate;
 	// TODO: Create sprite for shooting animation
-	CreateFireSprite();
+	//CreateFireSprite();
 }
 
 bool BaseTurret::CanFire()
