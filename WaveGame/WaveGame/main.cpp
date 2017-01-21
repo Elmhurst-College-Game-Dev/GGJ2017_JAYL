@@ -36,7 +36,7 @@ int main() {
 	renderController.initRender();
 
 	BaseEnemy testEnemy(Point(100.0, 100.0), renderController.get("test"), 30.0, 30.0, 5, 5.0, 1);
-	
+
 	glfwSwapInterval(30);
 	while (!glfwWindowShouldClose(win)) {
 		//Update code here
