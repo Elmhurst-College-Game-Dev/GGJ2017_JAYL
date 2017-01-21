@@ -7,6 +7,7 @@
 #include <iostream>
 #include "RenderControl.h"
 #include "BaseEnemy.h"
+#include "image_loading.h"
 
 #define MILLISECONDS_PER_FRAME 33
 
@@ -28,11 +29,9 @@ int main() {
 		cout << "Did not initialize OpenGL properly" << endl;
 		return 5;
 	}
+	InitIL();
 	RenderControl renderController;
 	renderController.initRender();
-
-
-	BaseEnemy testEnemy(Point(100, 100), renderController.get("test"), 30, 30, 5, 5);
 	
 	glfwSwapInterval(30);
 	while (!glfwWindowShouldClose(win)) {
@@ -47,8 +46,6 @@ int main() {
 		for (list<BaseObject*>::const_iterator itr = world->getTowers()->cbegin(); itr != world->getTowers()->cend(); itr++) {
 			renderController.draw(*itr);
 		}
-
-		renderController.draw(&testEnemy);
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

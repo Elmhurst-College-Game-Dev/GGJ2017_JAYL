@@ -9,5 +9,6 @@
 
 GLuint loadTexture(const char *file);
 void deleteTexture(GLuint tex);
+void InitIL();
 
 #endif
