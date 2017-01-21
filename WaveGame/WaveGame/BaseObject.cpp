@@ -1,4 +1,5 @@
 #include "BaseObject.h"
+#include "Sprite.h"
 
 BaseObject::BaseObject(Point middle, Sprite* s, float width, float height)
 {

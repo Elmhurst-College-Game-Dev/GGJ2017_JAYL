@@ -1,5 +1,6 @@
 #pragma once
 #include "Point.h"
+#include "World.h"
 
 extern World* world;
 
@@ -10,7 +11,7 @@ public:
 	~BaseObject();
 	virtual void think() = 0;
 	Point getMiddle();
-
+	float getAngle() const { return angle; }
 protected:
 	Point middle;
 	Sprite* s;
