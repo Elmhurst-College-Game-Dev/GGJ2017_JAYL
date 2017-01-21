@@ -126,22 +126,26 @@
     <ClCompile Include="AreaTurret.cpp" />
     <ClCompile Include="BaseEnemy.cpp" />
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="BaseTurret.cpp" />
     <ClCompile Include="ClickObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RenderControl.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StraightTurret.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AreaTurret.h" />
     <ClInclude Include="BaseEnemy.h" />
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BaseTurret.h" />
     <ClInclude Include="ClickObject.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RenderControl.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StraightTurret.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

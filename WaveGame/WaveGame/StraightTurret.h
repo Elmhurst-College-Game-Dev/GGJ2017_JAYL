@@ -1,10 +1,13 @@
 #pragma once
-#include "BaseObject.h"
-class StraightTurret :
-	public BaseObject
+
+#include "BaseTurret.h"
+#include "World.h"
+
+class StraightTurret : public BaseTurret
 {
 public:
 	StraightTurret();
 	~StraightTurret();
+	
 };
 

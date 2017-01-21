@@ -12,3 +12,8 @@ BaseObject::BaseObject(Point middle, Sprite* s, float width, float height)
 BaseObject::~BaseObject()
 {
 }
+
+Point BaseObject::getMiddle()
+{
+	return middle;
+}

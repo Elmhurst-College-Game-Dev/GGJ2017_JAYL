@@ -7,7 +7,7 @@ Point::Point(float x, float y)
 	this->y = y;
 }
 
-float Point::GetDistance(const Point p)
+float Point::getDistance(const Point p)
 {
 	return sqrt(pow(p.x - x, 2) - pow(p.y - y, 2));
 }

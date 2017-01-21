@@ -33,16 +33,21 @@ void BaseEnemy::move()
 {
 	const Point goalPoint = *nextPoint;
 
-	float distance = middle.GetDistance(goalPoint);
+	float distance = middle.getDistance(goalPoint);
 	float x = (middle.x / distance) * speed;
 	float y = (middle.y / distance) * speed;
 
 	Point destination = Point(x, y);
 
-	if (middle.GetDistance(destination) > distance)
+	if (middle.getDistance(destination) > distance)
 	{
 		destination = goalPoint;
 	}
 
 	middle = destination;
+}
+
+int BaseEnemy::getHealth()
+{
+	return health;
 }

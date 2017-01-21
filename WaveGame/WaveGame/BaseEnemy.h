@@ -11,6 +11,8 @@ public:
 	~BaseEnemy();
 	void takeDamage(int damage);
 	virtual void think() override;
+	int getHealth();
+
 protected:
 	int health;
 	float speed;
