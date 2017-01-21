@@ -3,16 +3,19 @@
 
 #include "World.h"
 #include <assert.h>
-
+#include "RenderControl.h"
 #include "BaseEnemy.h"
 #include "BaseTurret.h"
 
 #define FRAMERATE 30
 
+extern RenderControl renderController;
+
 // TODO: Parameters for lives? waves?
-World::World()
+World::World(vector<string> sprites)
 {
 	// TODO: Define path.
+	enemySprites = sprites;
 }
 
 
@@ -78,8 +81,11 @@ void World::think()
 
 void World::spawnEnemy()
 {
-	// TODO: Figure out how spawns work.
-
+	unsigned int i = rand() % enemiesUnlocked;
+	// TODO: Magic math to determine start point
+	float x = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 190);
+	float y = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 720);
+	enemies.push_back(new BaseEnemy(Point(x, y), renderController.get(info[i].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
 }
 
 void World::addTower(BaseObject * ent)
@@ -108,6 +114,13 @@ void World::startWave()
 	remainingSpawns = (remainingSpawns * 2) + 5;
 
 	framesBetweenSpawns = (duration * FRAMERATE) / remainingSpawns;
+	
+	if (currentWave % 2 == 0 && enemiesUnlocked < 4)
+	{
+		enemiesUnlocked++;
+	}
+	
+	currentWave++;
 }
 
 unsigned long long World::getFrameCount()
@@ -141,6 +154,11 @@ void World::upgradeTurret(BaseTurret* turret)
 bool World::canUpgradeTurret(BaseTurret* turret)
 {
 	return money >= turret->getUpgradePrice();
+}
+
+void World::addEnemyInfo(EnemyInfo info)
+{
+	this->info.push_back(info);
 }
 
 #endif

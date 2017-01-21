@@ -2,6 +2,8 @@
 #define _WORLD_INCLUDED
 
 #include <list>
+#include <vector>
+#include <string>
 #include <map>
 #include "Sprite.h"
 #include "Point.h"
@@ -14,27 +16,29 @@ class BaseObject;
 class BaseEnemy;
 class BaseTurret;
 
-enum Upgrade
+struct EnemyInfo
 {
-	U_Radio = 0,
-	U_Micro,
-	U_Infrared,
-	U_Visible,
-	U_Ultraviolet,
-	U_Xray,
-	U_Gamma,
-	U_Cosmic
+	int health;
+	float speed;
+	string sprite;
+	EnemyInfo(int he, float spe, string spr)
+	{
+		health = he;
+		speed = spe;
+		sprite = spr;
+	}
 };
 
 class World
 {
 public:
 	// TODO: Parameters for lives? waves?
-	World();
+	World(vector<string> enemySprites);
 	~World();
 
 	void addTower(BaseObject * ent);
 	void addEnemy(BaseEnemy * ent);
+	void addEnemyInfo(EnemyInfo info);
 	void think();
 	void startWave();
 	unsigned long long getFrameCount();
@@ -60,13 +64,14 @@ private:
 	unsigned long long nextSpawnFrame;
 	unsigned int remainingSpawns = STARTING_SPAWNS;
 	unsigned long long framesBetweenSpawns;
+	unsigned int enemiesUnlocked;
 
 	unsigned int money;
 
 	void spawnEnemy();
 
-	map<Upgrade, Sprite> ssSprites;
-	map<Upgrade, Sprite> areaSprites;
+	vector<string> enemySprites;
+	vector<EnemyInfo> info;
 };
 
 #endif

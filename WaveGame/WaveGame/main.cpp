@@ -14,11 +14,13 @@
 using namespace std;
 
 #include "World.h"
-World *world = new World();
+World* world;
 RenderControl renderController;
 
 int main() {
-
+	vector<string> sprites{ "sprite1", "sprite2", "sprite3", "sprite4", "sprite5" };
+	world = new World(sprites);
+	
 	if (!glfwInit()) {
 		cout << "Could not init GLFW" << endl;
 		return 1;
@@ -32,10 +34,9 @@ int main() {
 	}
 	InitIL();
 	renderController.initRender();
-	
-	BaseEnemy bs(Point(200, 200), renderController.get("test"), 50, 50, 50, 50);
 
 	glfwSwapInterval(1);
+
 	while (!glfwWindowShouldClose(win)) {
 		//Update code here
 
@@ -48,9 +49,6 @@ int main() {
 		for (list<BaseObject*>::const_iterator itr = world->getTowers()->cbegin(); itr != world->getTowers()->cend(); itr++) {
 			renderController.draw(*itr);
 		}
-
-		bs.rotate(0.1f);
-		renderController.draw(&bs);
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();
