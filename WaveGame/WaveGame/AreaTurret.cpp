@@ -3,8 +3,8 @@
 
 #include "AreaTurret.h"
 
-AreaTurret::AreaTurret(Point middle, Sprite s, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost)
-	: BaseTurret(middle, s, width, height, damage, firerate, range, cost)
+AreaTurret::AreaTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost, list<string> sprites)
+	: BaseTurret(middle, width, height, damage, firerate, range, cost, sprites)
 {
 }
 

@@ -6,7 +6,7 @@
 class AreaTurret : public BaseTurret
 {
 public:
-	AreaTurret(Point middle, Sprite s, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost);
+	AreaTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost, list<string> sprites);
 	virtual void think() override;
 };
 

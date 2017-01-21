@@ -14,6 +14,7 @@ using namespace std;
 
 #include "World.h"
 World *world = new World();
+RenderControl renderController;
 
 int main() {
 
@@ -28,7 +29,6 @@ int main() {
 		cout << "Did not initialize OpenGL properly" << endl;
 		return 5;
 	}
-	RenderControl renderController;
 	renderController.initRender();
 
 
