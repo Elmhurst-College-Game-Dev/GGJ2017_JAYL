@@ -199,7 +199,8 @@ list<ButtonObject *> * World::getButtons()
 void World::startWave()
 {
 	assert(enemies.size() == 0);
-	remainingSpawns = (remainingSpawns * 2) + 5;
+	startSpawns = startSpawns * 2 + 5;
+	remainingSpawns = startSpawns;
 
 	framesBetweenSpawns = 15;
 	

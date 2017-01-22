@@ -90,7 +90,7 @@ private:
 
 	unsigned int lives;
 	unsigned int currentWave = 0;
-
+	unsigned int startSpawns = 15;
 	unsigned int duration = 30;
 	unsigned long long currentFrame;
 	unsigned long long nextSpawnFrame;
