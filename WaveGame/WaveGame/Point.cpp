@@ -50,6 +50,6 @@ Point Point::operator+(const Point &rhs)
 
 bool Point::inBox(Point& topLeft, Point& bottomRight)
 {
-	return topLeft.x < x && topLeft.y > y && bottomRight.x > x && bottomRight.y < y;
+	return topLeft.x < x && topLeft.y < y && bottomRight.x > x && bottomRight.y > y;
 }
 #endif

@@ -37,13 +37,24 @@ using PlacementSpot = list<Point>::iterator;
 
 class World
 {
+private:
+	struct Rect
+	{
+	public:
+		Point topLeft;
+		Point bottomRight;
+		Rect(Point p1, Point p2)
+		{
+			topLeft = p1;
+			bottomRight = p2;
+		}
+	};
 public:
 	// TODO: Parameters for lives? waves?
 	World(vector<string> enemySprites);
 	~World();
 
 	void addTower(BaseTurret * ent);
-	void addTower(BaseTurret * ent, Point p);
 	void addEnemy(BaseEnemy * ent);
 	void addEnemyInfo(EnemyInfo info);
 	void addButton(ButtonObject * ent);
@@ -54,13 +65,11 @@ public:
 	const list<BaseTurret * > * getTowers();
 	list<ButtonObject *> * getButtons();
 	const list<Point> * getPath();
-	list<Point> * getPossiblePlacements();
 	Point getEndPoint();
 	void damagePlayer();
 	void upgradeTurret(BaseTurret* turret);
 	inline bool canUpgradeTurret(BaseTurret* turret);
-	inline float getSpotH() { return spotHeight; }
-	inline float getSpotW() { return spotWidth; }
+	bool canPlaceTower(Point p);
 
 	inline unsigned int getMoney() const { return money;  }
 	inline unsigned int getEnemiesLeft() const { return enemies.size();  }
@@ -69,7 +78,7 @@ public:
 	BaseTurret * purchasing;
 private:
 	std::list<Point> path;
-	std::list<Point> possiblePlacements;
+	std::list<Rect> possiblePlacements;
 	const float spotWidth = 32.0f;
 	const float spotHeight = 32.0f;
 

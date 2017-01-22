@@ -43,25 +43,23 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 		cout << "click at " << x << " " << y << endl;
 		drawThese.push_back(new BaseObject(clickSpot, renderController.get("top_radio"), 32.0, 32.0));
 
+		if (world->canPlaceTower(clickSpot))
+		{
+			cout << "You can place things here!" << endl;
+		}
+		else
+		{
+			cout << "You cant place things here!" << endl;
+		}
+
 		BaseTurret * clicked = nullptr;
 		
 		if (world->purchasing != nullptr) // Player is trying to place down a tower
 		{
-			float spotH = world->getSpotH();
-			float spotW = world->getSpotW();
-
-			for (auto spot : *world->getPossiblePlacements())
+			if (world->canPlaceTower(clickSpot))
 			{
-				Point topLeft = Point(spot.x - (spotW / 2.0), spot.y + (spotH / 2.0));
-				Point bottomRight = Point((spot.x + (spotW / 2.0)), (spot.y - (spotH / 2.0)));
-
-				if (clickSpot.inBox(topLeft, bottomRight))
-				{
-					world->upgradeTurret(world->purchasing);
-				}
+				world->addTower(world->purchasing);
 			}
-			delete world->purchasing;
-			world->purchasing = nullptr;
 		}
 		else
 		{
@@ -245,12 +243,6 @@ int main() {
 		for (const auto& ent : drawThese)
 		{
 			ent->draw();
-		}
-
-		for (auto spot : *world->getPossiblePlacements())
-		{
-			enemy->setMiddle(spot);
-			enemy->draw();
 		}
 
 		wave.draw();
