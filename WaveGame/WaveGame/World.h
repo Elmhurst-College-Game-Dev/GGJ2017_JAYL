@@ -50,6 +50,7 @@ public:
 	const list<BaseTurret * > * getTowers();
 	const list<ButtonObject *> * getButtons();
 	const list<Point> * getPath();
+	const list<Point> * getPossiblePlacements();
 	Point getEndPoint();
 	void damagePlayer();
 	void upgradeTurret(BaseTurret* turret);
@@ -58,6 +59,7 @@ public:
 	BaseTurret * selected;
 private:
 	std::list<Point> path;
+	std::list<Point> possiblePlacements;
 
 	BaseObject * wave;
 	std::list<BaseEnemy *> enemies;

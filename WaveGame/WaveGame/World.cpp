@@ -18,6 +18,8 @@ World::World(vector<string> sprites)
 {
 	// TODO: Define path.
 	enemySprites = sprites;
+
+	// TODO: Define possible tower placements
 }
 
 
@@ -174,6 +176,11 @@ void World::addEnemyInfo(EnemyInfo info)
 void World::addButton(ButtonType type, Point p, Sprite normal, Sprite hovered, float width, float height)
 {
 	buttons.push_back(new ButtonObject(type, p, normal, hovered, width, height));
+}
+
+const list<Point> * World::getPossiblePlacements()
+{
+	return &possiblePlacements;
 }
 
 #endif
