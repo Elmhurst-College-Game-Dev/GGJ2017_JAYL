@@ -19,7 +19,14 @@ World::World(vector<string> sprites)
 	// TODO: Define path.
 	enemySprites = sprites;
 
+	path.push_back(Point(198.0f, 420.0f));
+	path.push_back(Point(242.0f, 420.0f));
+	path.push_back(Point(242.0f, 620.0f));
+
+	cout << (*path.begin()).x << endl;
+
 	// TODO: Define possible tower placements
+	wavePoints.push_back(Point(0.0, 0.0));
 }
 
 
@@ -38,10 +45,12 @@ World::~World()
 
 void World::think()
 {
-	if (currentFrame = nextSpawnFrame)
+	cout << "currentFrame " << currentFrame << " nextSpawn" << nextSpawnFrame << endl;
+	if (currentFrame == nextSpawnFrame)
 	{
+		cout << "Spawning enemy" << endl;
 		spawnEnemy();
-
+		cout << "Successful spawn" << endl;
 		nextSpawnFrame += framesBetweenSpawns;
 	}
 
@@ -91,7 +100,7 @@ void World::spawnEnemy()
 //	float y = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 720);
 
 	Point spawn = wave->getMiddle() + wavePoints[rand() * (wavePoints.size() - 1)];
-	enemies.push_back(new BaseEnemy(spawn, renderController.get(info[i].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
+	addEnemy(new BaseEnemy(spawn, renderController.get(info[0].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
 }
 
 void World::addTower(BaseTurret * ent)
@@ -148,7 +157,7 @@ const list<Point> * World::getPath()
 Point World::getEndPoint()
 {
 	assert(path.size() != 0);
-	return (*(path.cend()--));
+	return path.back();
 }
 
 void World::damagePlayer()
@@ -181,14 +190,6 @@ void World::addButton(ButtonObject * button)
 const list<Point> * World::getPossiblePlacements()
 {
 	return &possiblePlacements;
-}
-
-void World::iterate()
-{
-	for (auto ent : buttons)
-	{
-		std::cout << (*ent).getMiddle().x << endl;
-	}
 }
 
 #endif

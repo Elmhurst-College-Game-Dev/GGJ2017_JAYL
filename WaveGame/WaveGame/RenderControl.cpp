@@ -16,6 +16,8 @@
 #include <cstdio>
 #include <fstream>
 #include <map>
+#include <chrono>
+#include <thread>
 
 using namespace rapidjson;
 
@@ -96,7 +98,6 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 	};
 
 	vector<json_data> data;
-
 	char *json_text = nullptr;
 	{
 		ifstream fp;
@@ -107,11 +108,17 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 		cout << "FILE SIZE: " << len << endl;
 		json_text = new char[len + 1];
 		fp.seekg(0, ios_base::beg);
-		for (int i = 0; i < len; i++) {
+		char lastc = ']';
+		for (long i = 0; i < len; i++) {
 			char c;
 			fp.get(c);
-			//cout << c;
+			cout << c;
 			json_text[i] = c;
+			if (c == ']' && lastc == ']')
+			{
+				len = i + 1l;
+				break;
+			}
 		}
 		json_text[len] = '\0';
 		fp.close();
@@ -125,12 +132,16 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 	"}]}";*/
 
 	//cout << json_text << endl;
-
+	cout << "About to print" << endl;
+	cout << json_text << endl;
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	Document doc;
 	doc.Parse(json_text);
 
-	delete[] json_text;
+	cout << "Printed!" << endl;
 
+	delete[] json_text;
+	cout << dataFile << " " << textureFile << endl;
 	//cout << "checking if root is object...";
 	assert(doc.IsArray());
 	//cout << "is an object" << endl;

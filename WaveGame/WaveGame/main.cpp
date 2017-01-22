@@ -27,7 +27,6 @@ MusicWrapper music;
 
 void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 {
-	cout << "Start Button!" << endl;
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
 	{
 		double x, y;
@@ -36,8 +35,6 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 		cout << "click at " << x << " " << y << endl;
 
 		BaseTurret * clicked = nullptr;
-
-		cout << "About to go through turrets!" << endl;
 
 		for (auto ent : *(world->getTowers()))
 		{
@@ -53,13 +50,10 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 				clicked = ent;
 			}
 		}
-		cout << "Went through turrets!" << endl;
 		if (clicked == nullptr)
 		{
-			cout << "About to go through buttons!" << endl;
 			for (auto button = world->getButtons()->cbegin(); button != world->getButtons()->cend();button++)
 			{
-				cout << "itr " << *button << endl;
 				ButtonObject* ent = *button;
 				Point middle = ent->getMiddle();
 				Point topLeft = Point(middle.x - (ent->getWidth() / 2.0), middle.y + (ent->getHeight() / 2.0));
@@ -90,7 +84,6 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 						}
 					}
 				}
-				cout << "did buttons!" << endl;
 			}
 		}
 
@@ -101,7 +94,6 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 			world->selected = nullptr;
 		}
 	}
-	cout << "Didnt crash!" << endl;
 }
 
 void OnGetCursorPos(GLFWwindow* win, double x, double y)
@@ -118,7 +110,7 @@ void OnGetCursorPos(GLFWwindow* win, double x, double y)
 
 			Point entMiddle = ent->getMiddle();
 
-			Point topLeft = Point(entMiddle.x - (ent->getWidth() / 2.0), entMiddle.y + (ent->getHeight() / 2.0));
+			Point topLeft = Point(entMiddle.x - (ent->getWidth() / 2.0), entMiddle.y +(ent->getHeight() / 2.0));
 			Point bottomRight = Point(entMiddle.x + (ent->getWidth() / 2.0), entMiddle.y - (ent->getHeight() / 2.0));
 
 			if (curPose.inBox(topLeft, bottomRight))
@@ -134,10 +126,10 @@ void OnGetCursorPos(GLFWwindow* win, double x, double y)
 }
 
 int main() {
-	//music.add("ericsSong.mp3", "test");
-	//music.play("test");
+	music.add("ericsSong.mp3", "test");
+	music.play("test");
 
-	vector<string> sprites{ "sprite1", "sprite2", "sprite3", "sprite4", "sprite5" };
+	vector<string> sprites{ "Cute-Enemy-Coral-0.png", "sprite2", "sprite3", "sprite4", "sprite5" };
 	world = new World(sprites);
 	
 	if (!glfwInit()) {
@@ -171,21 +163,34 @@ int main() {
 	//Wave object
 	WaveObject wave(10, 30);
 
+	BaseEnemy* enemy = new BaseEnemy(wave.getMiddle(), renderController.get("Assets/CuteEnemyCoral-0"), 32.0f, 32.0f, 5, 5.0, 1);
+
+	cout << "Created!" << endl;
 
 	while (!glfwWindowShouldClose(win)) {
 		/*
 		static clock_t lastThink = clock();
 		cout << clock() - lastThink << endl;
-		if (clock() - lastThink < 32)
+		if (clock() - lastThink > 32)
 		{
 			world->think();
 			lastThink = clock();
 		}
-		*/
+	*/
+		static clock_t lastThink = clock();
+		cout << clock() - lastThink << endl;
+		if (clock() - lastThink > 32)
+		{
+			cout << "Thinking!" << endl;
+			enemy->think();
+			cout << "New position! " << enemy->getMiddle().x << " " << enemy->getMiddle().y << endl;
+			lastThink = clock();
+			Sleep(2000);
+		}
+		
 		//Render code here
 		glClear(GL_COLOR_BUFFER_BIT);
 		wave.think();
-
 
 		//Draw all objects
 		for (list<BaseEnemy*>::const_iterator itr = world->getEnemies()->cbegin(); itr != world->getEnemies()->cend(); itr++) {
@@ -204,6 +209,7 @@ int main() {
 
 		background_map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 420.0f);
 		wave.draw();
+		enemy->draw();
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();
