@@ -7,6 +7,7 @@
 #include <map>
 #include "Sprite.h"
 #include "Point.h"
+#include <iostream>
 
 using namespace std;
 
@@ -42,21 +43,23 @@ public:
 	void addTower(BaseTurret * ent);
 	void addEnemy(BaseEnemy * ent);
 	void addEnemyInfo(EnemyInfo info);
-	void addButton(ButtonType type, Point p, Sprite normal, Sprite hovered, float width, float height);
+	void addButton(ButtonObject * ent);
 	void think();
 	void startWave();
 	unsigned long long getFrameCount();
 	const list<BaseEnemy* > * getEnemies();
 	const list<BaseTurret * > * getTowers();
-	const list<ButtonObject *> * getButtons();
+	list<ButtonObject *> * getButtons();
 	const list<Point> * getPath();
 	const list<Point> * getPossiblePlacements();
 	Point getEndPoint();
 	void damagePlayer();
 	void upgradeTurret(BaseTurret* turret);
 	inline bool canUpgradeTurret(BaseTurret* turret);
+	void iterate();
 
 	BaseTurret * selected;
+	BaseTurret * purchasing;
 private:
 	std::list<Point> path;
 	std::list<Point> possiblePlacements;

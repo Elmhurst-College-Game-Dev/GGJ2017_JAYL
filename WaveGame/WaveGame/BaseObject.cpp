@@ -19,6 +19,11 @@ Point BaseObject::getMiddle()
 	return middle;
 }
 
+void BaseObject::setMiddle(Point p)
+{
+	middle = p;
+}
+
 float BaseObject::getAngle() const
 {
 	return angle;

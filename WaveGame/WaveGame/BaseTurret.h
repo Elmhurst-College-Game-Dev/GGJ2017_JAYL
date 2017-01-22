@@ -31,7 +31,7 @@ protected:
 	list<string> spriteNames;
 	list<string>::iterator currentSprite;
 
-	unsigned int upgradePrice;
+	unsigned int upgradePrice = 100;
 };
 
 #endif

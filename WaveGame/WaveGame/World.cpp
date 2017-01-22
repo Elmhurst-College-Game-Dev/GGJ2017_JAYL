@@ -115,7 +115,7 @@ const list<BaseTurret *> * World::getTowers()
 	return &towers;
 }
 
-const list<ButtonObject *> * World::getButtons()
+list<ButtonObject *> * World::getButtons()
 {
 	return &buttons;
 }
@@ -173,14 +173,22 @@ void World::addEnemyInfo(EnemyInfo info)
 	this->info.push_back(info);
 }
 
-void World::addButton(ButtonType type, Point p, Sprite normal, Sprite hovered, float width, float height)
+void World::addButton(ButtonObject * button)
 {
-	buttons.push_back(new ButtonObject(type, p, normal, hovered, width, height));
+	buttons.push_back(button);
 }
 
 const list<Point> * World::getPossiblePlacements()
 {
 	return &possiblePlacements;
+}
+
+void World::iterate()
+{
+	for (auto ent : buttons)
+	{
+		std::cout << (*ent).getMiddle().x << endl;
+	}
 }
 
 #endif

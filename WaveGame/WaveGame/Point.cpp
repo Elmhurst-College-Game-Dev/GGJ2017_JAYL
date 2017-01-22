@@ -10,21 +10,24 @@ using namespace std;
 
 Point::Point(float x, float y)
 {
-	cout << "Called right constructor" << endl;
+	this->x = x;
+	this->y = y;
+}
+
+Point::Point(double x, double y)
+{
 	this->x = x;
 	this->y = y;
 }
 
 Point::Point(const Point& p)
 {
-//	cout << "Called copy" << endl;
 	x = p.x;
 	y = p.y;
 }
 
 Point::Point()
 {
-	cout << "I wanna die" << endl;
 	x = -1.0;
 	y = -1.0;
 }
