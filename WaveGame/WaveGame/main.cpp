@@ -109,11 +109,6 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 			}
 
 			world->selected = clicked;
-
-			if (action == GLFW_RELEASE)
-			{
-				world->selected = nullptr;
-			}
 		}
 	}
 }
