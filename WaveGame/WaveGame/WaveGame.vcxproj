@@ -72,7 +72,7 @@
     <LibraryPath>C:\Users\Jonathon\ProgrammingProjects\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>C:\Users\Jonathon\Documents\GitHub\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\scripting\git\Waves On Waves\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
     <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -91,10 +91,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Jonathon\Documents\GitHub\GGJ2017_JAYL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\scripting\git\Waves On Waves\GGJ2017_JAYL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;DevIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -133,6 +135,7 @@
     <ClCompile Include="image_loading.cpp" />
     <ClCompile Include="jsmn.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MusicWrapper.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RenderControl.cpp" />
     <ClCompile Include="shaders.cpp" />
@@ -149,6 +152,8 @@
     <ClInclude Include="ClickObject.h" />
     <ClInclude Include="image_loading.h" />
     <ClInclude Include="jsmn.h" />
+    <ClInclude Include="mp3player.h" />
+    <ClInclude Include="MusicWrapper.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RenderControl.h" />
     <ClInclude Include="shaders.h" />
