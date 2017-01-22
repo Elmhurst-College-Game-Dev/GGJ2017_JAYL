@@ -12,6 +12,7 @@ public:
 	BaseObject(Point middle, Sprite s, float width, float height);
 	virtual void think() = 0;
 	Point getMiddle();
+	void setMiddle(Point p);
 	float getAngle() const;
 	void rotate(float angle) { this->angle += angle;  }
 	float getWidth() const;

@@ -5,7 +5,8 @@ class Point
 {
 public:
 	Point(float x, float y);
-	explicit Point() ;// = delete;
+	Point(double x, double y);
+	explicit Point();
 	Point(const Point& rhs);
 	float getDistance(const Point& p) const;
 	float x;

@@ -26,7 +26,8 @@ MusicWrapper music;
 
 void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 {
-	if (button == GLFW_MOUSE_BUTTON_LEFT)
+	cout << "Start Button!" << endl;
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
 	{
 		double x, y;
 		glfwGetCursorPos(win, &x, &y);
@@ -35,6 +36,8 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 
 		BaseTurret * clicked = nullptr;
 
+		cout << "About to go through turrets!" << endl;
+
 		for (auto ent : *(world->getTowers()))
 		{
 			Point clickSpot(static_cast<float>(x), static_cast<float>(y));
@@ -42,44 +45,51 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 			Point entMiddle = ent->getMiddle();
 
 			Point topLeft = Point(entMiddle.x - (ent->getWidth() / 2.0), entMiddle.y + (ent->getHeight() / 2.0));
-			Point bottomRight = Point(entMiddle.x + (ent->getWidth() / 2), entMiddle.y - (ent->getHeight() / 2.0));
+			Point bottomRight = Point((entMiddle.x + (ent->getWidth() / 2.0)), (entMiddle.y - (ent->getHeight() / 2.0)));
 
 			if (clickSpot.inBox(topLeft, bottomRight))
 			{
 				clicked = ent;
 			}
 		}
-
-		if (world->selected != nullptr)
+		cout << "Went through turrets!" << endl;
+		if (clicked == nullptr)
 		{
-			for (auto ent : *(world->getButtons()))
+			cout << "About to go through buttons!" << endl;
+			for (auto button = world->getButtons()->cbegin(); button != world->getButtons()->cend();button++)
 			{
+				cout << "itr " << *button << endl;
+				ButtonObject* ent = *button;
 				Point middle = ent->getMiddle();
 				Point topLeft = Point(middle.x - (ent->getWidth() / 2.0), middle.y + (ent->getHeight() / 2.0));
-				Point bottomRight = Point(middle.x + (ent->getWidth() / 2), middle.y - (ent->getHeight() / 2.0));
+				Point bottomRight = Point(middle.x + (ent->getWidth() / 2.0), middle.y - (ent->getHeight() / 2.0));
 				
 				if (middle.inBox(topLeft, bottomRight)) // clicked inside button
 				{
 					if (action == GLFW_RELEASE) // releasing m1 inside button
 					{
-						if (ent->getType() == BT_Upgrade) // Upgrade
+						if (world->selected != nullptr)
 						{
-							if (world->canUpgradeTurret(world->selected))
+							if (ent->getType() == BT_Upgrade) // Upgrade
 							{
-								world->upgradeTurret(world->selected);
-								break;
+								if (world->canUpgradeTurret(world->selected))
+								{
+									world->upgradeTurret(world->selected);
+									break;
+								}
 							}
-						}
-						else if (ent->getType() == BT_Area) // Purchase area
-						{
-							// Create menu, or something
-						}
-						else // purchase SS
-						{
-							// Create menu, or something
+							else if (ent->getType() == BT_Area) // Purchase area
+							{
+								// Create menu, or something
+							}
+							else // purchase SS
+							{
+								// Create menu, or something
+							}
 						}
 					}
 				}
+				cout << "did buttons!" << endl;
 			}
 		}
 
@@ -90,11 +100,41 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 			world->selected = nullptr;
 		}
 	}
+	cout << "Didnt crash!" << endl;
+}
+
+void OnGetCursorPos(GLFWwindow* win, double x, double y)
+{
+	if (world->purchasing != nullptr)
+	{
+		world->purchasing->setMiddle(Point(x, y));
+	}
+	else
+	{
+		for (auto ent : *(world->getButtons()))
+		{
+			Point curPose(x, y);
+
+			Point entMiddle = ent->getMiddle();
+
+			Point topLeft = Point(entMiddle.x - (ent->getWidth() / 2.0), entMiddle.y + (ent->getHeight() / 2.0));
+			Point bottomRight = Point(entMiddle.x + (ent->getWidth() / 2.0), entMiddle.y - (ent->getHeight() / 2.0));
+
+			if (curPose.inBox(topLeft, bottomRight))
+			{
+				ent->isHovered = true;
+			}
+			else
+			{
+				ent->isHovered = false;
+			}
+		}
+	}
 }
 
 int main() {
-	music.add("ericsSong.mp3", "test");
-	music.play("test");
+	//music.add("ericsSong.mp3", "test");
+	//music.play("test");
 
 	vector<string> sprites{ "sprite1", "sprite2", "sprite3", "sprite4", "sprite5" };
 	world = new World(sprites);
@@ -115,13 +155,17 @@ int main() {
 
 	glfwSwapInterval(1);
 	Sprite spr = renderController.get("boom_27.png");
-	BaseEnemy enemy(Point(200, 200), spr, 100, 100, 5, 5, 4);
+	BaseEnemy enemy(Point(200.0 , 200.0), spr, 100, 100, 5, 5, 4);
 
 	glfwSetMouseButtonCallback(win, OnMouseButton);
+	glfwSetCursorPosCallback(win, OnGetCursorPos);
+
 	Point p(100.0f, 100.0f);
 	StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"CuteEnemyCoral-0.png"});
 	world->addTower(turret);
 
+	world->addButton(new ButtonObject(BT_Upgrade, Point(500.0, 500.0), renderController.get("CuteEnemyCoral-0.png"), renderController.get("CuteEnemyCoral-0.png"), 32.0, 32.0));
+	world->iterate();
 	while (!glfwWindowShouldClose(win)) {
 		/*
 		static clock_t lastThink = clock();
@@ -140,6 +184,11 @@ int main() {
 		}
 
 		for (const auto& ent : *world->getTowers())
+		{
+			renderController.draw(ent);
+		}
+
+		for (const auto& ent : *world->getButtons())
 		{
 			renderController.draw(ent);
 		}
