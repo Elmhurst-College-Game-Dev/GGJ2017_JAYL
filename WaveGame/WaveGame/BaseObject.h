@@ -10,7 +10,7 @@ class BaseObject
 public:
 	BaseObject() = default;
 	BaseObject(Point middle, Sprite s, float width, float height);
-	virtual void think() = 0;
+	virtual void think() {} ;
 	Point getMiddle();
 	void setMiddle(Point p);
 	float getAngle() const;
