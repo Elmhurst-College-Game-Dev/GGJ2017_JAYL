@@ -11,6 +11,9 @@ Sprite::Sprite(GLint bufferOffset, GLuint bufferName, GLuint textureName)
 	: bufferOffset{bufferOffset}, bufferName{bufferName}, textureName{textureName}
 {
 
+	ticks = 0;
+	tickPerFrame = 50;
+	track = vector<Sprite>();
 }
 
 Sprite::Sprite(const Sprite & spr)
@@ -18,6 +21,9 @@ Sprite::Sprite(const Sprite & spr)
 	bufferOffset = spr.bufferOffset;
 	bufferName = spr.bufferName;
 	textureName = spr.textureName;
+	ticks = spr.ticks;
+	tickPerFrame = spr.tickPerFrame;
+	track = spr.track;
 }
 
 void Sprite::setTextureName(GLuint texName)
@@ -70,4 +76,24 @@ void Sprite::draw(float angle, float width, float height, float worldPosX, float
 	//glBindTexture(GL_TEXTURE_2D, 0);
 	glDisableVertexAttribArray(renderController.getVertPosLoc());
 	glDisableVertexAttribArray(renderController.getTexCoordLoc());
+}
+
+void Sprite::think()
+{
+	if (track.size() > 0) {
+		ticks++;
+		if (ticks > tickPerFrame) {
+			index++;
+			ticks = 0;
+			if (index >= track.size()) {
+				index = 0;
+			}
+			*this = track[index];
+		}
+	}
+}
+
+void Sprite::setAnimation(vector<Sprite> track)
+{
+	this->track = track;
 }

@@ -42,7 +42,7 @@ void NumberObject::setValue(int value)
 	int curVal = value;
 	int curNumeral;
 	for (int i = 0; i < digitMax; i++) {
-		curNumeral = curVal%initialMod/(initialMod/10);
+		curNumeral = (curVal%initialMod)/(initialMod/10);
 		curVal -= curNumeral*(10*(i-1));
 		initialMod *= 10;
 		digits[i].setNum(curNumeral);

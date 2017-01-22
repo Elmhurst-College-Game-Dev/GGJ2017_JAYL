@@ -321,6 +321,44 @@ void RenderControl::initRender()
 	initShaders();
 	initTextureWithData("atlas0.json", "atlas0_0.png", 2048.0f, 2048.0f);
 
+	//Animations
+	Sprite ball = get("CuteEnemyBall-1");
+	vector<Sprite> ballAnim;
+	ballAnim.push_back(get("CuteEnemyBall-1"));
+	ballAnim.push_back(get("CuteEnemyBall-2"));
+	ball.setAnimation(ballAnim);
+	sprites["CuteEnemyBall"] = ball;
+
+	Sprite coral = get("CuteEnemyCoral-0");
+	vector<Sprite> coralAnim;
+	coralAnim.push_back(get("CuteEnemyCoral-0"));
+	coralAnim.push_back(get("CuteEnemyCoral-1"));
+	coralAnim.push_back(get("CuteEnemyCoral-2"));
+	coral.setAnimation(coralAnim);
+	sprites["CuteEnemyCoral"] = coral;
+
+	Sprite stone = get("CuteEnemyStone-0");
+	vector<Sprite> stonelAnim;
+	stonelAnim.push_back(get("CuteEnemyStone-0"));
+	stonelAnim.push_back(get("CuteEnemyStone-1"));
+	stonelAnim.push_back(get("CuteEnemyStone-2"));
+	stone.setAnimation(stonelAnim);
+	sprites["CuteEnemyStone"] = stone;
+
+	Sprite seaweed = get("CuteEnemySeaweed-1");
+	vector<Sprite> seaweedAnim;
+	seaweedAnim.push_back(get("CuteEnemySeaweed-1"));
+	seaweedAnim.push_back(get("CuteEnemySeaweed-2"));
+	seaweed.setAnimation(seaweedAnim);
+	sprites["CuteEnemySeaweed"] = seaweed;
+
+	Sprite fluff = get("CuteEnemyFluff-1");
+	vector<Sprite> fluffAnim;
+	fluffAnim.push_back(get("CuteEnemyFluff-1"));
+	fluffAnim.push_back(get("CuteEnemyFluff-2"));
+	fluff.setAnimation(seaweedAnim);
+	sprites["CuteEnemyFluff"] = fluff;
+
 	//bg color and other stuff
 	glClearColor(0.1f, 0.0f, 0.25f, 1.0f);
 	glEnable(GL_BLEND);

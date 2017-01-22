@@ -152,8 +152,6 @@ int main() {
 	music.add("ericsSong.mp3", "test");
 	music.play("test");
 
-	vector<string> sprites{ "CuteEnemyCoral-0", "CuteEnemyBall-0", "CuteEnemyStone-0", "CuteEnemySeaw-0", "CuteEnemyFluff-0" };
-	world = new World(sprites);
 	
 	if (!glfwInit()) {
 		cout << "Could not init GLFW" << endl;
@@ -174,6 +172,10 @@ int main() {
 
 	glfwSetMouseButtonCallback(win, OnMouseButton);
 	glfwSetCursorPosCallback(win, OnGetCursorPos);
+
+
+	vector<string> sprites{ "CuteEnemyCoral", "CuteEnemyBall", "CuteEnemyStone", "CuteEnemySeaweed", "CuteEnemyFluff" };
+	world = new World(sprites);
 
 	//Point p(100.0f, 100.0f);
 	//StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"CuteEnemyCoral-0.png"});
