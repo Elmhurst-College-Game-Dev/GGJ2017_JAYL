@@ -46,6 +46,7 @@ Point & Point::operator=(const Point & rhs)
 {
 	this->x = rhs.x;
 	this->y = rhs.y;
+	return *this;
 }
 
 Point Point::operator+(const Point &rhs)

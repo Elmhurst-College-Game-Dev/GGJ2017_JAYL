@@ -204,7 +204,7 @@ int main() {
 		//cout << clock() - lastThink << endl;
 		if (clock() - lastThink > 32)
 		{
-			//enemy->think();
+			enemy->think();
 			world->think();
 			lastThink = clock();
 		}

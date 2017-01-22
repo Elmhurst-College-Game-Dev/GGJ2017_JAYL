@@ -105,14 +105,14 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 		assert(fp.good());
 		fp.seekg(0, ios_base::end);
 		long len = fp.tellg();
-		cout << "FILE SIZE: " << len << endl;
+		//cout << "FILE SIZE: " << len << endl;
 		json_text = new char[len + 1];
 		fp.seekg(0, ios_base::beg);
 		char lastc = ']';
 		for (long i = 0; i < len; i++) {
 			char c;
 			fp.get(c);
-			cout << c;
+			//cout << c;
 			json_text[i] = c;
 			if (c == ']' && lastc == ']')
 			{
@@ -297,7 +297,7 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 	glUniform1i(samplerLoc, 0);
 
 	GLuint tex = loadTexture(textureFile);
-	cout << "Size of data is " << data.size() << endl;
+	//cout << "Size of data is " << data.size() << endl;
 	//That is done, finally
 	//Make the buffers now
 	GLuint newSprite;
@@ -305,13 +305,13 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 	glBindBuffer(GL_ARRAY_BUFFER, newSprite);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 24 * data.size(), arrayBuf, GL_STATIC_DRAW);
 
-	cout << "Gonna make the sprites array thing now " << endl;
+/*	cout << "Gonna make the sprites array thing now " << endl;
 	//Setup the map now
 	for (int i = 0; i < data.size(); i++) {
 		sprites[data[i].name] = Sprite(i * 6, newSprite, tex);
 		cout << data[i].name << " (" << data[i].x << ", " << data[i].y << "); (" << data[i].w << ", " << data[i].h << ")"
 			<< " offset of " << (i*6) << endl;
-	}
+	}*/
 
 	delete [] arrayBuf;
 }
