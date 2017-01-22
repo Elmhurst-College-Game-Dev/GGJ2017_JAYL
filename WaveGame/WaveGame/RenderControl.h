@@ -15,6 +15,8 @@ public:
 	Sprite &get(string sprite);
 	GLuint getProgram() { return program;  }
 	GLuint getModelLoc() { return modelLoc;  }
+	GLuint getScaleLoc() { return scaleLoc; }
+	GLuint getTranslateLoc() { return translateLoc; }
 	GLuint getVertPosLoc() { return vertPosLoc;  }
 	GLuint getTexCoordLoc() { return texCoordLoc;  }
 	GLuint getSamplerLoc() { return samplerLoc;  }
@@ -22,6 +24,8 @@ public:
 private:
 	GLuint program;
 	GLuint modelLoc;
+	GLuint scaleLoc;
+	GLuint translateLoc;
 	GLuint vertPosLoc;
 	GLuint texCoordLoc;
 	GLuint samplerLoc;

@@ -17,6 +17,9 @@ public:
 	void setTextureName(GLuint texName);
 	void setBufferName(GLuint bufName);
 	void setBufferOffset(GLint bufOffset);
+	GLuint getTextureName() { return textureName;  }
+	GLuint getBufferName() { return bufferName;  }
+	GLuint getBufferOffset() { return bufferOffset;  }
 	void draw(float angle, float width, float height, float worldPosX, float worldPosY);
 private:
 	GLuint textureName;

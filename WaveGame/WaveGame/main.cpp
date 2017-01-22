@@ -163,6 +163,10 @@ int main() {
 	world->addTower(turret);
 
 	Sprite map = renderController.get("Map-0.png");
+	cout << "Buffer Name: " << map.getBufferName() << endl;
+	cout << "Buffer Offset: " << map.getBufferOffset() << endl;
+	cout << "Texture Name: " << map.getTextureName() << endl;
+
 
 	world->addButton(new ButtonObject(BT_Upgrade, Point(500.0, 500.0), renderController.get("CuteEnemyCoral-0.png"), renderController.get("CuteEnemyCoral-0.png"), 32.0, 32.0));
 	world->iterate();
@@ -180,9 +184,6 @@ int main() {
 		//Render code here
 		glClear(GL_COLOR_BUFFER_BIT);
 
-
-		map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 480.0f);
-
 		//Draw all objects
 		for (list<BaseEnemy*>::const_iterator itr = world->getEnemies()->cbegin(); itr != world->getEnemies()->cend(); itr++) {
 			(*itr)->draw();
@@ -198,6 +199,7 @@ int main() {
 			ent->draw();
 		}
 
+		map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 480.0f);
 
 		glFlush();
 
