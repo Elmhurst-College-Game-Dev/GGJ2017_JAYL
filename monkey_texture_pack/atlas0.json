@@ -2,152 +2,194 @@
 		"file": "atlas0_0.png",
 		"items": {
 			"0": {
-				"x": 1623,
-				"y": 180,
+				"x": 2007,
+				"y": 100,
 				"width": 38,
 				"height": 38
 			},
 			"1": {
-				"x": 1661,
-				"y": 180,
+				"x": 2007,
+				"y": 138,
 				"width": 38,
 				"height": 38
 			},
 			"2": {
-				"x": 1699,
-				"y": 180,
+				"x": 2007,
+				"y": 176,
 				"width": 38,
 				"height": 38
 			},
 			"3": {
-				"x": 1737,
-				"y": 180,
+				"x": 2007,
+				"y": 214,
 				"width": 38,
 				"height": 38
 			},
 			"4": {
-				"x": 1775,
-				"y": 180,
+				"x": 2007,
+				"y": 252,
 				"width": 38,
 				"height": 38
 			},
 			"5": {
-				"x": 1813,
-				"y": 180,
+				"x": 2007,
+				"y": 290,
 				"width": 38,
 				"height": 38
 			},
 			"6": {
-				"x": 1851,
-				"y": 180,
+				"x": 2007,
+				"y": 328,
 				"width": 38,
 				"height": 38
 			},
 			"7": {
-				"x": 1889,
-				"y": 180,
+				"x": 2007,
+				"y": 366,
 				"width": 38,
 				"height": 38
 			},
 			"8": {
-				"x": 1927,
-				"y": 180,
+				"x": 1933,
+				"y": 100,
 				"width": 38,
 				"height": 38
 			},
 			"9": {
-				"x": 1965,
-				"y": 180,
+				"x": 1933,
+				"y": 138,
 				"width": 38,
 				"height": 38
 			},
-			"BuySelected": {
+			"areaGamma": {
 				"x": 1421,
 				"y": 100,
+				"width": 128,
+				"height": 128
+			},
+			"areaInfrared": {
+				"x": 1549,
+				"y": 100,
+				"width": 128,
+				"height": 128
+			},
+			"areaMicrowave": {
+				"x": 1677,
+				"y": 100,
+				"width": 128,
+				"height": 128
+			},
+			"areaRadio": {
+				"x": 1805,
+				"y": 100,
+				"width": 128,
+				"height": 128
+			},
+			"areaUltraViolet": {
+				"x": 1421,
+				"y": 228,
+				"width": 128,
+				"height": 128
+			},
+			"areaVisible": {
+				"x": 1549,
+				"y": 228,
+				"width": 128,
+				"height": 128
+			},
+			"areaXRay": {
+				"x": 1677,
+				"y": 228,
+				"width": 128,
+				"height": 128
+			},
+			"BuySelected": {
+				"x": 1805,
+				"y": 228,
 				"width": 202,
 				"height": 80
 			},
 			"BuyUnselected": {
-				"x": 1623,
-				"y": 100,
+				"x": 1805,
+				"y": 308,
 				"width": 202,
 				"height": 80
 			},
 			"CuteEnemyBall-1": {
-				"x": 2003,
-				"y": 180,
+				"x": 1623,
+				"y": 356,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyBall-2": {
-				"x": 2003,
-				"y": 212,
+				"x": 1655,
+				"y": 356,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyCoral-0": {
-				"x": 1623,
-				"y": 218,
+				"x": 1687,
+				"y": 356,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyCoral-1": {
-				"x": 1655,
-				"y": 218,
+				"x": 1719,
+				"y": 356,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyCoral-2": {
-				"x": 1687,
-				"y": 218,
+				"x": 1751,
+				"y": 356,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyFluff-0": {
-				"x": 1719,
-				"y": 218,
+				"x": 1971,
+				"y": 100,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyFluff-1": {
-				"x": 1751,
-				"y": 218,
+				"x": 1971,
+				"y": 132,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyFluff-2": {
-				"x": 1783,
-				"y": 218,
+				"x": 1971,
+				"y": 164,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemySeaweed-1": {
-				"x": 1815,
-				"y": 218,
+				"x": 1933,
+				"y": 196,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemySeaweed-2": {
-				"x": 1847,
-				"y": 218,
+				"x": 1965,
+				"y": 196,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyStone-0": {
-				"x": 1879,
-				"y": 218,
+				"x": 1825,
+				"y": 388,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyStone-1": {
-				"x": 1911,
-				"y": 218,
+				"x": 1857,
+				"y": 388,
 				"width": 32,
 				"height": 32
 			},
 			"CuteEnemyStone-2": {
-				"x": 1943,
-				"y": 218,
+				"x": 1889,
+				"y": 388,
 				"width": 32,
 				"height": 32
 			},
@@ -175,15 +217,393 @@
 				"width": 1280,
 				"height": 600
 			},
-			"UpgradeSelected": {
+			"ss_cosmic_wave_1": {
+				"x": 1921,
+				"y": 388,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_10": {
+				"x": 1953,
+				"y": 388,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_11": {
+				"x": 1985,
+				"y": 404,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_12": {
 				"x": 1825,
-				"y": 100,
+				"y": 420,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_13": {
+				"x": 1857,
+				"y": 420,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_14": {
+				"x": 1889,
+				"y": 420,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_15": {
+				"x": 1921,
+				"y": 420,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_16": {
+				"x": 1953,
+				"y": 420,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_2": {
+				"x": 1985,
+				"y": 436,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_3": {
+				"x": 1825,
+				"y": 452,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_4": {
+				"x": 1857,
+				"y": 452,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_5": {
+				"x": 1889,
+				"y": 452,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_6": {
+				"x": 1921,
+				"y": 452,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_7": {
+				"x": 1953,
+				"y": 452,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_8": {
+				"x": 1985,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_9": {
+				"x": 1421,
+				"y": 436,
+				"width": 32,
+				"height": 32
+			},
+			"ss_gamma_rays_wave_1": {
+				"x": 1453,
+				"y": 436,
+				"width": 32,
+				"height": 32
+			},
+			"ss_gamma_rays_wave_2": {
+				"x": 1485,
+				"y": 436,
+				"width": 32,
+				"height": 32
+			},
+			"ss_gamma_rays_wave_3": {
+				"x": 1517,
+				"y": 436,
+				"width": 32,
+				"height": 32
+			},
+			"ss_gamma_rays_wave_4": {
+				"x": 1549,
+				"y": 436,
+				"width": 32,
+				"height": 32
+			},
+			"ss_gamma_rays_wave_5": {
+				"x": 1581,
+				"y": 436,
+				"width": 32,
+				"height": 32
+			},
+			"ss_gamma_rays_wave_6": {
+				"x": 1421,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_gamma_rays_wave_7": {
+				"x": 1453,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_gamma_rays_wave_8": {
+				"x": 1485,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_infra_red_wave_1": {
+				"x": 1517,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_infra_red_wave_2": {
+				"x": 1549,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_infra_red_wave_3": {
+				"x": 1581,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_infra_red_wave_4": {
+				"x": 1613,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_micro_wave_1": {
+				"x": 1645,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_micro_wave_2": {
+				"x": 1677,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_micro_wave_3": {
+				"x": 1709,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_radio_wave_1": {
+				"x": 1741,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_radio_wave_2": {
+				"x": 1773,
+				"y": 468,
+				"width": 32,
+				"height": 32
+			},
+			"ss_radio_wave_3": {
+				"x": 1805,
+				"y": 484,
+				"width": 32,
+				"height": 32
+			},
+			"ss_ultra_violet_wave_1": {
+				"x": 1837,
+				"y": 484,
+				"width": 32,
+				"height": 32
+			},
+			"ss_ultra_violet_wave_2": {
+				"x": 1869,
+				"y": 484,
+				"width": 32,
+				"height": 32
+			},
+			"ss_ultra_violet_wave_3": {
+				"x": 1901,
+				"y": 484,
+				"width": 32,
+				"height": 32
+			},
+			"ss_ultra_violet_wave_4": {
+				"x": 1933,
+				"y": 484,
+				"width": 32,
+				"height": 32
+			},
+			"ss_ultra_violet_wave_5": {
+				"x": 1965,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_ultra_violet_wave_6": {
+				"x": 1997,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_visible_light_wave_1": {
+				"x": 1421,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_visible_light_wave_2": {
+				"x": 1453,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_visible_light_wave_3": {
+				"x": 1485,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_visible_light_wave_4": {
+				"x": 1517,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_visible_light_wave_5": {
+				"x": 1549,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_visible_light_wave_6": {
+				"x": 1581,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_visible_light_wave_7": {
+				"x": 1613,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_x_ray_wave_1": {
+				"x": 1645,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_x_ray_wave_2": {
+				"x": 1677,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_x_ray_wave_3": {
+				"x": 1709,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_x_ray_wave_4": {
+				"x": 1741,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_x_ray_wave_5": {
+				"x": 1773,
+				"y": 500,
+				"width": 32,
+				"height": 32
+			},
+			"ss_x_ray_wave_6": {
+				"x": 1805,
+				"y": 516,
+				"width": 32,
+				"height": 32
+			},
+			"ss_x_ray_wave_7": {
+				"x": 1837,
+				"y": 516,
+				"width": 32,
+				"height": 32
+			},
+			"ss_x_ray_wave_8": {
+				"x": 1869,
+				"y": 516,
+				"width": 32,
+				"height": 32
+			},
+			"top_cosmic": {
+				"x": 1901,
+				"y": 516,
+				"width": 32,
+				"height": 32
+			},
+			"top_gamma": {
+				"x": 1933,
+				"y": 516,
+				"width": 32,
+				"height": 32
+			},
+			"top_infra_red": {
+				"x": 1965,
+				"y": 532,
+				"width": 32,
+				"height": 32
+			},
+			"top_micro": {
+				"x": 1997,
+				"y": 532,
+				"width": 32,
+				"height": 32
+			},
+			"top_radio": {
+				"x": 1421,
+				"y": 532,
+				"width": 32,
+				"height": 32
+			},
+			"top_ultra_violet": {
+				"x": 1453,
+				"y": 532,
+				"width": 32,
+				"height": 32
+			},
+			"top_visible_light": {
+				"x": 1485,
+				"y": 532,
+				"width": 32,
+				"height": 32
+			},
+			"top_x_ray": {
+				"x": 1517,
+				"y": 532,
+				"width": 32,
+				"height": 32
+			},
+			"UpgradeSelected": {
+				"x": 1421,
+				"y": 356,
 				"width": 202,
 				"height": 80
 			},
 			"UpgradeUnselected": {
-				"x": 1421,
-				"y": 180,
+				"x": 1623,
+				"y": 388,
 				"width": 202,
 				"height": 80
 			},
@@ -192,384 +612,6 @@
 				"y": 0,
 				"width": 141,
 				"height": 600
-			},
-			"ss_x_ray_wave_1": {
-				"x": 1975,
-				"y": 244,
-				"width": 32,
-				"height": 32
-			},
-			"ss_x_ray_wave_2": {
-				"x": 2007,
-				"y": 244,
-				"width": 32,
-				"height": 32
-			},
-			"ss_x_ray_wave_3": {
-				"x": 1623,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"ss_x_ray_wave_4": {
-				"x": 1421,
-				"y": 260,
-				"width": 32,
-				"height": 32
-			},
-			"ss_x_ray_wave_5": {
-				"x": 1453,
-				"y": 260,
-				"width": 32,
-				"height": 32
-			},
-			"ss_x_ray_wave_6": {
-				"x": 1485,
-				"y": 260,
-				"width": 32,
-				"height": 32
-			},
-			"ss_x_ray_wave_7": {
-				"x": 1517,
-				"y": 260,
-				"width": 32,
-				"height": 32
-			},
-			"ss_x_ray_wave_8": {
-				"x": 1549,
-				"y": 260,
-				"width": 32,
-				"height": 32
-			},
-			"ss_ultra_violet_wave_1": {
-				"x": 1581,
-				"y": 260,
-				"width": 32,
-				"height": 32
-			},
-			"ss_ultra_violet_wave_2": {
-				"x": 1655,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"ss_ultra_violet_wave_3": {
-				"x": 1687,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"ss_ultra_violet_wave_4": {
-				"x": 1719,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"ss_ultra_violet_wave_5": {
-				"x": 1751,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"ss_ultra_violet_wave_6": {
-				"x": 1783,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"top_cosmic": {
-				"x": 1815,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"top_gamma": {
-				"x": 1847,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"top_infra_red": {
-				"x": 1879,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"top_micro": {
-				"x": 1911,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"top_radio": {
-				"x": 1943,
-				"y": 250,
-				"width": 32,
-				"height": 32
-			},
-			"top_ultra_violet": {
-				"x": 1975,
-				"y": 276,
-				"width": 32,
-				"height": 32
-			},
-			"top_visible_light": {
-				"x": 2007,
-				"y": 276,
-				"width": 32,
-				"height": 32
-			},
-			"top_x_ray": {
-				"x": 1613,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_visible_light_wave_1": {
-				"x": 1421,
-				"y": 292,
-				"width": 32,
-				"height": 32
-			},
-			"ss_visible_light_wave_2": {
-				"x": 1453,
-				"y": 292,
-				"width": 32,
-				"height": 32
-			},
-			"ss_visible_light_wave_3": {
-				"x": 1485,
-				"y": 292,
-				"width": 32,
-				"height": 32
-			},
-			"ss_visible_light_wave_4": {
-				"x": 1517,
-				"y": 292,
-				"width": 32,
-				"height": 32
-			},
-			"ss_visible_light_wave_5": {
-				"x": 1549,
-				"y": 292,
-				"width": 32,
-				"height": 32
-			},
-			"ss_visible_light_wave_6": {
-				"x": 1581,
-				"y": 292,
-				"width": 32,
-				"height": 32
-			},
-			"ss_visible_light_wave_7": {
-				"x": 1645,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_radio_wave_1": {
-				"x": 1677,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_radio_wave_2": {
-				"x": 1709,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_radio_wave_3": {
-				"x": 1741,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_micro_wave_1": {
-				"x": 1773,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_micro_wave_2": {
-				"x": 1805,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_micro_wave_3": {
-				"x": 1837,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_infra_red_wave_1": {
-				"x": 1869,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_infra_red_wave_2": {
-				"x": 1901,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_infra_red_wave_3": {
-				"x": 1933,
-				"y": 282,
-				"width": 32,
-				"height": 32
-			},
-			"ss_infra_red_wave_4": {
-				"x": 1965,
-				"y": 308,
-				"width": 32,
-				"height": 32
-			},
-			"ss_gamma_rays_wave_1": {
-				"x": 1997,
-				"y": 308,
-				"width": 32,
-				"height": 32
-			},
-			"ss_gamma_rays_wave_2": {
-				"x": 1613,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_gamma_rays_wave_3": {
-				"x": 1421,
-				"y": 324,
-				"width": 32,
-				"height": 32
-			},
-			"ss_gamma_rays_wave_4": {
-				"x": 1453,
-				"y": 324,
-				"width": 32,
-				"height": 32
-			},
-			"ss_gamma_rays_wave_5": {
-				"x": 1485,
-				"y": 324,
-				"width": 32,
-				"height": 32
-			},
-			"ss_gamma_rays_wave_6": {
-				"x": 1517,
-				"y": 324,
-				"width": 32,
-				"height": 32
-			},
-			"ss_gamma_rays_wave_7": {
-				"x": 1549,
-				"y": 324,
-				"width": 32,
-				"height": 32
-			},
-			"ss_gamma_rays_wave_8": {
-				"x": 1581,
-				"y": 324,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_1": {
-				"x": 1645,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_10": {
-				"x": 1677,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_11": {
-				"x": 1709,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_12": {
-				"x": 1741,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_13": {
-				"x": 1773,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_14": {
-				"x": 1805,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_15": {
-				"x": 1837,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_16": {
-				"x": 1869,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_2": {
-				"x": 1901,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_3": {
-				"x": 1933,
-				"y": 314,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_4": {
-				"x": 1965,
-				"y": 340,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_5": {
-				"x": 1997,
-				"y": 340,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_6": {
-				"x": 1613,
-				"y": 346,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_7": {
-				"x": 1421,
-				"y": 356,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_8": {
-				"x": 1453,
-				"y": 356,
-				"width": 32,
-				"height": 32
-			},
-			"ss_cosmic_wave_9": {
-				"x": 1485,
-				"y": 356,
-				"width": 32,
-				"height": 32
 			}
 		}
 	} ]

@@ -179,8 +179,11 @@ int main() {
 
 	Sprite background_map = renderController.get("Map-0");
 
-	//world->addButton(new ButtonObject(BT_Upgrade, Point(500.0, 500.0), renderController.get("CuteEnemyCoral-0.png"), renderController.get("CuteEnemyCoral-0.png"), 32.0, 32.0));
-	//world->iterate();
+	world->addButton(new ButtonObject(BT_SS, Point(16.0f + 101.0f, 59.0f), renderController.get("BuyUnselected"), renderController.get("BuySelected"), 202.0f, 80.0f));
+	BaseObject straightShotBuyIcon(Point(48.0f+16.0f, 43.0f + 16.0f), renderController.get("top_radio"), 32.0f, 32.0f);
+	world->addButton(new ButtonObject(BT_Area, Point(221.0f + 101.0f, 59.0f), renderController.get("BuyUnselected"), renderController.get("BuySelected"), 202.0f, 80.0f));
+	BaseObject areaBuyIcon(Point(253.0f+16.0f, 43.0f + 16.0f), renderController.get("top_radio"), 32.0f, 32.0f);
+	world->addButton(new ButtonObject(BT_Upgrade, Point(425.0f + 101.0f, 59.0f), renderController.get("UpgradeUnselected"), renderController.get("UpgradeSelected"), 202.0f, 80.0f));
 
 	//Wave object
 	WaveObject wave(10, 30);
@@ -198,24 +201,15 @@ int main() {
 	//cout << "Created!" << endl;
 
 	while (!glfwWindowShouldClose(win)) {
-		/*
-		static clock_t lastThink = clock();
-		cout << clock() - lastThink << endl;
-		if (clock() - lastThink > 32)
-		{
-			world->think();
-			lastThink = clock();
-		}
-	*/
+		
 		static clock_t lastThink = clock();
 		//cout << clock() - lastThink << endl;
-		if (clock() - lastThink > 32)
+	/*	if (clock() - lastThink > 32)
 		{
-		//	cout << "Thinking!" << endl;
 			enemy->think();
-		//	cout << "New position! " << enemy->getMiddle().x << " " << enemy->getMiddle().y << endl;
+			world->think();
 			lastThink = clock();
-		}
+		}*/
 		wave.think();
 		
 		//Update HUD values
@@ -233,11 +227,6 @@ int main() {
 		}
 
 		for (const auto& ent : *world->getTowers())
-		{
-			ent->draw();
-		}
-
-		for (const auto& ent : *world->getButtons())
 		{
 			ent->draw();
 		}
@@ -263,6 +252,15 @@ int main() {
 		currencyNumber.draw();
 		enemyWaveNumber.draw();
 		
+		//Draw buttons after the HUD
+		for (const auto& ent : *world->getButtons())
+		{
+			ent->draw();
+		}
+
+		//icons on top of buy buttons
+		straightShotBuyIcon.draw();
+		areaBuyIcon.draw();
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

@@ -125,6 +125,8 @@ World::World(vector<string> sprites)
 
 	// TODO: Define possible tower placements
 	wavePoints.push_back(Point(0.0, 0.0));
+
+	enemiesUnlocked = 1; //Start off with one kind
 }
 
 
@@ -143,12 +145,12 @@ World::~World()
 
 void World::think()
 {
-	cout << "currentFrame " << currentFrame << " nextSpawn" << nextSpawnFrame << endl;
+	//cout << "currentFrame " << currentFrame << " nextSpawn" << nextSpawnFrame << endl;
 	if (currentFrame == nextSpawnFrame)
 	{
-		cout << "Spawning enemy" << endl;
+		//cout << "Spawning enemy" << endl;
 		spawnEnemy();
-		cout << "Successful spawn" << endl;
+		//cout << "Successful spawn" << endl;
 		nextSpawnFrame += framesBetweenSpawns;
 	}
 
@@ -167,6 +169,9 @@ void World::think()
 		{
 			enemies.erase(ent);
 		}
+	}
+	for (auto but = buttons.begin(); but != buttons.end(); but++) {
+		(*but)->think();
 	}
 
 	if (lives == 0)
@@ -192,12 +197,12 @@ void World::think()
 
 void World::spawnEnemy()
 {
-	unsigned int i = rand() % enemiesUnlocked;
+	unsigned int i = (rand()+1) % enemiesUnlocked;
 	// TODO: Magic math to determine start point
 //	float x = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 190);
 //	float y = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 720);
 
-	Point spawn = wave->getMiddle() + wavePoints[rand() * (wavePoints.size() - 1)];
+	Point spawn = wave->getMiddle() + wavePoints[ (float(rand())/float(RAND_MAX)) * (wavePoints.size() - 1)];
 	addEnemy(new BaseEnemy(spawn, renderController.get(info[0].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
 }
 

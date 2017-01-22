@@ -344,6 +344,7 @@ void RenderControl::initShaders()
 		"uniform vec2 worldPos;\n"
 		"void main() {\n"
 		"	fragTexCoord = texCoord;\n"
+	//	"	vec3 rotated = model*vec3(vertPos, 1.0);"
 		"	gl_Position = vec4(\n"
 		"		((vertPos.x*size.x)+worldPos.x-640.0)/640.0,\n"
 		"		-((vertPos.y*size.y)+worldPos.y-360.0)/360.0,\n"
