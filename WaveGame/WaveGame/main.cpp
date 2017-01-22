@@ -12,6 +12,7 @@
 #include "ButtonObject.h"
 #include "StraightTurret.h"
 #include <assert.h>
+#include "NumberObject.h"
 #include "WaveObject.h"
 #include "MusicWrapper.h"
 #include <time.h>
@@ -163,9 +164,13 @@ int main() {
 	//Wave object
 	WaveObject wave(10, 30);
 
+	NumberObject no(Point(100.0, 100.0), 4, 642);
+	cout << no.getDigitMax() << "; can hold up to " << no.getMaxValue() << endl;
+
+
 	BaseEnemy* enemy = new BaseEnemy(wave.getMiddle(), renderController.get("CuteEnemyCoral-0"), 32.0f, 32.0f, 5, 5.0, 1);
 
-	cout << "Created!" << endl;
+	//cout << "Created!" << endl;
 
 	while (!glfwWindowShouldClose(win)) {
 		/*
@@ -178,14 +183,13 @@ int main() {
 		}
 	*/
 		static clock_t lastThink = clock();
-		cout << clock() - lastThink << endl;
+		//cout << clock() - lastThink << endl;
 		if (clock() - lastThink > 32)
 		{
-			cout << "Thinking!" << endl;
+		//	cout << "Thinking!" << endl;
 			enemy->think();
-			cout << "New position! " << enemy->getMiddle().x << " " << enemy->getMiddle().y << endl;
+		//	cout << "New position! " << enemy->getMiddle().x << " " << enemy->getMiddle().y << endl;
 			lastThink = clock();
-			Sleep(2000);
 		}
 		
 		//Render code here

@@ -132,16 +132,16 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 	"}]}";*/
 
 	//cout << json_text << endl;
-	cout << "About to print" << endl;
-	cout << json_text << endl;
-	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	//cout << "About to print" << endl;
+	//cout << json_text << endl;
+	//std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	Document doc;
 	doc.Parse(json_text);
 
-	cout << "Printed!" << endl;
+	//cout << "Printed!" << endl;
 
 	delete[] json_text;
-	cout << dataFile << " " << textureFile << endl;
+	//cout << dataFile << " " << textureFile << endl;
 	//cout << "checking if root is object...";
 	assert(doc.IsArray());
 	//cout << "is an object" << endl;
@@ -305,7 +305,7 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 	glBindBuffer(GL_ARRAY_BUFFER, newSprite);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 24 * data.size(), arrayBuf, GL_STATIC_DRAW);
 
-	//cout << "Gonna make the sprites array thing now " << endl;
+	cout << "Gonna make the sprites array thing now " << endl;
 	//Setup the map now
 	for (int i = 0; i < data.size(); i++) {
 		sprites[data[i].name] = Sprite(i * 6, newSprite, tex);
@@ -313,7 +313,7 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 			<< " offset of " << (i*6) << endl;
 	}
 
-	delete arrayBuf;
+	delete [] arrayBuf;
 }
 
 void RenderControl::initRender()

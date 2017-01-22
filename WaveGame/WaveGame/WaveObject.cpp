@@ -25,7 +25,7 @@ void WaveObject::think()
 	if (sinWave > (3.141 * 2)) {
 		sinWave = 0.0f;
 	}
-	cout << sinWave << endl;
+//	cout << sinWave << endl;
 	middle = Point(startX + (float(maxX-startX)*sin(sinWave)), middle.y);
 	
 }

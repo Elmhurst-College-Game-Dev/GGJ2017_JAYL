@@ -18,7 +18,7 @@ public:
 	float getWidth() const;
 	float getHeight() const;
 	virtual Sprite &getSprite();
-	void draw();
+	virtual void draw();
 protected:
 	Point middle;
 	Sprite s;

@@ -39,6 +39,7 @@ void BaseEnemy::move()
 	float x = (middle.x / distance) * speed;
 	float y = (middle.y / distance) * speed;
 
+	Point destination(x,y);
 	//Comparing how much you will move with how far away it is
 	if (middle.getDistance(destination) > distance)
 	{
