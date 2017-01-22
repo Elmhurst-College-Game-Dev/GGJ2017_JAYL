@@ -20,14 +20,6 @@ Sprite::Sprite(const Sprite & spr)
 	textureName = spr.textureName;
 }
 
-Sprite::Sprite()
-{
-//	std::cout << "Sprite detaul constructor called" << std::endl;
-	bufferName = 0;
-	bufferOffset = 0;
-	textureName = 0;
-}
-
 void Sprite::setTextureName(GLuint texName)
 {
 	this->textureName = texName;
@@ -43,6 +35,14 @@ void Sprite::setBufferOffset(GLint bufOffset)
 	this->bufferOffset = bufOffset;
 }
 
+Sprite & Sprite::operator=(const Sprite & rhs)
+{
+	bufferOffset = rhs.bufferOffset;
+	bufferName = rhs.bufferName;
+	textureName = rhs.textureName;
+	return *this;
+}
+
 void Sprite::draw(float angle, float width, float height, float worldPosX, float worldPosY)
 {
 	glUseProgram(renderController.getProgram());
@@ -51,7 +51,9 @@ void Sprite::draw(float angle, float width, float height, float worldPosX, float
 		static_cast<float>(sin(angle)), static_cast<float>(cos(angle)), 0.0f,
 		0.0f, 0.0f, 1.0f
 	};
-	
+	if (bufferName == 0 || textureName == 0) {
+		cout << "THIS OBJECT CANNOT BE DRAWN: INVALID" << endl;
+	}
 	glUniformMatrix3fv(renderController.getModelLoc(), 1, GL_TRUE, modelView);
 	glUniform2f(renderController.getSizeLoc(), width, height);
 	glUniform2f(renderController.getWorldPosLoc(), worldPosX, worldPosY);

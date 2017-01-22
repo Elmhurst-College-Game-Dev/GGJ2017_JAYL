@@ -18,7 +18,7 @@ public:
 	virtual Sprite &getSprite() override;
 	virtual void think() {}
 	ButtonType getType() { return type; }
-
+	void setSprite(Sprite &s) { this->s = s; }
 private:
 	ButtonType type;
 	Sprite hovered;

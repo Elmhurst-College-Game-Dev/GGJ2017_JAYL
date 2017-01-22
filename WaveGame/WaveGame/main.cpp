@@ -154,6 +154,7 @@ int main() {
 		cout << "Could not init GLFW" << endl;
 		return 1;
 	}
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 	GLFWwindow *win = glfwCreateWindow(1280, 720, "Wave Game", nullptr, nullptr);
 	glfwMakeContextCurrent(win);
 	GLenum status = glewInit();
@@ -181,9 +182,13 @@ int main() {
 	//Wave object
 	WaveObject wave(10, 30);
 
-	NumberObject no(Point(100.0, 100.0), 4, 642);
-	cout << no.getDigitMax() << "; can hold up to " << no.getMaxValue() << endl;
-
+	//HEADS UP DISPLAY OBJECTS
+	BaseObject hudBackground(Point(640.0f, 60.0f), renderController.get("HUD-0"), 1280, 120);
+	BaseObject currencyBackground(Point(802.0f, 60.0f), renderController.get("HUD-Currency"), 308.0f, 100.0f);
+	BaseObject enemyWaveBackground(Point(962.0f+154.0f, 60.0f), renderController.get("HUD-EnemyWave"), 308.0f, 100.0f);
+	BaseObject enemyWaveIcon(Point(962.0f + 113.0f, 60.0f), renderController.get("CuteEnemyCoral-0"), 32.0f, 32.0f);
+	NumberObject currencyNumber(Point(782.0f, 60.0f), 5, 100);
+	NumberObject enemyWaveNumber(Point(177.0f + 962.0f, 60.0f), 2, 0);
 
 	BaseEnemy* enemy = new BaseEnemy(wave.getMiddle(), renderController.get("CuteEnemyCoral-0"), 32.0f, 32.0f, 5, 5.0, 1);
 
@@ -208,10 +213,17 @@ int main() {
 		//	cout << "New position! " << enemy->getMiddle().x << " " << enemy->getMiddle().y << endl;
 			lastThink = clock();
 		}
+		wave.think();
 		
+		//Update HUD values
+		currencyNumber.setValue(world->getMoney());
+		enemyWaveNumber.setValue(world->getEnemiesLeft());
+
 		//Render code here
 		glClear(GL_COLOR_BUFFER_BIT);
-		wave.think();
+
+		background_map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 420.0f);
+		wave.draw();
 
 		//Draw all objects
 		for (list<BaseEnemy*>::const_iterator itr = world->getEnemies()->cbegin(); itr != world->getEnemies()->cend(); itr++) {
@@ -228,10 +240,14 @@ int main() {
 			ent->draw();
 		}
 
-		background_map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 420.0f);
-		wave.draw();
-		enemy->draw();
-
+		//DRAW THE HEADS UP DISPLAY
+		hudBackground.draw();
+		currencyBackground.draw();
+		enemyWaveBackground.draw();
+		enemyWaveIcon.draw();
+		currencyNumber.draw();
+		enemyWaveNumber.draw();
+		
 		glfwSwapBuffers(win);
 		glfwPollEvents();
 	}

@@ -7,7 +7,8 @@
 class NumberObject : public BaseObject {
 public:
 	NumberObject(Point middle, int digitMax, int initialValue);
-	NumberObject();
+	NumberObject(const NumberObject &rhs);
+	NumberObject() = delete;
 	void setDigitMax(int digitMax);
 	void setValue(int value);
 	void addValue(int value);
@@ -20,7 +21,8 @@ protected:
 	class GlyphObject : public BaseObject {
 	public:
 		GlyphObject(Point middle, int initialNum);
-		GlyphObject();
+		GlyphObject(const GlyphObject &glyph);
+		GlyphObject() = delete;
 		void setNum(int num); //0-9
 		int getNum();
 		void think() override;
@@ -28,8 +30,8 @@ protected:
 		int num;
 	};
 
-	static vector<Sprite> digitToSprite;
-	static Sprite getSpriteFor(int numeral);
+	static Sprite &getSpriteFor(int numeral);
+
 private:
 	int digitMax;
 	int value;
