@@ -15,6 +15,7 @@
 #include "rapidjson/filereadstream.h"
 #include <cstdio>
 #include <fstream>
+#include <map>
 
 using namespace rapidjson;
 
@@ -33,16 +34,24 @@ void RenderControl::draw(BaseObject * obj)
 	float angleCos = cos(obj->getAngle());
 	float angleSin = sin(obj->getAngle());
 	GLfloat modelView[9]{
-		obj->getWidth() / 2.0f*angleCos, -obj->getHeight() / 2.0f*angleSin, obj->getMiddle().x - 640.0f,
-		obj->getWidth() / 2.0f*angleSin, obj->getHeight() / 2.0f*angleCos, -(obj->getMiddle().y - 360.0f),
+		obj->getWidth()*angleCos, -obj->getHeight()*angleSin, obj->getMiddle().x - 640.0f,
+		obj->getWidth()*angleSin, obj->getHeight()*angleCos, -(obj->getMiddle().y - 360.0f),
 		0.0f, 0.0f, 1.0f
 	};
+	/*cout << modelView[0] << ", " << modelView[1] << ", " << modelView[2] << ", " << endl
+	<< modelView[3] << ", " << modelView[4] << ", " << modelView[5] << ", " << endl
+	<< modelView[6] << ", " << modelView[7] << ", " << modelView[8] << endl <<
+	(int)obj->getSprite().getOffset() << endl;*/
 	glUniformMatrix3fv(modelLoc, 1, GL_TRUE, modelView);
 	glVertexAttribPointer(vertPosLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
 	glVertexAttribPointer(texCoordLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2));
 	glEnableVertexAttribArray(vertPosLoc);
 	glEnableVertexAttribArray(texCoordLoc);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, obj->getSprite().getOffset());
+	glActiveTexture(GL_TEXTURE0);
+	glUniform1i(samplerLoc, 0);
+	glBindTexture(GL_TEXTURE_2D, mySuperImage);
+
+	glDrawArrays(GL_TRIANGLES, obj->getSprite().getOffset(), 6);
 }
 
 void RenderControl::draw(BaseEnemy * obj)
@@ -55,12 +64,20 @@ void RenderControl::draw(BaseEnemy * obj)
 		obj->getWidth()*angleSin, obj->getHeight()*angleCos, -(obj->getMiddle().y - 360.0f),
 		0.0f, 0.0f, 1.0f
 	};
+	/*cout << modelView[0] << ", " << modelView[1] << ", " << modelView[2] << ", " << endl
+		<< modelView[3] << ", " << modelView[4] << ", " << modelView[5] << ", " << endl
+		<< modelView[6] << ", " << modelView[7] << ", " << modelView[8] << endl <<
+		(int)obj->getSprite().getOffset() << endl;*/
 	glUniformMatrix3fv(modelLoc, 1, GL_TRUE, modelView);
 	glVertexAttribPointer(vertPosLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
 	glVertexAttribPointer(texCoordLoc, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2));
 	glEnableVertexAttribArray(vertPosLoc);
 	glEnableVertexAttribArray(texCoordLoc);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, obj->getSprite().getOffset());
+	glActiveTexture(GL_TEXTURE0);
+	glUniform1i(samplerLoc, 0);
+	glBindTexture(GL_TEXTURE_2D, mySuperImage);
+
+	glDrawArrays(GL_TRIANGLES, obj->getSprite().getOffset(), 6);
 }
 
 void RenderControl::initRender()
@@ -85,6 +102,7 @@ void RenderControl::initRender()
 		"in vec2 fragTexCoord;\n"
 		"void main() {\n"
 		"	gl_FragColor = texture(sam, fragTexCoord);\n"
+		"	//gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
 		"}\n"
 		;
 	std::cout << "Loading vertex Shader" << std::endl;
@@ -166,9 +184,9 @@ void RenderControl::initRender()
 		textureCoords.push_back(imageDim["h"].GetInt());
 	}
 	
-	/*cout << "READ IN THE JSON FILE!" << endl;
+	/*cout << "READ IN THE JSON FILE AND GOT THE FOLLOWING:" << endl;
 	for (int i = 0; i < textureNames.size(); i++) {
-		cout << textureNames[i] << endl;
+		cout << "[" <<textureNames[i] << "]"  << endl;
 		cout << textureCoords[i * 4 + 0] << ", "
 			<< textureCoords[i * 4 + 1] << ", "
 			<< textureCoords[i * 4 + 2] << ", "
@@ -176,78 +194,79 @@ void RenderControl::initRender()
 	}*/
 
 	//Now create the array buffer for the textures
-	GLfloat *arrayBuf = new GLfloat[textureNames.size()*16];
-	GLuint *indexArrayBuf = new GLuint[textureNames.size() *6];
+	GLfloat *arrayBuf = new GLfloat[textureNames.size()*24];
  
 	for (int i = 0; i < textureNames.size(); i++) {
 		//top left to top right to bottom right to buttom left
-		arrayBuf[(i* 16) + 0] = -1.0f;
-		arrayBuf[(i* 16) + 1] = -1.0f;
-		arrayBuf[(i* 16) + 2] = float(textureCoords[ (i*4) +0 ])/float(textureWidth);
-		arrayBuf[(i* 16) + 3] = float(textureCoords[(i * 4) + 1]) / float(textureHeight);
+		arrayBuf[(i* 24) + 0] = -1.0f;
+		arrayBuf[(i* 24) + 1] = -1.0f;
+		arrayBuf[(i* 24) + 2] = float(textureCoords[ (i*4) + 0 ])/float(textureWidth);
+		arrayBuf[(i* 24) + 3] = float(textureCoords[(i * 4) + 1]) / float(textureHeight);
 
-		arrayBuf[(i* 16) + 4] = 1.0f;
-		arrayBuf[(i* 16) + 5] = -1.0f;
-		arrayBuf[(i* 16) + 6] = float(textureCoords[(i * 4) + 0]+ textureCoords[(i * 4) + 2]) / float(textureWidth);
-		arrayBuf[(i* 16) + 7] = float(textureCoords[(i * 4) + 1]) / float(textureHeight);
+		arrayBuf[(i* 24) + 4] = 1.0f;
+		arrayBuf[(i* 24) + 5] = -1.0f;
+		arrayBuf[(i* 24) + 6] = float(textureCoords[(i * 4) + 0]+ textureCoords[(i * 4) + 2]) / float(textureWidth);
+		arrayBuf[(i* 24) + 7] = float(textureCoords[(i * 4) + 1]) / float(textureHeight);
 
-		arrayBuf[(i* 16) + 8] = 1.0f;
-		arrayBuf[(i* 16) + 9] = 1.0f;
-		arrayBuf[(i* 16) + 10] = float(textureCoords[(i * 4) + 0] + textureCoords[(i * 4) + 2]) / float(textureWidth);
-		arrayBuf[(i* 16) + 11] = float(textureCoords[(i * 4) + 1] + textureCoords[(i * 4) + 3]) / float(textureHeight);
+		arrayBuf[(i* 24) + 8] = 1.0f;
+		arrayBuf[(i* 24) + 9] = 1.0f;
+		arrayBuf[(i* 24) + 10] = float(textureCoords[(i * 4) + 0] + textureCoords[(i * 4) + 2]) / float(textureWidth);
+		arrayBuf[(i* 24) + 11] = float(textureCoords[(i * 4) + 1] + textureCoords[(i * 4) + 3]) / float(textureHeight);
 
-		arrayBuf[(i* 16) + 12] = -1.0f;
-		arrayBuf[(i* 16) + 13] = 1.0f;
-		arrayBuf[(i* 16) + 14] = float(textureCoords[(i * 4) + 0]) / float(textureWidth);
-		arrayBuf[(i* 16) + 15] = float(textureCoords[(i * 4) + 1] + textureCoords[(i * 4) + 3]) / float(textureHeight);
+		arrayBuf[(i * 24) + 12] = -1.0f;
+		arrayBuf[(i * 24) + 13] = -1.0f;
+		arrayBuf[(i * 24) + 14] = float(textureCoords[(i * 4) + 0]) / float(textureWidth);
+		arrayBuf[(i * 24) + 15] = float(textureCoords[(i * 4) + 1]) / float(textureHeight);
+
+		arrayBuf[(i * 24) + 16] = -1.0f;
+		arrayBuf[(i * 24) + 17] = 1.0f;
+		arrayBuf[(i * 24) + 18] = float(textureCoords[(i * 4) + 0]) / float(textureWidth);
+		arrayBuf[(i * 24) + 19] = float(textureCoords[(i * 4) + 1] + textureCoords[(i * 4) + 3]) / float(textureHeight);
+
+		arrayBuf[(i * 24) + 20] = 1.0f;
+		arrayBuf[(i * 24) + 21] = 1.0f;
+		arrayBuf[(i * 24) + 22] = float(textureCoords[(i * 4) + 0] + textureCoords[(i * 4) + 2]) / float(textureWidth);
+		arrayBuf[(i * 24) + 23] = float(textureCoords[(i * 4) + 1] + textureCoords[(i * 4) + 3]) / float(textureHeight);
 	}
 
-	for (int i = 0; i < textureNames.size(); i++) {
-		indexArrayBuf[(i * 6) + 0] = (i * 4) + 0;
-		indexArrayBuf[(i * 6) + 1] = (i * 4) + 1;
-		indexArrayBuf[(i * 6) + 2] = (i * 4) + 2;
-		indexArrayBuf[(i * 6) + 3] = (i * 4) + 0;
-		indexArrayBuf[(i * 6) + 4] = (i * 4) + 3;
-		indexArrayBuf[(i * 6) + 5] = (i * 4) + 2;
-	}
-	cout << "Gonna make the sprites array thing now " << endl;
+	//cout << "Gonna make the sprites array thing now " << endl;
 	//Setup the map now
 	for (int i = 0; i < textureNames.size(); i++) {
-		sprites[textureNames[i]] = Sprite(i * 6 * sizeof(GLuint)); //because it's all ordered
+		sprites[textureNames[i]] = Sprite(i * 6); //because it's all ordered
 	}
-
-	GLuint mySuperImage = loadTexture("textures_info.png");
-	glBindTexture(GL_TEXTURE_2D, mySuperImage);
 
 	glActiveTexture(GL_TEXTURE0);
 	glUniform1i(samplerLoc, 0);
+
+	mySuperImage = loadTexture("textures_info_opaque.png");
 
 	//That is done, finally
 	//Make the buffers now
 	glGenBuffers(1, &arrayBufferName);
 	glBindBuffer(GL_ARRAY_BUFFER, arrayBufferName);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 16 * textureNames.size(), arrayBuf, GL_STATIC_DRAW);
-
-	glGenBuffers(1, &indexArrayBufferName);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferName);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * 6 * textureNames.size(), indexArrayBuf, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 24 * textureNames.size(), arrayBuf, GL_STATIC_DRAW);
 
 	glUseProgram(program);
 	//Initialize the view matrix
 	glBindBuffer(GL_ARRAY_BUFFER, arrayBufferName);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexArrayBufferName);
 
 	delete arrayBuf;
-	delete indexArrayBuf;
 	
 	//bg color
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
+	glClearColor(0.1f, 0.0f, 0.25f, 1.0f);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_CONSTANT_COLOR);
 }
 
 Sprite & RenderControl::get(string name)
 {
-	return sprites[name];
+	if (sprites.find(name) == sprites.end()) {
+		cout << "Could not find sprite " << name << endl;
+		assert(false);
+		return Sprite();
+	} else {
+		return sprites[name];
+	}
 }
 
 

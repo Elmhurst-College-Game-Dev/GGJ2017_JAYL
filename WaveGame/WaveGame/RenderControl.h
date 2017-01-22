@@ -21,6 +21,6 @@ private:
 	GLuint samplerLoc;
 	map<string, Sprite> sprites;
 	GLuint arrayBufferName;
-	GLuint indexArrayBufferName;
+	GLuint mySuperImage;
 };
 

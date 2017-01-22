@@ -108,12 +108,12 @@ int main() {
 	renderController.initRender();
 
 	glfwSwapInterval(1);
-
-	BaseEnemy enemy(Point(200, 200), renderController.get("Cute-Enemy-Coral-0.png"), 100, 100, 5, 5, 4);
+	Sprite spr = renderController.get("boom_27.png");
+	BaseEnemy enemy(Point(200, 200), spr, 100, 100, 5, 5, 4);
 
 	glfwSetMouseButtonCallback(win, OnMouseButton);
 	Point p(100.0f, 100.0f);
-	StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"test"});
+	StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"CuteEnemyCoral-0.png"});
 	world->addTower(turret);
 
 	while (!glfwWindowShouldClose(win)) {
@@ -132,6 +132,8 @@ int main() {
 		}
 
 		renderController.draw(&enemy);
+
+		glFlush();
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

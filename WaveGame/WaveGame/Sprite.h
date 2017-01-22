@@ -11,18 +11,18 @@ using namespace std;
 class Sprite
 {
 public:
-	Sprite(vector<GLuint> track);
-	Sprite(GLuint img);
+	Sprite(vector<GLint> track);
+	explicit Sprite(GLint img);
 	Sprite() = default;
 	Sprite(const Sprite &rhs);
 	~Sprite();
-	void* getOffset();
+	GLint getOffset();
 	int getFrameSpeed() const { return frameSpeed;  }
 	void setFrameSpeed(int frameSpeed) { this->frameSpeed = frameSpeed;  }
 	void updateSpriteAnimation();
 private:
 	int indexOffset; //current
-	vector<GLuint> animationTrack;
+	vector<GLint> animationTrack;
 	int frameSpeed; //The number of updates before the track changes
 	int timer;
 };
