@@ -27,8 +27,8 @@ World* world;
 RenderControl renderController;
 MusicWrapper music;
 
-const list<string> SS_SPRITES{ "" };
-const list<string> AREA_SPRITES{ "" };
+const list<string> SS_SPRITES{ "top_radio" };
+const list<string> AREA_SPRITES{ "top_radio" };
 
 list<BaseObject*> drawThese;
 
@@ -41,7 +41,7 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 		Point clickSpot(x, y);
 
 		cout << "click at " << x << " " << y << endl;
-		drawThese.push_back(new BaseObject(clickSpot, renderController.get("top_radio"), 32.0, 32.0));
+	//	drawThese.push_back(new BaseObject(clickSpot, renderController.get("top_radio"), 32.0, 32.0));
 
 		if (world->canPlaceTower(clickSpot))
 		{
@@ -67,8 +67,8 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 			{
 				Point entMiddle = ent->getMiddle();
 
-				Point topLeft = Point(entMiddle.x - (ent->getWidth() / 2.0), entMiddle.y + (ent->getHeight() / 2.0));
-				Point bottomRight = Point((entMiddle.x + (ent->getWidth() / 2.0)), (entMiddle.y - (ent->getHeight() / 2.0)));
+				Point topLeft = Point(entMiddle.x - (ent->getWidth() / 2.0), entMiddle.y - (ent->getHeight() / 2.0));
+				Point bottomRight = Point((entMiddle.x + (ent->getWidth() / 2.0)), (entMiddle.y + (ent->getHeight() / 2.0)));
 
 				if (clickSpot.inBox(topLeft, bottomRight))
 				{
@@ -82,29 +82,28 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 				{
 					ButtonObject* ent = *button;
 					Point middle = ent->getMiddle();
-					Point topLeft = Point(middle.x - (ent->getWidth() / 2.0), middle.y + (ent->getHeight() / 2.0));
-					Point bottomRight = Point(middle.x + (ent->getWidth() / 2.0), middle.y - (ent->getHeight() / 2.0));
+					Point topLeft = Point(middle.x - (ent->getWidth() / 2.0), middle.y - (ent->getHeight() / 2.0));
+					Point bottomRight = Point(middle.x + (ent->getWidth() / 2.0), middle.y + (ent->getHeight() / 2.0));
 
 					if (middle.inBox(topLeft, bottomRight)) // clicked inside button
 					{
-						if (action == GLFW_RELEASE) // releasing m1 inside button
+						cout << "CLICKED BUY" << endl;
+						if (world->selected != nullptr)
 						{
-							if (world->selected != nullptr)
+							if (ent->getType() == BT_Upgrade && world->canUpgradeTurret(world->selected)) // Upgrade
 							{
-								if (ent->getType() == BT_Upgrade && world->canUpgradeTurret(world->selected)) // Upgrade
-								{
-									world->upgradeTurret(world->selected);
-									break;
-								}
+								world->upgradeTurret(world->selected);
+								break;
 							}
-							else if (ent->getType() == BT_Area)
-							{
-								world->selected = new AreaTurret(clickSpot, 32.0f, 32.0f, 20, 15, 10.0, 50, AREA_SPRITES);
-							}
-							else if (ent->getType() == BT_SS)
-							{
-								world->selected = new StraightTurret(clickSpot, 32.0, 32.0, 20, 15, 10.0, 50, SS_SPRITES);
-							}
+						}
+						else if (ent->getType() == BT_Area)
+						{
+							world->selected = new AreaTurret(clickSpot, 32.0f, 32.0f, 20, 15, 10.0, 50, AREA_SPRITES);
+						}
+						else if (ent->getType() == BT_SS)
+						{
+								
+							world->selected = new StraightTurret(clickSpot, 32.0, 32.0, 20, 15, 10.0, 50, SS_SPRITES);
 						}
 					}
 				}

@@ -97,7 +97,7 @@ private:
 	unsigned long long framesBetweenSpawns;
 	unsigned int enemiesUnlocked;
 
-	unsigned int money;
+	unsigned int money = 5000000;
 
 	void spawnEnemy();
 	vector<Point> wavePoints;
