@@ -43,7 +43,6 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 
 			if (clickSpot.inBox(topLeft, bottomRight))
 			{
-				assert(false);
 				clicked = ent;
 			}
 		}
