@@ -34,12 +34,18 @@ Point::Point()
 
 float Point::getDistance(const Point& p) const
 {
-	return sqrt(pow(p.x - x, 2) - pow(p.y - y, 2));
+	return sqrt( (p.x - x)*(p.x-x) + (p.y-x)*(p.y-y));
 }
 
 bool Point::operator==(const Point & rhs)
 {
 	return x==rhs.x && y==rhs.y;
+}
+
+Point & Point::operator=(const Point & rhs)
+{
+	this->x = rhs.x;
+	this->y = rhs.y;
 }
 
 Point Point::operator+(const Point &rhs)

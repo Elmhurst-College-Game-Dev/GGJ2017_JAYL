@@ -29,6 +29,13 @@ World::World(vector<string> sprites)
 {
 	// TODO: Define path.
 	enemySprites = sprites;
+	
+	info.push_back(EnemyInfo(100, 5, sprites[0]));
+	info.push_back(EnemyInfo(100, 5, sprites[1]));
+	info.push_back(EnemyInfo(100, 5, sprites[2]));
+	info.push_back(EnemyInfo(100, 5, sprites[3]));
+	info.push_back(EnemyInfo(100, 5, sprites[4]));
+
 
 	path.emplace_back(200.0, 415.0);
 	path.emplace_back(240.0, 420.0);
@@ -137,12 +144,12 @@ void World::think()
 
 void World::spawnEnemy()
 {
-	unsigned int i = (rand()+1) % enemiesUnlocked;
+	unsigned int i = (float(rand()) / float(RAND_MAX)) * (enemiesUnlocked-1);
 	// TODO: Magic math to determine start point
 //	float x = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 190);
 //	float y = static_cast<float>(rand()) / static_cast<float>(RAND_MAX / 720);
 
-	Point spawn = wave->getMiddle() + wavePoints[ (float(rand())/float(RAND_MAX)) * (wavePoints.size() - 1)];
+	Point spawn(-10.0f + (float(rand()) / float(RAND_MAX)*20.0f), (float(rand()) / float(RAND_MAX)) * 580.0f + 140.0f);
 	addEnemy(new BaseEnemy(spawn, renderController.get(info[0].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
 }
 

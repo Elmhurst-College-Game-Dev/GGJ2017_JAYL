@@ -35,7 +35,7 @@ void BaseEnemy::move()
 {
 	const Point goalPoint = *nextPoint;
 
-	float distance = middle.getDistance(goalPoint);
+	float distance = this->middle.getDistance(goalPoint);
 	float x = (middle.x / distance) * speed;
 	float y = (middle.y / distance) * speed;
 
@@ -44,9 +44,11 @@ void BaseEnemy::move()
 	if (middle.getDistance(destination) > distance)
 	{
 		destination = goalPoint;
+		nextPoint++;
 	}
 
-	middle = destination;
+	this->middle = destination;
+
 }
 
 int BaseEnemy::getHealth()

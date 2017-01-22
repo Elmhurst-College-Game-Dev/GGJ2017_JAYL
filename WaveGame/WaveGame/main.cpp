@@ -148,7 +148,7 @@ int main() {
 	music.add("ericsSong.mp3", "test");
 	music.play("test");
 
-	vector<string> sprites{ "Cute-Enemy-Coral-0.png", "sprite2", "sprite3", "sprite4", "sprite5" };
+	vector<string> sprites{ "CuteEnemyCoral-0", "CuteEnemyBall-0", "CuteEnemyStone-0", "CuteEnemySeaw-0", "CuteEnemyFluff-0" };
 	world = new World(sprites);
 	
 	if (!glfwInit()) {
@@ -202,12 +202,12 @@ int main() {
 		
 		static clock_t lastThink = clock();
 		//cout << clock() - lastThink << endl;
-	/*	if (clock() - lastThink > 32)
+		if (clock() - lastThink > 32)
 		{
-			enemy->think();
+			//enemy->think();
 			world->think();
 			lastThink = clock();
-		}*/
+		}
 		wave.think();
 		
 		//Update HUD values
