@@ -19,9 +19,107 @@ World::World(vector<string> sprites)
 	// TODO: Define path.
 	enemySprites = sprites;
 
-	path.push_back(Point(198.0f, 420.0f));
-	path.push_back(Point(242.0f, 420.0f));
-	path.push_back(Point(242.0f, 620.0f));
+	path.emplace_back(200.0, 415.0);
+	path.emplace_back(240.0, 420.0);
+	path.emplace_back(245.0, 620);
+	path.emplace_back(280.0, 665.0);
+	path.emplace_back(389.0, 647.0);
+	path.emplace_back(400.0, 180.0);
+	path.emplace_back(590.0, 177.0);
+	path.emplace_back(600.0, 190.0);
+	path.emplace_back(600.0, 501.0);
+	path.emplace_back(560.0, 520.0);
+	path.emplace_back(825.0, 651.0);
+	path.emplace_back(825.0, 223.0);
+	path.emplace_back(971.0, 650.0);
+	path.emplace_back(1125.0, 650.0);
+	path.emplace_back(1125.0, 407.0);
+	path.emplace_back(1247.0, 407.0);
+
+
+	possiblePlacements.emplace_back(220.0, 315.0);
+	possiblePlacements.emplace_back(255.0, 315.0);
+	possiblePlacements.emplace_back(305.0, 370.0);
+	possiblePlacements.emplace_back(337.0, 370.0);
+	possiblePlacements.emplace_back(305.0, 410.0);
+	possiblePlacements.emplace_back(337.0, 410.0);
+	possiblePlacements.emplace_back(305.0, 450.0);
+	possiblePlacements.emplace_back(337.0, 450.0);
+	possiblePlacements.emplace_back(305.0, 490.0);
+	possiblePlacements.emplace_back(337.0, 490.0);
+	possiblePlacements.emplace_back(305.0, 530.0);
+	possiblePlacements.emplace_back(337.0, 530.0);
+	possiblePlacements.emplace_back(305.0, 570.0);
+	possiblePlacements.emplace_back(337.0, 570.0);
+	possiblePlacements.emplace_back(337.0, 330.0);
+	possiblePlacements.emplace_back(305.0, 330.0);
+	possiblePlacements.emplace_back(337.0, 290.0);
+	possiblePlacements.emplace_back(337.0, 250.0);
+	possiblePlacements.emplace_back(337.0, 210.0);
+	possiblePlacements.emplace_back(337.0, 170.0);
+
+	possiblePlacements.emplace_back(453.0, 650.0);
+	possiblePlacements.emplace_back(453.0, 610.0);
+	possiblePlacements.emplace_back(453.0, 570.0);
+	possiblePlacements.emplace_back(453.0, 530.0);
+	possiblePlacements.emplace_back(453.0, 490.0);
+	possiblePlacements.emplace_back(453.0, 450.0);
+	possiblePlacements.emplace_back(453.0, 410.0);
+	possiblePlacements.emplace_back(453.0, 370.0);
+	possiblePlacements.emplace_back(453.0, 330.0);
+	possiblePlacements.emplace_back(453.0, 290.0);
+	possiblePlacements.emplace_back(453.0, 250.0);
+
+	possiblePlacements.emplace_back(487.0, 650.0);
+	possiblePlacements.emplace_back(487.0, 610.0);
+	possiblePlacements.emplace_back(487.0, 570.0);
+	possiblePlacements.emplace_back(487.0, 530.0);
+	possiblePlacements.emplace_back(487.0, 490.0);
+	
+	possiblePlacements.emplace_back(520.0, 440.0);
+	possiblePlacements.emplace_back(550.0, 440.0);
+	possiblePlacements.emplace_back(550.0, 400.0);
+	possiblePlacements.emplace_back(550.0, 360.0);
+	possiblePlacements.emplace_back(550.0, 320.0);
+	possiblePlacements.emplace_back(550.0, 280.0);
+	possiblePlacements.emplace_back(550.0, 240.0);
+	possiblePlacements.emplace_back(515.0, 240.0);
+	possiblePlacements.emplace_back(480.0, 240.0);
+
+	possiblePlacements.emplace_back(670.0, 150.0);
+	possiblePlacements.emplace_back(670.0, 190.0);
+	possiblePlacements.emplace_back(670.0, 230.0);
+	possiblePlacements.emplace_back(670.0, 270.0);
+	possiblePlacements.emplace_back(670.0, 310.0);
+	possiblePlacements.emplace_back(670.0, 350.0);
+	possiblePlacements.emplace_back(670.0, 390.0);
+	possiblePlacements.emplace_back(670.0, 430.0);
+	possiblePlacements.emplace_back(670.0, 470.0);
+	possiblePlacements.emplace_back(670.0, 510.0);
+	possiblePlacements.emplace_back(670.0, 550.0);
+
+	possiblePlacements.emplace_back(615.0, 570);
+	possiblePlacements.emplace_back(645.0, 570);
+
+	possiblePlacements.emplace_back(615.0, 605);
+	possiblePlacements.emplace_back(655.0, 605);
+	possiblePlacements.emplace_back(690.0, 605);
+	possiblePlacements.emplace_back(730.0, 605);
+	possiblePlacements.emplace_back(770.0, 605);
+
+	possiblePlacements.emplace_back(770.0, 565);
+	possiblePlacements.emplace_back(770.0, 525);
+	possiblePlacements.emplace_back(770.0, 485);
+	possiblePlacements.emplace_back(770.0, 445);
+	possiblePlacements.emplace_back(770.0, 405);
+	possiblePlacements.emplace_back(770.0, 365);
+	possiblePlacements.emplace_back(770.0, 325);
+	possiblePlacements.emplace_back(770.0, 285);
+	possiblePlacements.emplace_back(770.0, 245);
+	possiblePlacements.emplace_back(770.0, 205);
+	possiblePlacements.emplace_back(770.0, 165);
+
+	possiblePlacements.emplace_back(810.0, 165);
 
 	cout << (*path.begin()).x << endl;
 

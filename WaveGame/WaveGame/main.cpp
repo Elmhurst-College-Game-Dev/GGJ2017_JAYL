@@ -30,6 +30,8 @@ MusicWrapper music;
 const list<string> SS_SPRITES{ "" };
 const list<string> AREA_SPRITES{ "" };
 
+list<BaseObject*> drawThese;
+
 void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 {
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
@@ -39,6 +41,7 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 		Point clickSpot(x, y);
 
 		cout << "click at " << x << " " << y << endl;
+		drawThese.push_back(new BaseObject(clickSpot, renderController.get("top_radio"), 32.0, 32.0));
 
 		BaseTurret * clicked = nullptr;
 		
@@ -185,7 +188,7 @@ int main() {
 	cout << no.getDigitMax() << "; can hold up to " << no.getMaxValue() << endl;
 
 
-	BaseEnemy* enemy = new BaseEnemy(wave.getMiddle(), renderController.get("CuteEnemyCoral-0"), 32.0f, 32.0f, 5, 5.0, 1);
+	BaseEnemy* enemy = new BaseEnemy(wave.getMiddle(), renderController.get("top_radio"), 32.0f, 32.0f, 5, 5.0, 1);
 
 	//cout << "Created!" << endl;
 
@@ -228,10 +231,23 @@ int main() {
 			ent->draw();
 		}
 
+		
+
 		background_map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 420.0f);
-		wave.draw();
 		enemy->draw();
 
+		for (const auto& ent : drawThese)
+		{
+			ent->draw();
+		}
+
+		for (auto spot : *world->getPossiblePlacements())
+		{
+			enemy->setMiddle(spot);
+			enemy->draw();
+		}
+
+		wave.draw();
 		glfwSwapBuffers(win);
 		glfwPollEvents();
 	}
