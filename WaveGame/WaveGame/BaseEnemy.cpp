@@ -46,6 +46,7 @@ void BaseEnemy::move()
 	else
 	{
 		middle = goalPoint;
+		currentPoint++;
 	}
 
 }

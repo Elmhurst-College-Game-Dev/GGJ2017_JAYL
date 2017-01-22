@@ -30,11 +30,11 @@ World::World(vector<string> sprites)
 	// TODO: Define path.
 	enemySprites = sprites;
 	
-	info.push_back(EnemyInfo(100, 1.0f, sprites[0]));
-	info.push_back(EnemyInfo(100, 1.0f, sprites[1]));
-	info.push_back(EnemyInfo(100, 1.0f, sprites[2]));
-	info.push_back(EnemyInfo(100, 1.0f, sprites[3]));
-	info.push_back(EnemyInfo(100, 1.0f, sprites[4]));
+	info.push_back(EnemyInfo(100, 5.0f, sprites[0]));
+	info.push_back(EnemyInfo(100, 5.0f, sprites[1]));
+	info.push_back(EnemyInfo(100, 5.0f, sprites[2]));
+	info.push_back(EnemyInfo(100, 5.0f, sprites[3]));
+	info.push_back(EnemyInfo(100, 5.0f, sprites[4]));
 
 
 	path.emplace_back(200.0, 415.0);
@@ -92,13 +92,12 @@ World::~World()
 
 void World::think()
 {
-	//cout << "currentFrame " << currentFrame << " nextSpawn" << nextSpawnFrame << endl;
-	if (currentFrame == nextSpawnFrame)
+	if (currentFrame >= nextSpawnFrame)
 	{
 		//cout << "Spawning enemy" << endl;
 		spawnEnemy();
 		//cout << "Successful spawn" << endl;
-		nextSpawnFrame += framesBetweenSpawns;
+		nextSpawnFrame = currentFrame + nextSpawnFrame;
 	}
 
 	for (auto ent : towers)
@@ -106,17 +105,36 @@ void World::think()
 		ent->think();
 	}
 
+	int count = 0;
+	auto ent = enemies.begin();
+	while (ent != enemies.end())
+	{
+		if ((*ent)->getHealth() > 0)
+		{
+			(*ent)->think();
+			ent++;
+		}
+		else
+		{
+			ent = enemies.erase(ent);
+		}
+	}
+	/*
 	for (auto ent = enemies.begin(); ent != enemies.end(); ent++)
 	{
+		cout << "On count " << count << endl;
 		if ((*ent)->getHealth() > 0)
 		{
 			(*ent)->think();
 		}
 		else
 		{
-			enemies.erase(ent);
+			ent = enemies.erase(ent);
 		}
+		count++;
 	}
+	*/
+
 	for (auto but = buttons.begin(); but != buttons.end(); but++) {
 		(*but)->think();
 	}
@@ -181,9 +199,10 @@ list<ButtonObject *> * World::getButtons()
 void World::startWave()
 {
 	assert(enemies.size() == 0);
-	remainingSpawns = (remainingSpawns * 2) + 5;
+	startSpawns = startSpawns * 2 + 5;
+	remainingSpawns = startSpawns;
 
-	framesBetweenSpawns = (duration * FRAMERATE) / remainingSpawns;
+	framesBetweenSpawns = 15;
 	
 	if (currentWave % 2 == 0 && enemiesUnlocked < 4)
 	{
