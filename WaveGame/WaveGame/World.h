@@ -15,6 +15,9 @@ using namespace std;
 class BaseObject;
 class BaseEnemy;
 class BaseTurret;
+class ButtonObject;
+
+enum ButtonType;
 
 struct EnemyInfo
 {
@@ -36,25 +39,30 @@ public:
 	World(vector<string> enemySprites);
 	~World();
 
-	void addTower(BaseObject * ent);
+	void addTower(BaseTurret * ent);
 	void addEnemy(BaseEnemy * ent);
 	void addEnemyInfo(EnemyInfo info);
+	void addButton(ButtonType type, Point p, Sprite normal, Sprite hovered, float width, float height);
 	void think();
 	void startWave();
 	unsigned long long getFrameCount();
 	const list<BaseEnemy* > * getEnemies();
-	const list<BaseObject* > * getTowers();
+	const list<BaseTurret * > * getTowers();
+	const list<ButtonObject *> * getButtons();
 	const list<Point> * getPath();
 	Point getEndPoint();
 	void damagePlayer();
 	void upgradeTurret(BaseTurret* turret);
 	inline bool canUpgradeTurret(BaseTurret* turret);
 
+	BaseTurret * selected;
 private:
 	std::list<Point> path;
 
+	BaseObject * wave;
 	std::list<BaseEnemy *> enemies;
-	std::list<BaseObject *> towers;
+	std::list<BaseTurret *> towers;
+	std::list<ButtonObject *> buttons;
 
 	unsigned int lives;
 	unsigned int currentWave = 0;
@@ -69,6 +77,7 @@ private:
 	unsigned int money;
 
 	void spawnEnemy();
+	vector<Point> wavePoints;
 
 	vector<string> enemySprites;
 	vector<EnemyInfo> info;
