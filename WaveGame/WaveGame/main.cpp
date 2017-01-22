@@ -158,18 +158,14 @@ int main() {
 	glfwSetMouseButtonCallback(win, OnMouseButton);
 	glfwSetCursorPosCallback(win, OnGetCursorPos);
 
-	Point p(100.0f, 100.0f);
-	StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"CuteEnemyCoral-0.png"});
-	world->addTower(turret);
+	//Point p(100.0f, 100.0f);
+	//StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"CuteEnemyCoral-0.png"});
+	//world->addTower(turret);
 
-	Sprite map = renderController.get("Map-0.png");
-	cout << "Buffer Name: " << map.getBufferName() << endl;
-	cout << "Buffer Offset: " << map.getBufferOffset() << endl;
-	cout << "Texture Name: " << map.getTextureName() << endl;
+	Sprite background_map = renderController.get("Assets/Map-0");
 
-
-	world->addButton(new ButtonObject(BT_Upgrade, Point(500.0, 500.0), renderController.get("CuteEnemyCoral-0.png"), renderController.get("CuteEnemyCoral-0.png"), 32.0, 32.0));
-	world->iterate();
+	//world->addButton(new ButtonObject(BT_Upgrade, Point(500.0, 500.0), renderController.get("CuteEnemyCoral-0.png"), renderController.get("CuteEnemyCoral-0.png"), 32.0, 32.0));
+	//world->iterate();
 
 	while (!glfwWindowShouldClose(win)) {
 		/*
@@ -199,9 +195,7 @@ int main() {
 			ent->draw();
 		}
 
-		map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 480.0f);
-
-		glFlush();
+		background_map.draw(0.0f, 1280.0f, 600.0f, 0.0f, 60.0f);
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

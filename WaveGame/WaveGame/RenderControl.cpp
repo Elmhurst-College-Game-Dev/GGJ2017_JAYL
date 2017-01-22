@@ -84,7 +84,8 @@ void RenderControl::draw(BaseEnemy * obj)
 
 
 
-void RenderControl::initTextureWithData(const char *dataFile, const char *textureFile) {
+void RenderControl::initTextureWithData(const char *dataFile, const char *textureFile, 
+	float textureWidth, float textureHeight) {
 	//Prepare the lists of arrays
 	struct json_data {
 		string name;
@@ -131,118 +132,183 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 	delete[] json_text;
 
 	//cout << "checking if root is object...";
-	assert(doc.IsObject());
+	assert(doc.IsArray());
 	//cout << "is an object" << endl;
 	//cout << "Checking to see if array..";
-	assert(doc["frames"].IsArray());
+	assert(doc[0].IsObject());
 	//cout << "is an array" << endl;
-	const Value &frames = doc["frames"].GetArray();
-	for (SizeType i = 0; i < frames.Size(); i++) {
+	const Value &frames = doc[0].GetObject()["items"].GetObject();
+	for (Value::ConstMemberIterator itr = frames.MemberBegin();
+		itr != frames.MemberEnd(); ++itr) {
 		json_data dat;
-		const Value &obj = frames[i];
-		//cout << "Checking if object...";
-		assert(obj.IsObject());
-		//cout << "is object...checking filename is string...";
-		assert(obj.GetObject()["filename"].IsString());
-		//cout << "is string...checking image dim is object...";
-		assert(obj.GetObject()["frame"].IsObject());
-		//cout << "is object..." << endl;
-		dat.name = obj.GetObject()["filename"].GetString();
-		const Value &imageDim = obj.GetObject()["frame"];
-		dat.x = imageDim["x"].GetInt();
-		dat.y = imageDim["y"].GetInt();
-		dat.w = imageDim["w"].GetInt();
-		dat.h = imageDim["h"].GetInt();
+		dat.name = itr->name.GetString();
+		dat.x = itr->value["x"].GetInt();
+		dat.y = itr->value["y"].GetInt();
+		dat.w = itr->value["width"].GetInt();
+		dat.h = itr->value["height"].GetInt();
 		data.push_back(dat);
 	}
 
-	int textureWidth = doc["meta"].GetObject()["size"].GetObject()["w"].GetInt();
-	int textureHeight = doc["meta"].GetObject()["size"].GetObject()["h"].GetInt();
+	//int textureWidth = doc["meta"].GetObject()["size"].GetObject()["w"].GetInt();
+	//int textureHeight = doc["meta"].GetObject()["size"].GetObject()["h"].GetInt();
 
 	cout << textureWidth << ", " << textureHeight << endl;
 
 	/*cout << "READ IN THE JSON FILE AND GOT THE FOLLOWING:" << endl;
-	for (int i = 0; i < textureNames.size(); i++) {
-		cout << "[" << textureNames[i] << "]" << endl;
-		cout << textureCoords[i * 4 + 0] << ", "
-			<< textureCoords[i * 4 + 1] << ", "
-			<< textureCoords[i * 4 + 2] << ", "
-			<< textureCoords[i * 4 + 3] << ", " << endl;
+	for (int i = 0; i < data.size(); i++) {
+		cout << "[" << data[i].name << "]" << endl;
+		cout << data[i].x << ", "
+			<< data[i].y << ", "
+			<< data[i].w << ", "
+			<< data[i].h << ", " << endl;
 	}*/
 
 	//Now create the array buffer for the textures
 	GLfloat *arrayBuf = new GLfloat[data.size() * 24];
 
+	
 	for (int i = 0; i < data.size(); i++) {
 		//top left to top right to bottom right to buttom left
-		arrayBuf[(i * 24) + 0] = -1.0f;
-		arrayBuf[(i * 24) + 1] = -1.0f;
-		arrayBuf[(i * 24) + 2] = float(data[i].x) / float(textureWidth);
-		arrayBuf[(i * 24) + 3] = float(data[i].y) / float(textureHeight);
+	//	cout << "TEXTURE DATA FOR " << data[i].name << endl;
+		
+		//TRIANGLE 1
 
-		arrayBuf[(i * 24) + 4] = 1.0f;
-		arrayBuf[(i * 24) + 5] = -1.0f;
-		arrayBuf[(i * 24) + 6] = float(data[i].x + data[i].w) / float(textureWidth);
-		arrayBuf[(i * 24) + 7] = float(data[i].y) / float(textureHeight);
+		arrayBuf[(i * 24) + 0] = -0.5f;
+		arrayBuf[(i * 24) + 1] = -0.5f;
+		arrayBuf[(i * 24) + 2] = data[i].x/textureWidth;
+		arrayBuf[(i * 24) + 3] = 1.0f-(data[i].y/textureHeight);
 
-		arrayBuf[(i * 24) + 8] = 1.0f;
-		arrayBuf[(i * 24) + 9] = 1.0f;
-		arrayBuf[(i * 24) + 10] = float(data[i].x + data[i].w) / float(textureWidth);
-		arrayBuf[(i * 24) + 11] = float(data[i].y + data[i].h) / float(textureHeight);
+	//	cout << arrayBuf[(i * 24) + 2] << ", ";
+	//	cout << arrayBuf[(i * 24) + 3] << endl;
 
-		arrayBuf[(i * 24) + 12] = -1.0f;
-		arrayBuf[(i * 24) + 13] = -1.0f;
-		arrayBuf[(i * 24) + 14] = float(data[i].x) / float(textureWidth);
-		arrayBuf[(i * 24) + 15] = float(data[i].y) / float(textureHeight);
+		arrayBuf[(i * 24) + 4] = 0.5f;
+		arrayBuf[(i * 24) + 5] = -0.5f;
+		arrayBuf[(i * 24) + 6] = (data[i].x+data[i].w)/textureWidth;
+		arrayBuf[(i * 24) + 7] = 1.0f - (data[i].y/textureHeight);
 
-		arrayBuf[(i * 24) + 16] = -1.0f;
-		arrayBuf[(i * 24) + 17] = 1.0f;
-		arrayBuf[(i * 24) + 18] = float(data[i].x) / float(textureWidth);
-		arrayBuf[(i * 24) + 19] = float(data[i].y + data[i].h) / float(textureHeight);
+	//	cout << arrayBuf[(i * 24) + 6] << ", ";
+	//	cout << arrayBuf[(i * 24) + 7] << endl;
 
-		arrayBuf[(i * 24) + 20] = 1.0f;
-		arrayBuf[(i * 24) + 21] = 1.0f;
-		arrayBuf[(i * 24) + 22] = float(data[i].x + data[i].w) / float(textureWidth);
-		arrayBuf[(i * 24) + 23] = float(data[i].y + data[i].h) / float(textureHeight);
+		arrayBuf[(i * 24) + 8] = -0.5f;
+		arrayBuf[(i * 24) + 9] = 0.5f;
+		arrayBuf[(i * 24) + 10] = data[i].x/textureWidth;
+		arrayBuf[(i * 24) + 11] = 1.0f - ((data[i].y+data[i].h)/textureHeight);
+
+	//	cout << arrayBuf[(i * 24) + 10] << ", ";
+	//	cout << arrayBuf[(i * 24) + 11] << endl;
+
+		//NOW BEGINS TRIANGLE 2
+
+		arrayBuf[(i * 24) + 12] = 0.5f;
+		arrayBuf[(i * 24) + 13] = -0.5f;
+		arrayBuf[(i * 24) + 14] = (data[i].x + data[i].w) / textureWidth;
+		arrayBuf[(i * 24) + 15] = 1.0f - (data[i].y / textureHeight);
+
+	//	cout << arrayBuf[(i * 24) + 14] << ", ";
+	//	cout << arrayBuf[(i * 24) + 15] << endl;
+
+		arrayBuf[(i * 24) + 16] = 0.5f;
+		arrayBuf[(i * 24) + 17] = 0.5f;
+		arrayBuf[(i * 24) + 18] = (data[i].x + data[i].w) / textureWidth;
+		arrayBuf[(i * 24) + 19] = 1.0f - ((data[i].y + data[i].h) / textureHeight);
+
+	//	cout << arrayBuf[(i * 24) + 18] << ", ";
+	//	cout << arrayBuf[(i * 24) + 19] << endl;
+
+		arrayBuf[(i * 24) + 20] = -0.5f;
+		arrayBuf[(i * 24) + 21] = 0.5f;
+		arrayBuf[(i * 24) + 22] = data[i].x / textureWidth;
+		arrayBuf[(i * 24) + 23] = 1.0f - ((data[i].y + data[i].h) / textureHeight);
+	
+	//	cout << arrayBuf[(i * 24) + 22] << ", ";
+	//	cout << arrayBuf[(i * 24) + 23] << endl << endl;
 	}
+	/*
+	for (int i = 0; i < data.size(); i++) {
+		//top left to top right to bottom right to buttom left
+		//	cout << "TEXTURE DATA FOR " << data[i].name << endl;
+
+		//TRIANGLE 1
+
+		arrayBuf[(i * 24) + 0] = -0.5f;
+		arrayBuf[(i * 24) + 1] = -0.5f;
+		arrayBuf[(i * 24) + 2] = 0.0f;
+		arrayBuf[(i * 24) + 3] = 1.0 - 0.0f;
+
+		//	cout << arrayBuf[(i * 24) + 2] << ", ";
+		//	cout << arrayBuf[(i * 24) + 3] << endl;
+
+		arrayBuf[(i * 24) + 4] = 0.5f;
+		arrayBuf[(i * 24) + 5] = -0.5f;
+		arrayBuf[(i * 24) + 6] = 0.625f;
+		arrayBuf[(i * 24) + 7] = 1.0 - 0.0f;
+
+		//	cout << arrayBuf[(i * 24) + 6] << ", ";
+		//	cout << arrayBuf[(i * 24) + 7] << endl;
+
+		arrayBuf[(i * 24) + 8] = -0.5f;
+		arrayBuf[(i * 24) + 9] = 0.5f;
+		arrayBuf[(i * 24) + 10] = 0.0f;
+		arrayBuf[(i * 24) + 11] = 1.0 - 0.29f;
+
+		//	cout << arrayBuf[(i * 24) + 10] << ", ";
+		//	cout << arrayBuf[(i * 24) + 11] << endl;
+
+		//NOW BEGINS TRIANGLE 2
+
+		arrayBuf[(i * 24) + 12] = 0.5f;
+		arrayBuf[(i * 24) + 13] = -0.5f;
+		arrayBuf[(i * 24) + 14] = 0.625f;
+		arrayBuf[(i * 24) + 15] = 1.0 - 0.0f;
+
+		//	cout << arrayBuf[(i * 24) + 14] << ", ";
+		//	cout << arrayBuf[(i * 24) + 15] << endl;
+
+		arrayBuf[(i * 24) + 16] = 0.5f;
+		arrayBuf[(i * 24) + 17] = 0.5f;
+		arrayBuf[(i * 24) + 18] = 0.625f;
+		arrayBuf[(i * 24) + 19] = 1.0 - 0.29f;
+
+		//	cout << arrayBuf[(i * 24) + 18] << ", ";
+		//	cout << arrayBuf[(i * 24) + 19] << endl;
+
+		arrayBuf[(i * 24) + 20] = -0.5f;
+		arrayBuf[(i * 24) + 21] = 0.5f;
+		arrayBuf[(i * 24) + 22] = 0.0f;
+		arrayBuf[(i * 24) + 23] = 1.0-0.29f;
+
+		//	cout << arrayBuf[(i * 24) + 22] << ", ";
+		//	cout << arrayBuf[(i * 24) + 23] << endl << endl;
+	}
+	*/
 
 	glActiveTexture(GL_TEXTURE0);
 	glUniform1i(samplerLoc, 0);
 
 	GLuint tex = loadTexture(textureFile);
-
+	cout << "Size of data is " << data.size() << endl;
 	//That is done, finally
 	//Make the buffers now
 	GLuint newSprite;
 	glGenBuffers(1, &newSprite);
 	glBindBuffer(GL_ARRAY_BUFFER, newSprite);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 24 * data.size(), arrayBuf, GL_STATIC_DRAW);
-	delete arrayBuf;
 
 	//cout << "Gonna make the sprites array thing now " << endl;
 	//Setup the map now
 	for (int i = 0; i < data.size(); i++) {
-		sprites[data[i].name] = Sprite(i * 3, newSprite, tex);
+		sprites[data[i].name] = Sprite(i * 6, newSprite, tex);
+		cout << data[i].name << " (" << data[i].x << ", " << data[i].y << "); (" << data[i].w << ", " << data[i].h << ")"
+			<< " offset of " << (i*6) << endl;
 	}
 
+	delete arrayBuf;
 }
 
 void RenderControl::initRender()
 {
 	initShaders();
-	initTextureWithData("enemies_data.json", "enemies_data.png");
-	initTextureWithData("cosmic_rays.json", "cosmic_rays.png");
-	initTextureWithData("gamma_ray_info.json", "gamma_ray_info.png");
-	initTextureWithData("infared_info.json", "infared_info.png");
-	initTextureWithData("micro_waves.json", "micro_waves.png");
-	initTextureWithData("radio_info.json", "radio_info.png");
-	initTextureWithData("rainbow_info.json", "rainbow_info.png");
-	initTextureWithData("tops_info.json", "tops_info.png");
-	initTextureWithData("ultra_violet_info.json", "ultra_violet_info.png");
-	initTextureWithData("x_ray_data.json", "x_ray_data.png");
-	initTextureWithData("button_data.json", "button_data.png");
-	initTextureWithData("map_data.json", "map_data.png");
-
+	initTextureWithData("atlas0.json", "atlas0_0.png", 2048.0f, 2048.0f);
 
 	//bg color and other stuff
 	glClearColor(0.1f, 0.0f, 0.25f, 1.0f);
@@ -259,17 +325,18 @@ void RenderControl::initShaders()
 {
 	const char *vertSource =
 		"#version 330\n"
-		"uniform mat3 model;\n"
-		"uniform mat3 scale;\n"
-		"uniform mat3 translate;\n"
 		"in vec2 vertPos;\n"
-		"in vec2 texCoord;\n"
 		"out vec2 fragTexCoord;\n"
+		"in vec2 texCoord;\n"
+		"uniform mat3 model;\n"
+		"uniform vec2 size;\n"
+		"uniform vec2 worldPos;\n"
 		"void main() {\n"
-		"	vec3 trans = vec3(vertPos.x, vertPos.y, 1.0);\n"
-		"	trans = (scale*model*translate)*trans;\n"
 		"	fragTexCoord = texCoord;\n"
-		"	gl_Position = vec4(trans, 1.0);\n"
+		"	gl_Position = vec4(\n"
+		"		((vertPos.x*size.x)+worldPos.x)/640.0,\n"
+		"		-((vertPos.y*size.y)+worldPos.y)/360.0,\n"
+		"		0.0, 1.0);\n"
 		"}\n"
 		;
 	const char *fragSource =
@@ -278,6 +345,7 @@ void RenderControl::initShaders()
 		"in vec2 fragTexCoord;\n"
 		"void main() {\n"
 		"	vec4 color = texture(sam, fragTexCoord);\n"
+		"	//vec4 color = vec4(0.0, 1.0, 0.0, 1.0);\n"
 		"	gl_FragColor = color;\n"
 		"}\n"
 		;
@@ -289,8 +357,8 @@ void RenderControl::initShaders()
 	glUseProgram(this->program);
 	vertPosLoc = glGetAttribLocation(program, "vertPos");
 	modelLoc = glGetUniformLocation(program, "model");
-	scaleLoc = glGetUniformLocation(program, "scale");
-	translateLoc = glGetUniformLocation(program, "translate");
+	sizeLoc = glGetUniformLocation(program, "size");
+	worldPosLoc = glGetUniformLocation(program, "worldPos");
 	texCoordLoc = glGetAttribLocation(program, "texCoord");
 	samplerLoc = glGetUniformLocation(program, "sam");
 }

@@ -11,21 +11,22 @@ public:
 	~RenderControl();
 	void initRender();
 	void initShaders();
-	void initTextureWithData(const char *dataFile, const char *textureFile);
+	void initTextureWithData(const char *dataFile, const char *textureFile, 
+		float texWidth, float texHeight);
 	Sprite &get(string sprite);
 	GLuint getProgram() { return program;  }
 	GLuint getModelLoc() { return modelLoc;  }
-	GLuint getScaleLoc() { return scaleLoc; }
-	GLuint getTranslateLoc() { return translateLoc; }
+	GLuint getSizeLoc() { return sizeLoc; }
+	GLuint getWorldPosLoc() { return worldPosLoc; }
 	GLuint getVertPosLoc() { return vertPosLoc;  }
 	GLuint getTexCoordLoc() { return texCoordLoc;  }
 	GLuint getSamplerLoc() { return samplerLoc;  }
-	
+	map<string, Sprite> &getSprites() { return sprites;  }
 private:
 	GLuint program;
 	GLuint modelLoc;
-	GLuint scaleLoc;
-	GLuint translateLoc;
+	GLuint sizeLoc;
+	GLuint worldPosLoc;
 	GLuint vertPosLoc;
 	GLuint texCoordLoc;
 	GLuint samplerLoc;
