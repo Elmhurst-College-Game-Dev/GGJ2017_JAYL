@@ -309,8 +309,8 @@ void RenderControl::initTextureWithData(const char *dataFile, const char *textur
 	//Setup the map now
 	for (int i = 0; i < data.size(); i++) {
 		sprites[data[i].name] = Sprite(i * 6, newSprite, tex);
-		cout << data[i].name << " (" << data[i].x << ", " << data[i].y << "); (" << data[i].w << ", " << data[i].h << ")"
-			<< " offset of " << (i*6) << endl;
+		//cout << data[i].name << " (" << data[i].x << ", " << data[i].y << "); (" << data[i].w << ", " << data[i].h << ")"
+		//	<< " offset of " << (i*6) << endl;
 	}
 
 	delete [] arrayBuf;

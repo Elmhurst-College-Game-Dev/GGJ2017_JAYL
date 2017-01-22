@@ -6,7 +6,7 @@
 class StraightTurret : public BaseTurret
 {
 public:
-	StraightTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int price, list<string> sprites);
+	StraightTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int price, const list<string> &ssprites);
 	virtual void think() override;
 };
 

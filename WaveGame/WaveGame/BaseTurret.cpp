@@ -8,7 +8,7 @@
 extern World* world;
 extern RenderControl renderController;
 
-BaseTurret::BaseTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost, list<string> sprites) :
+BaseTurret::BaseTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost, const list<string> &sprites) :
 	BaseObject(middle, s, width, height)
 {
 	assert(sprites.size() != 0);

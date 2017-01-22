@@ -30,11 +30,11 @@ World::World(vector<string> sprites)
 	// TODO: Define path.
 	enemySprites = sprites;
 	
-	info.push_back(EnemyInfo(100, 5, sprites[0]));
-	info.push_back(EnemyInfo(100, 5, sprites[1]));
-	info.push_back(EnemyInfo(100, 5, sprites[2]));
-	info.push_back(EnemyInfo(100, 5, sprites[3]));
-	info.push_back(EnemyInfo(100, 5, sprites[4]));
+	info.push_back(EnemyInfo(100, 1.0f, sprites[0]));
+	info.push_back(EnemyInfo(100, 1.0f, sprites[1]));
+	info.push_back(EnemyInfo(100, 1.0f, sprites[2]));
+	info.push_back(EnemyInfo(100, 1.0f, sprites[3]));
+	info.push_back(EnemyInfo(100, 1.0f, sprites[4]));
 
 
 	path.emplace_back(200.0, 415.0);
