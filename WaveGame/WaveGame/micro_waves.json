@@ -1,0 +1,39 @@
+{"frames": [
+
+{
+	"filename": "ss_micro_wave_1.png",
+	"frame": {"x":20,"y":0,"w":10,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":3,"w":10,"h":29},
+	"sourceSize": {"w":32,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ss_micro_wave_2.png",
+	"frame": {"x":10,"y":0,"w":10,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":2,"w":10,"h":30},
+	"sourceSize": {"w":32,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "ss_micro_wave_3.png",
+	"frame": {"x":0,"y":0,"w":10,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":0,"w":10,"h":32},
+	"sourceSize": {"w":32,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "micro_waves.png",
+	"format": "RGBA8888",
+	"size": {"w":32,"h":32},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c57efdecf15b9f29ba0c50b3a78ad76b:1166a06fd2baa308482db6040abada9c:f39544e3dff2391b04b024c547b701fe$"
+}
+}

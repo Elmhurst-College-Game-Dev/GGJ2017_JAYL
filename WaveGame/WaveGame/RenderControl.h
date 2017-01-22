@@ -9,10 +9,16 @@ class RenderControl
 public:
 	RenderControl();
 	~RenderControl();
-	void draw(BaseObject *obj);
-	void draw(BaseEnemy *obj);
 	void initRender();
+	void initShaders();
+	void initTextureWithData(const char *dataFile, const char *textureFile);
 	Sprite &get(string sprite);
+	GLuint getProgram() { return program;  }
+	GLuint getModelLoc() { return modelLoc;  }
+	GLuint getVertPosLoc() { return vertPosLoc;  }
+	GLuint getTexCoordLoc() { return texCoordLoc;  }
+	GLuint getSamplerLoc() { return samplerLoc;  }
+	
 private:
 	GLuint program;
 	GLuint modelLoc;
@@ -20,7 +26,5 @@ private:
 	GLuint texCoordLoc;
 	GLuint samplerLoc;
 	map<string, Sprite> sprites;
-	GLuint arrayBufferName;
-	GLuint mySuperImage;
 };
 

@@ -2,118 +2,118 @@
 
 {
 	"filename": "CuteEnemyBall-1.png",
-	"frame": {"x":1,"y":26,"w":30,"h":28},
+	"frame": {"x":0,"y":0,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":0,"w":30,"h":28},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyBall-2.png",
-	"frame": {"x":65,"y":51,"w":30,"h":19},
+	"frame": {"x":0,"y":32,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":5,"w":30,"h":19},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyCoral-0.png",
-	"frame": {"x":62,"y":72,"w":22,"h":26},
+	"frame": {"x":0,"y":64,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":5,"y":2,"w":22,"h":26},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyCoral-1.png",
-	"frame": {"x":1,"y":56,"w":27,"h":27},
+	"frame": {"x":0,"y":96,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":2,"w":27,"h":27},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyCoral-2.png",
-	"frame": {"x":33,"y":84,"w":27,"h":26},
+	"frame": {"x":32,"y":0,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":2,"w":27,"h":26},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyFluff-0.png",
-	"frame": {"x":1,"y":85,"w":30,"h":26},
+	"frame": {"x":64,"y":0,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":3,"w":30,"h":26},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyFluff-1.png",
-	"frame": {"x":30,"y":56,"w":30,"h":26},
+	"frame": {"x":96,"y":0,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":3,"w":30,"h":26},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyFluff-2.png",
-	"frame": {"x":33,"y":26,"w":30,"h":26},
+	"frame": {"x":32,"y":32,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":2,"y":3,"w":30,"h":26},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemySeaweed-1.png",
-	"frame": {"x":69,"y":1,"w":31,"h":23},
+	"frame": {"x":32,"y":64,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":4,"w":31,"h":23},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemySeaweed-2.png",
-	"frame": {"x":65,"y":26,"w":31,"h":23},
+	"frame": {"x":32,"y":96,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":4,"w":31,"h":23},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyStone-0.png",
-	"frame": {"x":86,"y":72,"w":27,"h":23},
+	"frame": {"x":64,"y":32,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":3,"y":4,"w":27,"h":23},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyStone-1.png",
-	"frame": {"x":1,"y":1,"w":32,"h":23},
+	"frame": {"x":96,"y":32,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":4,"w":32,"h":23},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
 	"filename": "CuteEnemyStone-2.png",
-	"frame": {"x":35,"y":1,"w":32,"h":23},
+	"frame": {"x":64,"y":64,"w":32,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":4,"w":32,"h":23},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
 	"sourceSize": {"w":32,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 }],
@@ -122,8 +122,8 @@
 	"version": "1.0",
 	"image": "enemies_data.png",
 	"format": "RGBA8888",
-	"size": {"w":114,"h":114},
+	"size": {"w":128,"h":128},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9412fd90472c7585856c27a05ff4b62a:e6acaf3d5825b0e104a9592857c46be7:adb50767df3dc13ac0e553404185b73f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8b05fbdd109d7086ea5c3422807fc0d0:e6acaf3d5825b0e104a9592857c46be7:adb50767df3dc13ac0e553404185b73f$"
 }
 }

@@ -1,60 +1,68 @@
-#ifndef __SPRITE_CPP__
-#define __SPRITE_CPP__
-
+#include "RenderControl.h"
+#include "GLFW/glfw3.h"
+#include <cmath>
 #include <iostream>
-#include "Sprite.h"
 
-using namespace std;
+extern RenderControl renderController;
 
-Sprite::Sprite(GLint img) : animationTrack()
+Sprite::Sprite(GLint bufferOffset, GLuint bufferName, GLuint textureName) 
+	: bufferOffset{bufferOffset}, bufferName{bufferName}, textureName{textureName}
 {
-	//cout << "I put something in you" << endl;
-	animationTrack.push_back(img);
-	indexOffset = 0 ;
+
 }
 
-Sprite::Sprite(vector<GLint> track)
+Sprite::Sprite(const Sprite & spr)
 {
-	animationTrack = track;
-	indexOffset = 0;
+	bufferOffset = spr.bufferOffset;
+	bufferName = spr.bufferName;
+	textureName = spr.textureName;
 }
 
-Sprite::Sprite(const Sprite & rhs)
+Sprite::Sprite()
 {
-	indexOffset = rhs.indexOffset;
-	animationTrack = rhs.animationTrack;
-	frameSpeed = rhs.frameSpeed;
-	timer = 0;
+//	std::cout << "Sprite detaul constructor called" << std::endl;
+	bufferName = 0;
+	bufferOffset = 0;
+	textureName = 0;
 }
 
-Sprite::~Sprite()
+void Sprite::setTextureName(GLuint texName)
 {
+	this->textureName = texName;
 }
 
-GLint Sprite::getOffset()
+void Sprite::setBufferName(GLuint bufName)
 {
-	if (animationTrack.size() == 0) {
-		cout << "HEY YOU HAVE AN EMPTY ANIMATION TRACK YOU DUMMY" << endl;
-		return -1;
-	}
-	else {
-		return animationTrack[indexOffset];
-	}
+	this->bufferName = bufName;
 }
 
-void Sprite::updateSpriteAnimation()
+void Sprite::setBufferOffset(GLint bufOffset)
 {
-	if (animationTrack.size() > 1) {
-		timer++;
-		if (timer > frameSpeed) {
-			timer = 0;
-			indexOffset++;
-			if (indexOffset >= animationTrack.size()) {
-				indexOffset = 0;
-			}
-		}
-	}
+	this->bufferOffset = bufOffset;
 }
 
-
-#endif
+void Sprite::draw(float angle, float width, float height, float worldPosX, float worldPosY)
+{
+	glUseProgram(renderController.getProgram());
+	float angleCos = cos(angle);
+	float angleSin = sin(angle);
+	GLfloat modelView[9]{
+		width*angleCos, -height*angleSin, worldPosX - 640.0f,
+		width*angleSin, height*angleCos, -(worldPosY - 360.0f),
+		0.0f, 0.0f, 1.0f
+	};
+	/*cout << modelView[0] << ", " << modelView[1] << ", " << modelView[2] << ", " << endl
+	<< modelView[3] << ", " << modelView[4] << ", " << modelView[5] << ", " << endl
+	<< modelView[6] << ", " << modelView[7] << ", " << modelView[8] << endl <<
+	(int)obj->getSprite().getOffset() << endl;*/
+	glUniformMatrix3fv(renderController.getModelLoc(), 1, GL_TRUE, modelView);
+	glVertexAttribPointer(renderController.getVertPosLoc(), 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
+	glVertexAttribPointer(renderController.getTexCoordLoc(), 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*)(sizeof(GLfloat) * 2));
+	glEnableVertexAttribArray(renderController.getVertPosLoc());
+	glEnableVertexAttribArray(renderController.getTexCoordLoc());
+	glActiveTexture(GL_TEXTURE0);
+	glUniform1i(renderController.getSamplerLoc(), 0);
+	glBindTexture(GL_TEXTURE_2D, textureName);
+	glBindBuffer(GL_ARRAY_BUFFER, bufferName);
+	glDrawArrays(GL_TRIANGLES, bufferOffset, 6);
+}

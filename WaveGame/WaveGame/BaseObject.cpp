@@ -38,4 +38,9 @@ Sprite &BaseObject::getSprite() {
 	return s;
 }
 
+void BaseObject::draw()
+{
+	s.draw(angle, width, height, middle.x, middle.y);
+}
+
 #endif

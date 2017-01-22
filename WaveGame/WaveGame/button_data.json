@@ -1,0 +1,48 @@
+{"frames": [
+
+{
+	"filename": "BuySelected.png",
+	"frame": {"x":0,"y":0,"w":202,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":80},
+	"sourceSize": {"w":202,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "BuyUnselected.png",
+	"frame": {"x":202,"y":0,"w":202,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":80},
+	"sourceSize": {"w":202,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "UpgradeSelected.png",
+	"frame": {"x":0,"y":80,"w":202,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":80},
+	"sourceSize": {"w":202,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "UpgradeUnselected.png",
+	"frame": {"x":202,"y":80,"w":202,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":202,"h":80},
+	"sourceSize": {"w":202,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "button_data.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:bad5cbad110e53aeabb14a32bdfdf6c3:cad28c902bc3ee1b778c55f8d1e04b57:0ed9b6f240e6af82ad7cd634b83591d8$"
+}
+}

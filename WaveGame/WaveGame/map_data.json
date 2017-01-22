@@ -1,0 +1,30 @@
+{"frames": [
+
+{
+	"filename": "Map-0.png",
+	"frame": {"x":0,"y":0,"w":1280,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1280,"h":600},
+	"sourceSize": {"w":1280,"h":600},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "WaveSprite-0.png",
+	"frame": {"x":1280,"y":0,"w":131,"h":600},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":600},
+	"sourceSize": {"w":141,"h":600},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "map_data.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:efecef2e3773c439e45b625562cdebce:2a00783c65c7e01c7f84a990118ee7f0:f71e9685fd8eb0578d06273612ed5c1c$"
+}
+}

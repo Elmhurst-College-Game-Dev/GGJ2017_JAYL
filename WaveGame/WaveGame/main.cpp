@@ -93,8 +93,8 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 }
 
 int main() {
-	music.add("ericsSong.mp3", "test");
-	music.play("test");
+//	music.add("ericsSong.mp3", "test");
+//	music.play("test");
 
 	vector<string> sprites{ "sprite1", "sprite2", "sprite3", "sprite4", "sprite5" };
 	world = new World(sprites);
@@ -122,6 +122,8 @@ int main() {
 	StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"CuteEnemyCoral-0.png"});
 	world->addTower(turret);
 
+	Sprite map = renderController.get("Map-0.png");
+
 	while (!glfwWindowShouldClose(win)) {
 		/*
 		static clock_t lastThink = clock();
@@ -134,17 +136,21 @@ int main() {
 		*/
 		//Render code here
 		glClear(GL_COLOR_BUFFER_BIT);
+
+
+		map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 480.0f);
+
 		//Draw all objects
 		for (list<BaseEnemy*>::const_iterator itr = world->getEnemies()->cbegin(); itr != world->getEnemies()->cend(); itr++) {
-			renderController.draw(*itr);
+			(*itr)->draw();
 		}
 
 		for (const auto& ent : *world->getTowers())
 		{
-			renderController.draw(ent);
+			ent->draw();
 		}
 
-		renderController.draw(&enemy);
+		enemy.draw();
 
 		glFlush();
 

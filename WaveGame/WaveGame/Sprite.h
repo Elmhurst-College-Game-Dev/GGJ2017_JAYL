@@ -11,19 +11,16 @@ using namespace std;
 class Sprite
 {
 public:
-	Sprite(vector<GLint> track);
-	explicit Sprite(GLint img);
-	Sprite() = default;
-	Sprite(const Sprite &rhs);
-	~Sprite();
-	GLint getOffset();
-	int getFrameSpeed() const { return frameSpeed;  }
-	void setFrameSpeed(int frameSpeed) { this->frameSpeed = frameSpeed;  }
-	void updateSpriteAnimation();
+	explicit Sprite(GLint bufferOffset, GLuint bufferName, GLuint textureName);
+	Sprite(const Sprite &spr);
+	Sprite();
+	void setTextureName(GLuint texName);
+	void setBufferName(GLuint bufName);
+	void setBufferOffset(GLint bufOffset);
+	void draw(float angle, float width, float height, float worldPosX, float worldPosY);
 private:
-	int indexOffset; //current
-	vector<GLint> animationTrack;
-	int frameSpeed; //The number of updates before the track changes
-	int timer;
+	GLuint textureName;
+	GLuint bufferName;
+	GLint bufferOffset;
 };
 

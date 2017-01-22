@@ -159,7 +159,6 @@
     <ClInclude Include="shaders.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StraightTurret.h" />
-    <ClInclude Include="TextureDescriber.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
