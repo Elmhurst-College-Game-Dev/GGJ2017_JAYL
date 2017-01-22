@@ -10,7 +10,7 @@ extern World* world;
 class BaseTurret : public BaseObject
 {
 public:
-	BaseTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost, list<string> sprites);
+	BaseTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost, const list<string> &sprites);
 	virtual void think() = 0;
 	virtual void upgrade();
 	int getLevel();
@@ -29,7 +29,7 @@ protected:
 	float range;
 
 	list<string> spriteNames;
-	list<string>::iterator currentSprite;
+	list<string>::const_iterator currentSprite;
 
 	unsigned int upgradePrice = 100;
 };

@@ -3,7 +3,7 @@
 
 #include "AreaTurret.h"
 
-AreaTurret::AreaTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost, list<string> sprites)
+AreaTurret::AreaTurret(Point middle, float width, float height, int damage, unsigned int firerate, float range, unsigned int cost, const list<string> &sprites)
 	: BaseTurret(middle, width, height, damage, firerate, range, cost, sprites)
 {
 }
