@@ -36,10 +36,11 @@ void BaseEnemy::move()
 	const Point goalPoint = *nextPoint;
 
 	float distance = this->middle.getDistance(goalPoint);
-	float x = (middle.x / distance) * speed;
-	float y = (middle.y / distance) * speed;
-
-	Point destination(x,y);
+	float x = 0.0f;
+	float y = 0.0f;
+	 x = ( (goalPoint.x-middle.x) / distance) * speed;
+	 y = ((goalPoint.y - middle.y) / distance) * speed;
+	Point destination(middle.x+x,middle.y+y);
 	//Comparing how much you will move with how far away it is
 	if (middle.getDistance(destination) > distance)
 	{
