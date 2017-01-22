@@ -131,7 +131,6 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="BaseTurret.cpp" />
     <ClCompile Include="ButtonObject.cpp" />
-    <ClCompile Include="ClickObject.cpp" />
     <ClCompile Include="image_loading.cpp" />
     <ClCompile Include="jsmn.c" />
     <ClCompile Include="main.cpp" />
@@ -151,7 +150,6 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BaseTurret.h" />
     <ClInclude Include="ButtonObject.h" />
-    <ClInclude Include="ClickObject.h" />
     <ClInclude Include="image_loading.h" />
     <ClInclude Include="jsmn.h" />
     <ClInclude Include="mp3player.h" />

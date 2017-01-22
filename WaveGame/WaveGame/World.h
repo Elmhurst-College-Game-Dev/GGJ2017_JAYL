@@ -62,6 +62,8 @@ public:
 	inline float getSpotH() { return spotHeight; }
 	inline float getSpotW() { return spotWidth; }
 
+	inline unsigned int getMoney() const { return money;  }
+	inline unsigned int getEnemiesLeft() const { return enemies.size();  }
 
 	BaseTurret * selected;
 	BaseTurret * purchasing;

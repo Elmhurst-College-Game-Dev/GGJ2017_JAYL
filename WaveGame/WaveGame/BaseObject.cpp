@@ -6,12 +6,8 @@
 
 extern World* world;
 
-BaseObject::BaseObject(Point mid, Sprite s, float width, float height)
+BaseObject::BaseObject(Point mid, Sprite s, float width, float height) : s(s), width(width), height(height), middle(mid)
 {
-	this->middle = mid;
-	this->s = s;
-	this->width = width;
-	this->height = height;
 }
 
 Point BaseObject::getMiddle()
