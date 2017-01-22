@@ -56,7 +56,6 @@ public:
 	void damagePlayer();
 	void upgradeTurret(BaseTurret* turret);
 	inline bool canUpgradeTurret(BaseTurret* turret);
-	void iterate();
 
 	BaseTurret * selected;
 	BaseTurret * purchasing;
