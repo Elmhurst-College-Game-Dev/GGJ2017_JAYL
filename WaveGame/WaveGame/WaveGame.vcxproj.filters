@@ -54,6 +54,9 @@
     <ClCompile Include="image_loading.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="jsmn.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseEnemy.h">
@@ -92,5 +95,21 @@
     <ClInclude Include="BaseObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="jsmn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Untitled.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures_info.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="textures_info.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

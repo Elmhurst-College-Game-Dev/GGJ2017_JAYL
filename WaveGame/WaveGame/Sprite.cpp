@@ -1,7 +1,10 @@
 #ifndef __SPRITE_CPP__
 #define __SPRITE_CPP__
 
+#include <iostream>
 #include "Sprite.h"
+
+using namespace std;
 
 Sprite::Sprite(GLuint img) : animationTrack()
 {
@@ -28,6 +31,8 @@ Sprite::~Sprite()
 
 void* Sprite::getOffset()
 {
+	if (animationTrack.size() == 0)
+		cout << "HEY YOU HAVE AN EMPTY ANIMATION TRACK YOU DUMMY" << endl;
 	return (void*)animationTrack[indexOffset];
 }
 

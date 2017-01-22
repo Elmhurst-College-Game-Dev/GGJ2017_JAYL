@@ -37,6 +37,8 @@ int main() {
 
 	glfwSwapInterval(1);
 
+	BaseEnemy enemy(Point(200, 200), renderController.get("Cute-Enemy-Coral-0.png"), 100, 100, 5, 5, 4);
+
 	while (!glfwWindowShouldClose(win)) {
 		//Update code here
 
@@ -49,6 +51,8 @@ int main() {
 		for (list<BaseObject*>::const_iterator itr = world->getTowers()->cbegin(); itr != world->getTowers()->cend(); itr++) {
 			renderController.draw(*itr);
 		}
+
+		renderController.draw(&enemy);
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

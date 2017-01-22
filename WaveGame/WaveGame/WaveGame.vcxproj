@@ -72,7 +72,7 @@
     <LibraryPath>C:\Users\Jonathon\ProgrammingProjects\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>C:\scripting\git\Waves On Waves\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\Jonathon\Documents\GitHub\GGJ2017_JAYL\libraries;$(LibraryPath)</LibraryPath>
     <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -91,7 +91,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\scripting\git\Waves On Waves\GGJ2017_JAYL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Jonathon\Documents\GitHub\GGJ2017_JAYL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;DevIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -130,6 +130,7 @@
     <ClCompile Include="BaseTurret.cpp" />
     <ClCompile Include="ClickObject.cpp" />
     <ClCompile Include="image_loading.cpp" />
+    <ClCompile Include="jsmn.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RenderControl.cpp" />
@@ -145,12 +146,20 @@
     <ClInclude Include="BaseTurret.h" />
     <ClInclude Include="ClickObject.h" />
     <ClInclude Include="image_loading.h" />
+    <ClInclude Include="jsmn.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RenderControl.h" />
     <ClInclude Include="shaders.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StraightTurret.h" />
     <ClInclude Include="World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures_info.png" />
+    <Image Include="Untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="textures_info.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
