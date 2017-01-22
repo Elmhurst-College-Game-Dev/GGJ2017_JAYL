@@ -103,10 +103,15 @@ void World::spawnEnemy()
 	addEnemy(new BaseEnemy(spawn, renderController.get(info[0].sprite), 32.0f, 32.0f, info[i].health, info[i].speed, i));
 }
 
+void World::addTower(BaseTurret * ent, Point p)
+{
+	possiblePlacements.remove(p);
+	addTower(ent);
+}
+
 void World::addTower(BaseTurret * ent)
 {
 	towers.push_back(ent);
-	cout << "after pushing" << ent->getMiddle().x << ent->getMiddle().y << endl;
 }
 
 void World::addEnemy(BaseEnemy* ent)
@@ -187,7 +192,7 @@ void World::addButton(ButtonObject * button)
 	buttons.push_back(button);
 }
 
-const list<Point> * World::getPossiblePlacements()
+list<Point> * World::getPossiblePlacements()
 {
 	return &possiblePlacements;
 }

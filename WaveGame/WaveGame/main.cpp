@@ -11,6 +11,7 @@
 #include "BaseTurret.h"
 #include "ButtonObject.h"
 #include "StraightTurret.h"
+#include "AreaTurret.h"
 #include <assert.h>
 #include "NumberObject.h"
 #include "WaveObject.h"
@@ -26,73 +27,94 @@ World* world;
 RenderControl renderController;
 MusicWrapper music;
 
+const list<string> SS_SPRITES{ "" };
+const list<string> AREA_SPRITES{ "" };
+
 void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 {
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
 	{
 		double x, y;
 		glfwGetCursorPos(win, &x, &y);
+		Point clickSpot(x, y);
 
 		cout << "click at " << x << " " << y << endl;
 
 		BaseTurret * clicked = nullptr;
-
-		for (auto ent : *(world->getTowers()))
+		
+		if (world->purchasing != nullptr) // Player is trying to place down a tower
 		{
-			Point clickSpot(static_cast<float>(x), static_cast<float>(y));
+			float spotH = world->getSpotH();
+			float spotW = world->getSpotW();
 
-			Point entMiddle = ent->getMiddle();
-
-			Point topLeft = Point(entMiddle.x - (ent->getWidth() / 2.0), entMiddle.y + (ent->getHeight() / 2.0));
-			Point bottomRight = Point((entMiddle.x + (ent->getWidth() / 2.0)), (entMiddle.y - (ent->getHeight() / 2.0)));
-
-			if (clickSpot.inBox(topLeft, bottomRight))
+			for (auto spot : *world->getPossiblePlacements())
 			{
-				clicked = ent;
-			}
-		}
-		if (clicked == nullptr)
-		{
-			for (auto button = world->getButtons()->cbegin(); button != world->getButtons()->cend();button++)
-			{
-				ButtonObject* ent = *button;
-				Point middle = ent->getMiddle();
-				Point topLeft = Point(middle.x - (ent->getWidth() / 2.0), middle.y + (ent->getHeight() / 2.0));
-				Point bottomRight = Point(middle.x + (ent->getWidth() / 2.0), middle.y - (ent->getHeight() / 2.0));
-				
-				if (middle.inBox(topLeft, bottomRight)) // clicked inside button
+				Point topLeft = Point(spot.x - (spotW / 2.0), spot.y + (spotH / 2.0));
+				Point bottomRight = Point((spot.x + (spotW / 2.0)), (spot.y - (spotH / 2.0)));
+
+				if (clickSpot.inBox(topLeft, bottomRight))
 				{
-					if (action == GLFW_RELEASE) // releasing m1 inside button
+					world->upgradeTurret(world->purchasing);
+				}
+			}
+			delete world->purchasing;
+			world->purchasing = nullptr;
+		}
+		else
+		{
+			for (auto ent : *(world->getTowers())) // check if we've touched a tower
+			{
+				Point entMiddle = ent->getMiddle();
+
+				Point topLeft = Point(entMiddle.x - (ent->getWidth() / 2.0), entMiddle.y + (ent->getHeight() / 2.0));
+				Point bottomRight = Point((entMiddle.x + (ent->getWidth() / 2.0)), (entMiddle.y - (ent->getHeight() / 2.0)));
+
+				if (clickSpot.inBox(topLeft, bottomRight))
+				{
+					clicked = ent;
+				}
+			}
+
+			if (clicked == nullptr) // We didn't click on a tower.
+			{
+				for (auto button = world->getButtons()->cbegin(); button != world->getButtons()->cend(); button++)
+				{
+					ButtonObject* ent = *button;
+					Point middle = ent->getMiddle();
+					Point topLeft = Point(middle.x - (ent->getWidth() / 2.0), middle.y + (ent->getHeight() / 2.0));
+					Point bottomRight = Point(middle.x + (ent->getWidth() / 2.0), middle.y - (ent->getHeight() / 2.0));
+
+					if (middle.inBox(topLeft, bottomRight)) // clicked inside button
 					{
-						if (world->selected != nullptr)
+						if (action == GLFW_RELEASE) // releasing m1 inside button
 						{
-							if (ent->getType() == BT_Upgrade) // Upgrade
+							if (world->selected != nullptr)
 							{
-								if (world->canUpgradeTurret(world->selected))
+								if (ent->getType() == BT_Upgrade && world->canUpgradeTurret(world->selected)) // Upgrade
 								{
 									world->upgradeTurret(world->selected);
 									break;
 								}
 							}
-							else if (ent->getType() == BT_Area) // Purchase area
+							else if (ent->getType() == BT_Area)
 							{
-								// Create menu, or something
+								world->selected = new AreaTurret(clickSpot, 32.0f, 32.0f, 20, 15, 10.0, 50, AREA_SPRITES);
 							}
-							else // purchase SS
+							else if (ent->getType() == BT_SS)
 							{
-								// Create menu, or something
+								world->selected = new StraightTurret(clickSpot, 32.0, 32.0, 20, 15, 10.0, 50, SS_SPRITES);
 							}
 						}
 					}
 				}
 			}
-		}
 
-		world->selected = clicked;
+			world->selected = clicked;
 
-		if (action == GLFW_RELEASE)
-		{
-			world->selected = nullptr;
+			if (action == GLFW_RELEASE)
+			{
+				world->selected = nullptr;
+			}
 		}
 	}
 }

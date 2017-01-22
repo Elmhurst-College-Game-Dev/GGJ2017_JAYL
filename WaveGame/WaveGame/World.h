@@ -33,6 +33,8 @@ struct EnemyInfo
 	}
 };
 
+using PlacementSpot = list<Point>::iterator;
+
 class World
 {
 public:
@@ -41,6 +43,7 @@ public:
 	~World();
 
 	void addTower(BaseTurret * ent);
+	void addTower(BaseTurret * ent, Point p);
 	void addEnemy(BaseEnemy * ent);
 	void addEnemyInfo(EnemyInfo info);
 	void addButton(ButtonObject * ent);
@@ -51,17 +54,22 @@ public:
 	const list<BaseTurret * > * getTowers();
 	list<ButtonObject *> * getButtons();
 	const list<Point> * getPath();
-	const list<Point> * getPossiblePlacements();
+	list<Point> * getPossiblePlacements();
 	Point getEndPoint();
 	void damagePlayer();
 	void upgradeTurret(BaseTurret* turret);
 	inline bool canUpgradeTurret(BaseTurret* turret);
+	inline float getSpotH() { return spotHeight; }
+	inline float getSpotW() { return spotWidth; }
+
 
 	BaseTurret * selected;
 	BaseTurret * purchasing;
 private:
 	std::list<Point> path;
 	std::list<Point> possiblePlacements;
+	const float spotWidth = 32.0f;
+	const float spotHeight = 32.0f;
 
 	BaseObject * wave;
 	std::list<BaseEnemy *> enemies;
