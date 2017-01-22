@@ -101,8 +101,8 @@ void RenderControl::initRender()
 		"uniform sampler2D sam;\n"
 		"in vec2 fragTexCoord;\n"
 		"void main() {\n"
-		"	gl_FragColor = texture(sam, fragTexCoord);\n"
-		"	//gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
+		"	vec4 color = texture(sam, fragTexCoord);\n"
+		"	gl_FragColor = color;\n"
 		"}\n"
 		;
 	std::cout << "Loading vertex Shader" << std::endl;
@@ -116,9 +116,6 @@ void RenderControl::initRender()
 	texCoordLoc = glGetAttribLocation(program, "texCoord");
 	samplerLoc = glGetUniformLocation(program, "sam");
 
-	const int textureWidth = 8192;
-	const int textureHeight = 8192;
-
 	//Prepare the lists of arrays
 
 	vector<string> textureNames;
@@ -129,7 +126,7 @@ void RenderControl::initRender()
 	char *json_text = nullptr;
 	{
 		ifstream fp;
-		fp.open(("textures_info.json"));
+		fp.open(("enemies_data.json"));
 		assert(fp.good());
 		fp.seekg(0, ios_base::end);
 		long len = fp.tellg();
@@ -183,15 +180,20 @@ void RenderControl::initRender()
 		textureCoords.push_back(imageDim["w"].GetInt());
 		textureCoords.push_back(imageDim["h"].GetInt());
 	}
-	
-	/*cout << "READ IN THE JSON FILE AND GOT THE FOLLOWING:" << endl;
+
+	int textureWidth = doc["meta"].GetObject()["size"].GetObject()["w"].GetInt();
+	int textureHeight = doc["meta"].GetObject()["size"].GetObject()["h"].GetInt();
+
+	cout << textureWidth << ", " << textureHeight << endl;
+
+	cout << "READ IN THE JSON FILE AND GOT THE FOLLOWING:" << endl;
 	for (int i = 0; i < textureNames.size(); i++) {
 		cout << "[" <<textureNames[i] << "]"  << endl;
 		cout << textureCoords[i * 4 + 0] << ", "
 			<< textureCoords[i * 4 + 1] << ", "
 			<< textureCoords[i * 4 + 2] << ", "
 			<< textureCoords[i * 4 + 3] << ", "  << endl;
-	}*/
+	}
 
 	//Now create the array buffer for the textures
 	GLfloat *arrayBuf = new GLfloat[textureNames.size()*24];
@@ -238,7 +240,7 @@ void RenderControl::initRender()
 	glActiveTexture(GL_TEXTURE0);
 	glUniform1i(samplerLoc, 0);
 
-	mySuperImage = loadTexture("textures_info_opaque.png");
+	mySuperImage = loadTexture("enemies_data.png");
 
 	//That is done, finally
 	//Make the buffers now
@@ -255,7 +257,10 @@ void RenderControl::initRender()
 	//bg color
 	glClearColor(0.1f, 0.0f, 0.25f, 1.0f);
 	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_CONSTANT_COLOR);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
 Sprite & RenderControl::get(string name)

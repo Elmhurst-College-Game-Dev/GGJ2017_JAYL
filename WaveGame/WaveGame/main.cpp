@@ -110,8 +110,8 @@ int main() {
 	renderController.initRender();
 
 	glfwSwapInterval(1);
-	Sprite spr = renderController.get("boom_27.png");
-	BaseEnemy enemy(Point(200, 200), spr, 100, 100, 5, 5, 4);
+	Sprite spr = renderController.get("CuteEnemyBall-1.png");
+	BaseEnemy enemy(Point(300, 250), spr, 100, 100, 5, 5, 4);
 
 	glfwSetMouseButtonCallback(win, OnMouseButton);
 	Point p(100.0f, 100.0f);
