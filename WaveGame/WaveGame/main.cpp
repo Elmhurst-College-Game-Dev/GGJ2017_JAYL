@@ -163,7 +163,7 @@ int main() {
 	//Wave object
 	WaveObject wave(10, 30);
 
-	BaseEnemy* enemy = new BaseEnemy(wave.getMiddle(), renderController.get("Assets/CuteEnemyCoral-0"), 32.0f, 32.0f, 5, 5.0, 1);
+	BaseEnemy* enemy = new BaseEnemy(wave.getMiddle(), renderController.get("CuteEnemyCoral-0"), 32.0f, 32.0f, 5, 5.0, 1);
 
 	cout << "Created!" << endl;
 
