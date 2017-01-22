@@ -4,7 +4,7 @@
 #include "BaseObject.h"
 #include <list>
 
-using PointItr = std::list<Point>::const_iterator;
+//using PointItr = std::list<Point>::const_iterator;
 
 class BaseObject;
 
@@ -20,7 +20,7 @@ public:
 protected:
 	int health;
 	float speed;
-	PointItr nextPoint;
+	int currentPoint;
 	unsigned int level;
 
 private:

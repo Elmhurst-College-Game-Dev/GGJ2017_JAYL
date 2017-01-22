@@ -64,7 +64,7 @@ public:
 	const list<BaseEnemy* > * getEnemies();
 	const list<BaseTurret * > * getTowers();
 	list<ButtonObject *> * getButtons();
-	const list<Point> * getPath();
+	const vector<Point> &getPath();
 	Point getEndPoint();
 	void damagePlayer();
 	void upgradeTurret(BaseTurret* turret);
@@ -78,7 +78,7 @@ public:
 	BaseTurret * selected;
 	BaseTurret * purchasing;
 private:
-	std::list<Point> path;
+	std::vector<Point> path;
 	std::list<Rect> possiblePlacements;
 	const float spotWidth = 32.0f;
 	const float spotHeight = 32.0f;

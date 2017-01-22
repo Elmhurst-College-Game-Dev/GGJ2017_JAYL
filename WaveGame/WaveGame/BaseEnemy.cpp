@@ -12,8 +12,7 @@ BaseEnemy::BaseEnemy(Point middle, Sprite s, float width, float height, int heal
 	this->health = health;
 	this->speed = speed;
 	this->level = level;
-	assert(world->getPath() != nullptr);
-	nextPoint = world->getPath()->cbegin();
+	currentPoint = 0;
 }
 
 void BaseEnemy::takeDamage(int damage)
@@ -33,7 +32,7 @@ void BaseEnemy::think()
 
 void BaseEnemy::move()
 {
-	const Point goalPoint = *nextPoint;
+	const Point goalPoint(world->getPath()[currentPoint]);
 
 	float deltaX = goalPoint.x - middle.x;
 	float deltaY = goalPoint.y - middle.y;
