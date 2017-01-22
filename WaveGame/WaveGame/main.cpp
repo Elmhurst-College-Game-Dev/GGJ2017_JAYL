@@ -59,6 +59,8 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 			if (world->canPlaceTower(clickSpot))
 			{
 				world->addTower(world->purchasing);
+				world->subtractMoney(world->purchasing->getUpgradePrice());
+				world->purchasing = nullptr;
 			}
 		}
 		else
@@ -85,25 +87,28 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 					Point topLeft = Point(middle.x - (ent->getWidth() / 2.0), middle.y - (ent->getHeight() / 2.0));
 					Point bottomRight = Point(middle.x + (ent->getWidth() / 2.0), middle.y + (ent->getHeight() / 2.0));
 
-					if (middle.inBox(topLeft, bottomRight)) // clicked inside button
+					if (clickSpot.inBox(topLeft, bottomRight)) // clicked inside button
 					{
-						cout << "CLICKED BUY" << endl;
 						if (world->selected != nullptr)
 						{
 							if (ent->getType() == BT_Upgrade && world->canUpgradeTurret(world->selected)) // Upgrade
 							{
+						//		cout << "About to upgrade" << endl;
 								world->upgradeTurret(world->selected);
 								break;
 							}
 						}
 						else if (ent->getType() == BT_Area)
 						{
-							world->selected = new AreaTurret(clickSpot, 32.0f, 32.0f, 20, 15, 10.0, 50, AREA_SPRITES);
+						//	cout << "Clicked area" << endl;
+							world->purchasing = new AreaTurret(clickSpot, 32.0f, 32.0f, 20, 15, 100000000.0, 100, AREA_SPRITES);
+							break;
 						}
 						else if (ent->getType() == BT_SS)
 						{
-								
-							world->selected = new StraightTurret(clickSpot, 32.0, 32.0, 20, 15, 10.0, 50, SS_SPRITES);
+						//	cout << "Clicked SS" << endl;
+							world->purchasing = new StraightTurret(clickSpot, 32.0, 32.0, 20, 15, 100000000.0, 100, SS_SPRITES);
+							break;
 						}
 					}
 				}
@@ -198,7 +203,6 @@ int main() {
 	//cout << "Created!" << endl;
 
 	while (!glfwWindowShouldClose(win)) {
-		
 		static clock_t lastThink = clock();
 		//cout << clock() - lastThink << endl;
 		if (clock() - lastThink > 32)
@@ -234,6 +238,11 @@ int main() {
 		}
 
 		wave.draw();
+
+		if (world->purchasing != nullptr)
+		{
+			world->purchasing->draw();
+		}
 
 		//DRAW THE HEADS UP DISPLAY
 		hudBackground.draw();
