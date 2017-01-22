@@ -13,6 +13,7 @@
 #include "StraightTurret.h"
 #include <assert.h>
 #include "MusicWrapper.h"
+#include <time.h>
 
 #define MILLISECONDS_PER_FRAME 33
 
@@ -92,6 +93,9 @@ void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 }
 
 int main() {
+	music.add("ericsSong.mp3", "test");
+	music.play("test");
+
 	vector<string> sprites{ "sprite1", "sprite2", "sprite3", "sprite4", "sprite5" };
 	world = new World(sprites);
 	
@@ -119,8 +123,15 @@ int main() {
 	world->addTower(turret);
 
 	while (!glfwWindowShouldClose(win)) {
-		//Update code here
-
+		/*
+		static clock_t lastThink = clock();
+		cout << clock() - lastThink << endl;
+		if (clock() - lastThink < 32)
+		{
+			world->think();
+			lastThink = clock();
+		}
+		*/
 		//Render code here
 		glClear(GL_COLOR_BUFFER_BIT);
 		//Draw all objects
