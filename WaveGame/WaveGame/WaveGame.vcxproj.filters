@@ -63,6 +63,9 @@
     <ClCompile Include="MusicWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WaveObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseEnemy.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="MusicWrapper.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

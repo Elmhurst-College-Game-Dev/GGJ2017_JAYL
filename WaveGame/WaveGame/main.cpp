@@ -12,6 +12,7 @@
 #include "ButtonObject.h"
 #include "StraightTurret.h"
 #include <assert.h>
+#include "WaveObject.h"
 #include "MusicWrapper.h"
 #include <time.h>
 
@@ -167,6 +168,10 @@ int main() {
 	//world->addButton(new ButtonObject(BT_Upgrade, Point(500.0, 500.0), renderController.get("CuteEnemyCoral-0.png"), renderController.get("CuteEnemyCoral-0.png"), 32.0, 32.0));
 	//world->iterate();
 
+	//Wave object
+	WaveObject wave(10, 30);
+
+
 	while (!glfwWindowShouldClose(win)) {
 		/*
 		static clock_t lastThink = clock();
@@ -179,6 +184,8 @@ int main() {
 		*/
 		//Render code here
 		glClear(GL_COLOR_BUFFER_BIT);
+		wave.think();
+
 
 		//Draw all objects
 		for (list<BaseEnemy*>::const_iterator itr = world->getEnemies()->cbegin(); itr != world->getEnemies()->cend(); itr++) {
@@ -195,7 +202,8 @@ int main() {
 			ent->draw();
 		}
 
-		background_map.draw(0.0f, 1280.0f, 600.0f, 0.0f, 60.0f);
+		background_map.draw(0.0f, 1280.0f, 600.0f, 640.0f, 420.0f);
+		wave.draw();
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

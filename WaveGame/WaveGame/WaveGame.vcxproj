@@ -141,6 +141,7 @@
     <ClCompile Include="shaders.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StraightTurret.cpp" />
+    <ClCompile Include="WaveObject.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="shaders.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StraightTurret.h" />
+    <ClInclude Include="WaveObject.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>

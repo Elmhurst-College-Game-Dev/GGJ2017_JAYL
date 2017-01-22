@@ -334,8 +334,8 @@ void RenderControl::initShaders()
 		"void main() {\n"
 		"	fragTexCoord = texCoord;\n"
 		"	gl_Position = vec4(\n"
-		"		((vertPos.x*size.x)+worldPos.x)/640.0,\n"
-		"		-((vertPos.y*size.y)+worldPos.y)/360.0,\n"
+		"		((vertPos.x*size.x)+worldPos.x-640.0)/640.0,\n"
+		"		-((vertPos.y*size.y)+worldPos.y-360.0)/360.0,\n"
 		"		0.0, 1.0);\n"
 		"}\n"
 		;
