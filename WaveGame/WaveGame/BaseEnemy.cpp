@@ -12,8 +12,7 @@ BaseEnemy::BaseEnemy(Point middle, Sprite s, float width, float height, int heal
 	this->health = health;
 	this->speed = speed;
 	this->level = level;
-	assert(world->getPath() != nullptr);
-	nextPoint = world->getPath()->cbegin();
+	currentPoint = 0;
 }
 
 void BaseEnemy::takeDamage(int damage)
@@ -33,19 +32,22 @@ void BaseEnemy::think()
 
 void BaseEnemy::move()
 {
-	const Point goalPoint = *nextPoint;
-
+	Point goalPoint(world->getPath()[currentPoint]);
+	//cout << "( " << goalPoint.x << ", " << goalPoint.y << " )" << endl;
 	float distance = this->middle.getDistance(goalPoint);
 	float x = 0.0f;
 	float y = 0.0f;
 	 x = ( (goalPoint.x-middle.x) / distance) * speed;
-	 y = ((goalPoint.y - middle.y) / distance) * speed;
+	 y = ((goalPoint.y -middle.y) / distance) * speed;
 	Point destination(middle.x+x,middle.y+y);
 	//Comparing how much you will move with how far away it is
-	if (middle.getDistance(destination) > distance)
+	if (distance < speed)
 	{
-		destination = goalPoint;
-		nextPoint++;
+		cout << "Im alive" << endl;
+		if (currentPoint < world->getPath().size()-1) {
+			destination = goalPoint;
+			currentPoint++;
+		}
 	}
 
 	this->middle = destination;

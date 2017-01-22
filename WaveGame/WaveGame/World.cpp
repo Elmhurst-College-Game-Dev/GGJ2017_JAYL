@@ -198,9 +198,9 @@ unsigned long long World::getFrameCount()
 	return currentFrame;
 }
 
-const list<Point> * World::getPath()
+const vector<Point> &World::getPath()
 {
-	return &path;
+	return path;
 }
 
 Point World::getEndPoint()
