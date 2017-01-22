@@ -15,6 +15,7 @@ void StraightTurret::think()
 {
 	if (canFire())
 	{
+		cout << "Trying to shoot" << endl;
 		auto enemies = world->getEnemies();
 		float min = 0;
 		BaseEnemy * minEnt = nullptr;
@@ -32,8 +33,11 @@ void StraightTurret::think()
 		}
 		if (minEnt != nullptr)
 		{
+			cout << "About to shoot" << endl;
 			shoot(minEnt);
+			cout << "Shot!" << endl;
 		}
+		cout << "end trying to shoot" << endl;
 	}
 }
 

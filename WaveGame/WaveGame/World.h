@@ -73,6 +73,7 @@ public:
 
 	inline unsigned int getMoney() const { return money;  }
 	inline unsigned int getEnemiesLeft() const { return enemies.size();  }
+	inline void subtractMoney(unsigned int sub) { money -= sub; }
 
 	BaseTurret * selected;
 	BaseTurret * purchasing;
@@ -97,7 +98,7 @@ private:
 	unsigned long long framesBetweenSpawns;
 	unsigned int enemiesUnlocked;
 
-	unsigned int money = 5000000;
+	unsigned int money = 3000;
 
 	void spawnEnemy();
 	vector<Point> wavePoints;
