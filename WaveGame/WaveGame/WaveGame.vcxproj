@@ -136,6 +136,7 @@
     <ClCompile Include="jsmn.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MusicWrapper.cpp" />
+    <ClCompile Include="NumberObject.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RenderControl.cpp" />
     <ClCompile Include="shaders.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="shaders.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StraightTurret.h" />
+    <ClInclude Include="NumberObject.h" />
     <ClInclude Include="WaveObject.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>

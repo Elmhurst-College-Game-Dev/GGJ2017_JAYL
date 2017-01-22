@@ -163,7 +163,7 @@ int main() {
 	//StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"CuteEnemyCoral-0.png"});
 	//world->addTower(turret);
 
-	Sprite background_map = renderController.get("Assets/Map-0");
+	Sprite background_map = renderController.get("Map-0");
 
 	//world->addButton(new ButtonObject(BT_Upgrade, Point(500.0, 500.0), renderController.get("CuteEnemyCoral-0.png"), renderController.get("CuteEnemyCoral-0.png"), 32.0, 32.0));
 	//world->iterate();

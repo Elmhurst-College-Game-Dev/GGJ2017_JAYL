@@ -6,7 +6,7 @@
 extern RenderControl renderController;
 
 WaveObject::WaveObject(int startX, int maxX) : 
-	BaseObject(Point(float(startX), 420.0f), renderController.get("Assets/WaveSprite-0"), 
+	BaseObject(Point(float(startX), 420.0f), renderController.get("WaveSprite-0"), 
 		141, 600)
 {
 	this->startX = startX;

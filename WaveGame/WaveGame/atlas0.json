@@ -1,495 +1,573 @@
 [ {
 		"file": "atlas0_0.png",
 		"items": {
-			"x_ray/ss_x_ray_wave_1": {
+			"0": {
 				"x": 1623,
-				"y": 80,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"1": {
+				"x": 1661,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"2": {
+				"x": 1699,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"3": {
+				"x": 1737,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"4": {
+				"x": 1775,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"5": {
+				"x": 1813,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"6": {
+				"x": 1851,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"7": {
+				"x": 1889,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"8": {
+				"x": 1927,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"9": {
+				"x": 1965,
+				"y": 180,
+				"width": 38,
+				"height": 38
+			},
+			"BuySelected": {
+				"x": 1421,
+				"y": 100,
+				"width": 202,
+				"height": 80
+			},
+			"BuyUnselected": {
+				"x": 1623,
+				"y": 100,
+				"width": 202,
+				"height": 80
+			},
+			"CuteEnemyBall-1": {
+				"x": 2003,
+				"y": 180,
 				"width": 32,
 				"height": 32
 			},
-			"x_ray/ss_x_ray_wave_2": {
+			"CuteEnemyBall-2": {
+				"x": 2003,
+				"y": 212,
+				"width": 32,
+				"height": 32
+			},
+			"CuteEnemyCoral-0": {
+				"x": 1623,
+				"y": 218,
+				"width": 32,
+				"height": 32
+			},
+			"CuteEnemyCoral-1": {
 				"x": 1655,
-				"y": 80,
+				"y": 218,
 				"width": 32,
 				"height": 32
 			},
-			"x_ray/ss_x_ray_wave_3": {
+			"CuteEnemyCoral-2": {
 				"x": 1687,
-				"y": 80,
+				"y": 218,
 				"width": 32,
 				"height": 32
 			},
-			"x_ray/ss_x_ray_wave_4": {
+			"CuteEnemyFluff-0": {
 				"x": 1719,
-				"y": 80,
+				"y": 218,
 				"width": 32,
 				"height": 32
 			},
-			"x_ray/ss_x_ray_wave_5": {
+			"CuteEnemyFluff-1": {
 				"x": 1751,
-				"y": 80,
+				"y": 218,
 				"width": 32,
 				"height": 32
 			},
-			"x_ray/ss_x_ray_wave_6": {
+			"CuteEnemyFluff-2": {
 				"x": 1783,
-				"y": 80,
+				"y": 218,
 				"width": 32,
 				"height": 32
 			},
-			"x_ray/ss_x_ray_wave_7": {
+			"CuteEnemySeaweed-1": {
 				"x": 1815,
-				"y": 80,
+				"y": 218,
 				"width": 32,
 				"height": 32
 			},
-			"x_ray/ss_x_ray_wave_8": {
+			"CuteEnemySeaweed-2": {
 				"x": 1847,
-				"y": 80,
+				"y": 218,
 				"width": 32,
 				"height": 32
 			},
-			"Assets/BuySelected": {
+			"CuteEnemyStone-0": {
+				"x": 1879,
+				"y": 218,
+				"width": 32,
+				"height": 32
+			},
+			"CuteEnemyStone-1": {
+				"x": 1911,
+				"y": 218,
+				"width": 32,
+				"height": 32
+			},
+			"CuteEnemyStone-2": {
+				"x": 1943,
+				"y": 218,
+				"width": 32,
+				"height": 32
+			},
+			"HUD-0": {
+				"x": 0,
+				"y": 600,
+				"width": 1280,
+				"height": 120
+			},
+			"HUD-Currency": {
 				"x": 1421,
 				"y": 0,
-				"width": 202,
-				"height": 80
+				"width": 308,
+				"height": 100
 			},
-			"Assets/BuyUnselected": {
-				"x": 1623,
+			"HUD-EnemyWave": {
+				"x": 1729,
 				"y": 0,
-				"width": 202,
-				"height": 80
+				"width": 308,
+				"height": 100
 			},
-			"Assets/CuteEnemyBall-1": {
-				"x": 1879,
-				"y": 80,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyBall-2": {
-				"x": 1911,
-				"y": 80,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyCoral-0": {
-				"x": 1943,
-				"y": 80,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyCoral-1": {
-				"x": 1975,
-				"y": 80,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyCoral-2": {
-				"x": 2007,
-				"y": 80,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyFluff-0": {
-				"x": 1623,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyFluff-1": {
-				"x": 1655,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyFluff-2": {
-				"x": 1687,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemySeaweed-1": {
-				"x": 1719,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemySeaweed-2": {
-				"x": 1751,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyStone-0": {
-				"x": 1783,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyStone-1": {
-				"x": 1815,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/CuteEnemyStone-2": {
-				"x": 1847,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"Assets/Map-0": {
+			"Map-0": {
 				"x": 0,
 				"y": 0,
 				"width": 1280,
 				"height": 600
 			},
-			"Assets/UpgradeSelected": {
+			"UpgradeSelected": {
 				"x": 1825,
-				"y": 0,
+				"y": 100,
 				"width": 202,
 				"height": 80
 			},
-			"Assets/UpgradeUnselected": {
+			"UpgradeUnselected": {
 				"x": 1421,
-				"y": 80,
+				"y": 180,
 				"width": 202,
 				"height": 80
 			},
-			"Assets/WaveSprite-0": {
+			"WaveSprite-0": {
 				"x": 1280,
 				"y": 0,
 				"width": 141,
 				"height": 600
 			},
-			"ultra_violet/ss_ultra_violet_wave_1": {
-				"x": 1879,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"ultra_violet/ss_ultra_violet_wave_2": {
-				"x": 1911,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"ultra_violet/ss_ultra_violet_wave_3": {
-				"x": 1943,
-				"y": 112,
-				"width": 32,
-				"height": 32
-			},
-			"ultra_violet/ss_ultra_violet_wave_4": {
+			"ss_x_ray_wave_1": {
 				"x": 1975,
-				"y": 112,
+				"y": 244,
 				"width": 32,
 				"height": 32
 			},
-			"ultra_violet/ss_ultra_violet_wave_5": {
+			"ss_x_ray_wave_2": {
 				"x": 2007,
-				"y": 112,
+				"y": 244,
 				"width": 32,
 				"height": 32
 			},
-			"ultra_violet/ss_ultra_violet_wave_6": {
+			"ss_x_ray_wave_3": {
 				"x": 1623,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"tops/top_cosmic": {
+			"ss_x_ray_wave_4": {
 				"x": 1421,
-				"y": 160,
+				"y": 260,
 				"width": 32,
 				"height": 32
 			},
-			"tops/top_gamma": {
+			"ss_x_ray_wave_5": {
 				"x": 1453,
-				"y": 160,
+				"y": 260,
 				"width": 32,
 				"height": 32
 			},
-			"tops/top_infra_red": {
+			"ss_x_ray_wave_6": {
 				"x": 1485,
-				"y": 160,
+				"y": 260,
 				"width": 32,
 				"height": 32
 			},
-			"tops/top_micro": {
+			"ss_x_ray_wave_7": {
 				"x": 1517,
-				"y": 160,
+				"y": 260,
 				"width": 32,
 				"height": 32
 			},
-			"tops/top_radio": {
+			"ss_x_ray_wave_8": {
 				"x": 1549,
-				"y": 160,
+				"y": 260,
 				"width": 32,
 				"height": 32
 			},
-			"tops/top_ultra_violet": {
+			"ss_ultra_violet_wave_1": {
 				"x": 1581,
-				"y": 160,
+				"y": 260,
 				"width": 32,
 				"height": 32
 			},
-			"tops/top_visible_light": {
+			"ss_ultra_violet_wave_2": {
 				"x": 1655,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"tops/top_x_ray": {
+			"ss_ultra_violet_wave_3": {
 				"x": 1687,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"raindow wave/ss_visible_light_wave_1": {
+			"ss_ultra_violet_wave_4": {
 				"x": 1719,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"raindow wave/ss_visible_light_wave_2": {
+			"ss_ultra_violet_wave_5": {
 				"x": 1751,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"raindow wave/ss_visible_light_wave_3": {
+			"ss_ultra_violet_wave_6": {
 				"x": 1783,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"raindow wave/ss_visible_light_wave_4": {
+			"top_cosmic": {
 				"x": 1815,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"raindow wave/ss_visible_light_wave_5": {
+			"top_gamma": {
 				"x": 1847,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"raindow wave/ss_visible_light_wave_6": {
+			"top_infra_red": {
 				"x": 1879,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"raindow wave/ss_visible_light_wave_7": {
+			"top_micro": {
 				"x": 1911,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"radio_wave/ss_radio_wave_1": {
+			"top_radio": {
 				"x": 1943,
-				"y": 144,
+				"y": 250,
 				"width": 32,
 				"height": 32
 			},
-			"radio_wave/ss_radio_wave_2": {
+			"top_ultra_violet": {
 				"x": 1975,
-				"y": 144,
+				"y": 276,
 				"width": 32,
 				"height": 32
 			},
-			"radio_wave/ss_radio_wave_3": {
+			"top_visible_light": {
 				"x": 2007,
-				"y": 144,
+				"y": 276,
 				"width": 32,
 				"height": 32
 			},
-			"micro_wave/ss_micro_wave_1": {
+			"top_x_ray": {
 				"x": 1613,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"micro_wave/ss_micro_wave_2": {
+			"ss_visible_light_wave_1": {
 				"x": 1421,
-				"y": 192,
+				"y": 292,
 				"width": 32,
 				"height": 32
 			},
-			"micro_wave/ss_micro_wave_3": {
+			"ss_visible_light_wave_2": {
 				"x": 1453,
-				"y": 192,
+				"y": 292,
 				"width": 32,
 				"height": 32
 			},
-			"infra_red_wave/ss_infra_red_wave_1": {
+			"ss_visible_light_wave_3": {
 				"x": 1485,
-				"y": 192,
+				"y": 292,
 				"width": 32,
 				"height": 32
 			},
-			"infra_red_wave/ss_infra_red_wave_2": {
+			"ss_visible_light_wave_4": {
 				"x": 1517,
-				"y": 192,
+				"y": 292,
 				"width": 32,
 				"height": 32
 			},
-			"infra_red_wave/ss_infra_red_wave_3": {
+			"ss_visible_light_wave_5": {
 				"x": 1549,
-				"y": 192,
+				"y": 292,
 				"width": 32,
 				"height": 32
 			},
-			"infra_red_wave/ss_infra_red_wave_4": {
+			"ss_visible_light_wave_6": {
 				"x": 1581,
-				"y": 192,
+				"y": 292,
 				"width": 32,
 				"height": 32
 			},
-			"gamma_ray/ss_gamma_rays_wave_1": {
+			"ss_visible_light_wave_7": {
 				"x": 1645,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"gamma_ray/ss_gamma_rays_wave_2": {
+			"ss_radio_wave_1": {
 				"x": 1677,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"gamma_ray/ss_gamma_rays_wave_3": {
+			"ss_radio_wave_2": {
 				"x": 1709,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"gamma_ray/ss_gamma_rays_wave_4": {
+			"ss_radio_wave_3": {
 				"x": 1741,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"gamma_ray/ss_gamma_rays_wave_5": {
+			"ss_micro_wave_1": {
 				"x": 1773,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"gamma_ray/ss_gamma_rays_wave_6": {
+			"ss_micro_wave_2": {
 				"x": 1805,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"gamma_ray/ss_gamma_rays_wave_7": {
+			"ss_micro_wave_3": {
 				"x": 1837,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"gamma_ray/ss_gamma_rays_wave_8": {
+			"ss_infra_red_wave_1": {
 				"x": 1869,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_1": {
+			"ss_infra_red_wave_2": {
 				"x": 1901,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_10": {
+			"ss_infra_red_wave_3": {
 				"x": 1933,
-				"y": 176,
+				"y": 282,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_11": {
+			"ss_infra_red_wave_4": {
 				"x": 1965,
-				"y": 176,
+				"y": 308,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_12": {
+			"ss_gamma_rays_wave_1": {
 				"x": 1997,
-				"y": 176,
+				"y": 308,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_13": {
+			"ss_gamma_rays_wave_2": {
 				"x": 1613,
-				"y": 208,
+				"y": 314,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_14": {
+			"ss_gamma_rays_wave_3": {
 				"x": 1421,
-				"y": 224,
+				"y": 324,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_15": {
+			"ss_gamma_rays_wave_4": {
 				"x": 1453,
-				"y": 224,
+				"y": 324,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_16": {
+			"ss_gamma_rays_wave_5": {
 				"x": 1485,
-				"y": 224,
+				"y": 324,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_2": {
+			"ss_gamma_rays_wave_6": {
 				"x": 1517,
-				"y": 224,
+				"y": 324,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_3": {
+			"ss_gamma_rays_wave_7": {
 				"x": 1549,
-				"y": 224,
+				"y": 324,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_4": {
+			"ss_gamma_rays_wave_8": {
 				"x": 1581,
-				"y": 224,
+				"y": 324,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_5": {
+			"ss_cosmic_wave_1": {
 				"x": 1645,
-				"y": 208,
+				"y": 314,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_6": {
+			"ss_cosmic_wave_10": {
 				"x": 1677,
-				"y": 208,
+				"y": 314,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_7": {
+			"ss_cosmic_wave_11": {
 				"x": 1709,
-				"y": 208,
+				"y": 314,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_8": {
+			"ss_cosmic_wave_12": {
 				"x": 1741,
-				"y": 208,
+				"y": 314,
 				"width": 32,
 				"height": 32
 			},
-			"cosmic_ray_wave/ss_cosmic_wave_9": {
+			"ss_cosmic_wave_13": {
 				"x": 1773,
-				"y": 208,
+				"y": 314,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_14": {
+				"x": 1805,
+				"y": 314,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_15": {
+				"x": 1837,
+				"y": 314,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_16": {
+				"x": 1869,
+				"y": 314,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_2": {
+				"x": 1901,
+				"y": 314,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_3": {
+				"x": 1933,
+				"y": 314,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_4": {
+				"x": 1965,
+				"y": 340,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_5": {
+				"x": 1997,
+				"y": 340,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_6": {
+				"x": 1613,
+				"y": 346,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_7": {
+				"x": 1421,
+				"y": 356,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_8": {
+				"x": 1453,
+				"y": 356,
+				"width": 32,
+				"height": 32
+			},
+			"ss_cosmic_wave_9": {
+				"x": 1485,
+				"y": 356,
 				"width": 32,
 				"height": 32
 			}
