@@ -111,6 +111,7 @@ int main() {
 	glfwSwapInterval(1);
 
 	BaseEnemy enemy(Point(200, 200), renderController.get("Cute-Enemy-Coral-0.png"), 100, 100, 5, 5, 4);
+
 	glfwSetMouseButtonCallback(win, OnMouseButton);
 	Point p(100.0f, 100.0f);
 	StraightTurret * turret = new StraightTurret(p, 32.0, 32.0, 5, 5, 5.0, 5, list<string> {"test"});

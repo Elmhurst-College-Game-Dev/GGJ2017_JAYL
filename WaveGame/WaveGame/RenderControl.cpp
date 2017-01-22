@@ -213,7 +213,7 @@ void RenderControl::initRender()
 	cout << "Gonna make the sprites array thing now " << endl;
 	//Setup the map now
 	for (int i = 0; i < textureNames.size(); i++) {
-		sprites[textureNames[i]] = i * 6 * sizeof(GLuint); //because it's all ordered
+		sprites[textureNames[i]] = Sprite(i * 6 * sizeof(GLuint)); //because it's all ordered
 	}
 
 	GLuint mySuperImage = loadTexture("textures_info.png");

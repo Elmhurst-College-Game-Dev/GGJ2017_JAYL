@@ -57,6 +57,9 @@
     <ClCompile Include="jsmn.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseEnemy.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="jsmn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,12 +8,14 @@ using namespace std;
 
 Sprite::Sprite(GLuint img) : animationTrack()
 {
+	cout << "I put something in you" << endl;
 	animationTrack.push_back(img);
 	indexOffset = 0 ;
 }
 
-Sprite::Sprite(vector<GLuint> track) : animationTrack( track )
+Sprite::Sprite(vector<GLuint> track) 
 {
+	animationTrack = track;
 	indexOffset = 0;
 }
 
@@ -31,9 +33,12 @@ Sprite::~Sprite()
 
 void* Sprite::getOffset()
 {
-	if (animationTrack.size() == 0)
+	if (animationTrack.size() == 0) {
 		cout << "HEY YOU HAVE AN EMPTY ANIMATION TRACK YOU DUMMY" << endl;
-	return (void*)animationTrack[indexOffset];
+	}
+	else {
+		return (void*)animationTrack[indexOffset];
+	}
 }
 
 void Sprite::updateSpriteAnimation()
