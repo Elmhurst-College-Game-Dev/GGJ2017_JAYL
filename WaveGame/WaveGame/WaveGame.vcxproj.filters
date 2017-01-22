@@ -60,6 +60,9 @@
     <ClCompile Include="ButtonObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MusicWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseEnemy.h">
@@ -103,6 +106,12 @@
     </ClInclude>
     <ClInclude Include="ButtonObject.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mp3player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicWrapper.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

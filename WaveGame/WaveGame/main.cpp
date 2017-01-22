@@ -12,6 +12,7 @@
 #include "ButtonObject.h"
 #include "StraightTurret.h"
 #include <assert.h>
+#include "MusicWrapper.h"
 
 #define MILLISECONDS_PER_FRAME 33
 
@@ -20,6 +21,7 @@ using namespace std;
 #include "World.h"
 World* world;
 RenderControl renderController;
+MusicWrapper music;
 
 void OnMouseButton(GLFWwindow* win, int button, int action, int mods)
 {
