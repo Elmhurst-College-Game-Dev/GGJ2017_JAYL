@@ -63,6 +63,7 @@ void Sprite::draw(float angle, float width, float height, float worldPosX, float
 	glUniformMatrix3fv(renderController.getModelLoc(), 1, GL_TRUE, modelView);
 	glUniform2f(renderController.getSizeLoc(), width, height);
 	glUniform2f(renderController.getWorldPosLoc(), worldPosX, worldPosY);
+	glUniform2f(renderController.getScreenSizeLoc(), 1280.0f, 720.0f);
 	glEnableVertexAttribArray(renderController.getVertPosLoc());
 	glEnableVertexAttribArray(renderController.getTexCoordLoc());
 	glVertexAttribPointer(renderController.getVertPosLoc(), 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);

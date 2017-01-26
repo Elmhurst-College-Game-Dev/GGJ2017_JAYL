@@ -207,7 +207,7 @@ int main() {
 	while (!glfwWindowShouldClose(win)) {
 		static clock_t lastThink = clock();
 		//cout << clock() - lastThink << endl;
-		if (clock() - lastThink > 32)
+ 		if (clock() - lastThink > 32)
 		{
 			enemy->think();
 			world->think();
@@ -263,6 +263,11 @@ int main() {
 		//icons on top of buy buttons
 		straightShotBuyIcon.draw();
 		areaBuyIcon.draw();
+
+		if (world->lost()) {
+			//default to quitting the game
+			glfwWindowShouldClose(win);
+		}
 
 		glfwSwapBuffers(win);
 		glfwPollEvents();

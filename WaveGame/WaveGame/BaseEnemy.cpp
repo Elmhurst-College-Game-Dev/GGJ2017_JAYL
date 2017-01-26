@@ -32,6 +32,9 @@ void BaseEnemy::think()
 
 void BaseEnemy::move()
 {
+	if (currentPoint >= world->getPath().size()) {
+		return;
+	}
 	const Point goalPoint(world->getPath()[currentPoint]);
 
 	float deltaX = goalPoint.x - middle.x;
@@ -47,6 +50,11 @@ void BaseEnemy::move()
 	{
 		middle = goalPoint;
 		currentPoint++;
+		if (currentPoint >= world->getPath().size()) {
+			//End of the line
+			world->deductHealth();
+			
+		}
 	}
 
 }

@@ -21,6 +21,7 @@ public:
 	GLuint getVertPosLoc() { return vertPosLoc;  }
 	GLuint getTexCoordLoc() { return texCoordLoc;  }
 	GLuint getSamplerLoc() { return samplerLoc;  }
+	GLuint getScreenSizeLoc() { return screenSizeLoc;  }
 	map<string, Sprite> &getSprites() { return sprites;  }
 private:
 	GLuint program;
@@ -29,6 +30,7 @@ private:
 	GLuint worldPosLoc;
 	GLuint vertPosLoc;
 	GLuint texCoordLoc;
+	GLuint screenSizeLoc;
 	GLuint samplerLoc;
 	map<string, Sprite> sprites;
 };

@@ -42,13 +42,15 @@ World::World(vector<string> sprites)
 	path.emplace_back(245.0, 620);
 	path.emplace_back(280.0, 665.0);
 	path.emplace_back(389.0, 647.0);
-	path.emplace_back(400.0, 180.0);
-	path.emplace_back(590.0, 177.0);
+	path.emplace_back(400.0, 174.0);
+	path.emplace_back(590.0, 174.0);
 	path.emplace_back(600.0, 190.0);
 	path.emplace_back(600.0, 501.0);
-	path.emplace_back(560.0, 520.0);
+	path.emplace_back(555.0, 520.0);
+	path.emplace_back(555.0, 651.0);
 	path.emplace_back(825.0, 651.0);
 	path.emplace_back(825.0, 223.0);
+	path.emplace_back(971.0, 223.0);
 	path.emplace_back(971.0, 650.0);
 	path.emplace_back(1125.0, 650.0);
 	path.emplace_back(1125.0, 407.0);

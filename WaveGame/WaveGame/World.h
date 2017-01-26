@@ -70,11 +70,23 @@ public:
 	void upgradeTurret(BaseTurret* turret);
 	inline bool canUpgradeTurret(BaseTurret* turret);
 	bool canPlaceTower(Point p);
+	bool deductHealth() {
+		health--;
+		if (health <= 0) {
+			//End game
+			cout << "LOSE" << endl;
+			lose();
+			return true;
+		}
+		return false;
+	}
 
-	inline unsigned int getMoney() const { return money;  }
-	inline unsigned int getEnemiesLeft() const { return enemies.size();  }
+	inline unsigned int getMoney() { return money;  }
+	inline unsigned int getEnemiesLeft() { return enemies.size();  }
+	inline unsigned int getHealth() { return health;  }
 	inline void subtractMoney(unsigned int sub) { money -= sub; }
-
+	void lose() { lostGame = true;  }
+	bool lost() { return lostGame; }
 	BaseTurret * selected;
 	BaseTurret * purchasing;
 private:
@@ -98,7 +110,9 @@ private:
 	unsigned long long framesBetweenSpawns;
 	unsigned int enemiesUnlocked;
 
+	bool lostGame = false;
 	unsigned int money = 3000;
+	unsigned int health = 3;
 
 	void spawnEnemy();
 	vector<Point> wavePoints;

@@ -380,12 +380,16 @@ void RenderControl::initShaders()
 		"uniform mat3 model;\n"
 		"uniform vec2 size;\n"
 		"uniform vec2 worldPos;\n"
+		"uniform vec2 screenSize;\n"
 		"void main() {\n"
 		"	fragTexCoord = texCoord;\n"
-	//	"	vec3 rotated = model*vec3(vertPos, 1.0);"
+		"	vec3 objectSpace = vec3(vertPos.x*size.x, vertPos.y*size.y, 1.0);"
+		"	vec3 rotated = model*objectSpace;\n"
+		"	float halfWorldWidth = screenSize.x/2.0;\n"
+		"	float halfWorldHeight = screenSize.y/2.0;\n"
 		"	gl_Position = vec4(\n"
-		"		((vertPos.x*size.x)+worldPos.x-640.0)/640.0,\n"
-		"		-((vertPos.y*size.y)+worldPos.y-360.0)/360.0,\n"
+		"		(rotated.x+worldPos.x-640.0)/halfWorldWidth,\n"
+		"		-(rotated.y+worldPos.y-360.0)/halfWorldHeight,\n"
 		"		0.0, 1.0);\n"
 		"}\n"
 		;
@@ -411,6 +415,7 @@ void RenderControl::initShaders()
 	worldPosLoc = glGetUniformLocation(program, "worldPos");
 	texCoordLoc = glGetAttribLocation(program, "texCoord");
 	samplerLoc = glGetUniformLocation(program, "sam");
+	screenSizeLoc = glGetUniformLocation(program, "screenSize");
 }
 
 Sprite & RenderControl::get(string name)
